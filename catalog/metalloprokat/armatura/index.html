@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Арматура — каталог | GOLDI GROUP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0e1e35;
+    --ink-soft:#28405e;
+    --muted:#607086;
+    --blue:#2457d6;
+    --blue-deep:#173d9e;
+    --orange:#f2740f;
+    --orange-deep:#c85e0c;
+    --orange-soft:rgba(242,116,15,.12);
+    --line:rgba(20,50,100,.12);
+    --glass:rgba(255,255,255,.66);
+    --glass-strong:rgba(255,255,255,.86);
+    --radius-lg:26px;
+    --radius-md:18px;
+    --radius-sm:14px;
+    --shadow:0 1px 1px rgba(20,50,100,.05), 0 18px 38px -20px rgba(20,60,140,.22);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;font-family:'Inter',sans-serif;color:var(--ink);
+    background:
+      radial-gradient(1100px 650px at 10% -10%, #d9e6fa 0%, transparent 55%),
+      radial-gradient(950px 700px at 105% 10%, #e2ecfb 0%, transparent 60%),
+      linear-gradient(180deg, #f4f8fd 0%, #eef3fb 40%, #f6f9fd 100%);
+    background-attachment:fixed;
+    min-height:100vh;
+  }
+  h1,h2,h3,h4{font-family:'Golos Text',sans-serif;margin:0;color:var(--ink);}
+  p{margin:0;line-height:1.55;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- Header (matches main site) ---------- */
+  header{padding:20px 0 6px;}
+  .headerbar{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand .mark{
+    width:46px;height:46px;border-radius:14px;background:linear-gradient(140deg,#1c3f8f,#2457d6 55%,#5f8ce8);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Golos Text';font-weight:800;font-size:19px;flex-shrink:0;
+  }
+  .brand .name{font-family:'Golos Text';font-weight:700;font-size:17px;}
+  .brand .sub{font-size:12px;color:var(--muted);margin-top:1px;}
+  nav{display:flex;gap:26px;font-size:14.5px;font-weight:500;color:var(--ink-soft);}
+  nav a:hover{color:var(--blue);}
+  .btn-request{
+    background:linear-gradient(135deg,#c85e0c,#f2740f);color:#fff;font-weight:700;font-size:14px;
+    padding:11px 19px;border-radius:999px;white-space:nowrap;box-shadow:0 10px 20px -8px rgba(200,94,12,.5);
+    border:none;cursor:pointer;
+  }
+
+  /* ---------- Page head ---------- */
+  .pagehead{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-top:26px;flex-wrap:wrap;}
+  .crumbs{font-size:13px;color:var(--muted);margin-bottom:10px;}
+  .crumbs a:hover{color:var(--blue-deep);}
+  .crumbs span{margin:0 6px;opacity:.5;}
+  .pagehead h1{font-size:38px;font-weight:800;}
+  .pagehead .sub{color:var(--muted);font-size:15.5px;margin-top:10px;max-width:520px;}
+
+  /* ---------- Layout ---------- */
+  .layout{display:grid;grid-template-columns:290px 1fr;gap:22px;margin-top:30px;padding-bottom:70px;align-items:start;}
+
+  .sidebar-card{
+    background:var(--glass);backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.8);
+    border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:26px 24px;position:sticky;top:20px;
+  }
+  .sidebar-card h3{font-size:19px;font-weight:800;margin-bottom:20px;}
+  .field-label{font-size:12.5px;font-weight:700;color:var(--ink-soft);margin-bottom:8px;display:block;}
+  .select-wrap{position:relative;margin-bottom:6px;}
+  .select-wrap select{
+    width:100%;appearance:none;padding:13px 40px 13px 16px;border-radius:13px;border:1px solid var(--line);
+    background:rgba(255,255,255,.85);font-size:14.5px;font-family:'Inter';color:var(--ink);outline:none;font-weight:600;
+    transition:border-color .15s, box-shadow .15s;cursor:pointer;
+  }
+  .select-wrap select:focus{border-color:var(--orange);box-shadow:0 0 0 4px var(--orange-soft);}
+  .select-wrap::after{content:"⌄";position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:15px;pointer-events:none;}
+  .reset-link{display:inline-block;margin-top:14px;font-size:13px;font-weight:600;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer;}
+  .reset-link:hover{color:var(--orange-deep);}
+  .sb-divider{height:1px;background:var(--line);margin:22px 0;}
+  .help-title{font-weight:700;font-size:15px;}
+  .help-text{font-size:13.5px;color:var(--muted);margin-top:8px;line-height:1.5;}
+  .help-phone{font-family:'Golos Text';font-weight:800;font-size:17px;margin-top:12px;color:var(--ink);}
+
+  .content-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px;}
+  .found-count{font-size:15px;font-weight:700;color:var(--ink-soft);}
+  .price-note{font-size:13.5px;color:var(--muted);}
+
+  .type-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  .typecard{
+    background:var(--glass-strong);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.85);
+    border-radius:var(--radius-md);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;
+    transition:opacity .2s, transform .2s, box-shadow .2s;
+  }
+  .typecard:hover{transform:translateY(-4px);box-shadow:0 26px 46px -20px rgba(20,60,140,.3);}
+  .typecard.hidden{display:none;}
+  .typecard .img{height:210px;background-size:cover;background-position:center;}
+  .typecard .body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .typecard .eyebrow{font-size:12px;font-weight:700;letter-spacing:.05em;color:var(--orange-deep);}
+  .typecard h4{font-size:20px;font-weight:800;line-height:1.2;margin-top:2px;}
+  .typecard .specs{margin-top:8px;font-size:14px;color:var(--ink-soft);display:flex;flex-direction:column;gap:3px;}
+  .typecard .specs b{font-weight:700;color:var(--ink);}
+  .typecard .divider{height:1px;background:var(--line);margin:16px 0 14px;}
+  .typecard .pick{
+    display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:14.5px;
+    border:none;background:none;padding:0;color:var(--ink);
+  }
+  .typecard .pick .arrow{
+    width:34px;height:34px;border-radius:50%;background:var(--orange-soft);color:var(--orange-deep);
+    display:flex;align-items:center;justify-content:center;font-size:15px;transition:transform .15s;
+  }
+  .typecard:hover .pick .arrow{transform:translate(2px,-2px);background:linear-gradient(135deg,#c85e0c,#f2740f);color:#fff;}
+
+  .empty-state{padding:60px 20px;text-align:center;color:var(--muted);font-size:15px;display:none;}
+  .empty-state.show{display:block;}
+
+  /* ---------- Request / lead-form section (dark, matches site) ---------- */
+  .request-card{
+    background:
+      linear-gradient(150deg, rgba(80,130,230,.25), transparent 45%),
+      linear-gradient(165deg,#0d1c42,#122a63 55%,#0a1735);
+    border-radius:var(--radius-lg);
+    padding:54px;
+    display:grid;grid-template-columns:1fr 1fr;gap:56px;
+    color:#fff;
+    box-shadow:0 30px 60px -24px rgba(10,25,60,.5);
+    margin-top:20px;margin-bottom:56px;
+  }
+  .request-card h2{color:#fff;font-size:28px;font-weight:800;line-height:1.15;}
+  .request-card .r-sub{color:#aebde0;font-size:14.5px;margin-top:14px;max-width:420px;}
+  .r-cities{display:flex;flex-direction:column;gap:14px;margin-top:24px;}
+  .r-city{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-sm);padding:18px 20px;}
+  .r-city h5{font-family:'Golos Text';font-size:15px;font-weight:700;color:#fff;margin-bottom:7px;}
+  .r-city .addr{font-size:13px;color:#aebde0;margin-bottom:7px;}
+  .r-city .tel{font-weight:700;font-size:14px;color:#fff;}
+  .r-city .mail{font-weight:600;font-size:13px;color:#8fb2f5;margin-top:5px;}
+  .r-formcard{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-md);padding:28px 28px 30px;}
+  .r-formcard h3{color:#fff;font-size:19px;font-weight:800;}
+  .r-formcard .r-note{color:#aebde0;font-size:13px;margin-top:8px;line-height:1.5;}
+  .rform{margin-top:22px;display:flex;flex-direction:column;gap:14px;}
+  .rform label{font-size:12.5px;font-weight:700;color:#c3cfe8;margin-bottom:7px;display:block;}
+  .rform input,.rform textarea{
+    width:100%;padding:13px 15px;border-radius:14px;border:1px solid rgba(255,255,255,.16);
+    background:rgba(255,255,255,.07);font-family:'Inter';font-size:14px;color:#fff;outline:none;
+    transition:border-color .15s, box-shadow .15s;
+  }
+  .rform input::placeholder,.rform textarea::placeholder{color:#7c88a8;}
+  .rform input:focus,.rform textarea:focus{border-color:#7fa3e8;box-shadow:0 0 0 4px rgba(95,140,232,.2);}
+  .rform textarea{resize:none;min-height:70px;}
+  .rform .submit{
+    margin-top:4px;border:none;cursor:pointer;
+    background:linear-gradient(135deg,#c85e0c,#f2740f);color:#fff;font-weight:700;font-size:14.5px;
+    padding:15px 22px;border-radius:999px;box-shadow:0 16px 30px -10px rgba(200,94,12,.55);
+    display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .rform .r-success{display:none;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:10px 0 4px;}
+  .rform .r-success.show{display:flex;}
+  .rform.hide-fields > *:not(.r-success){display:none;}
+  .r-success .check{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#2457d6,#5f8ce8);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;}
+  .r-success h4{color:#fff;font-size:16px;font-weight:700;}
+  .r-success p{color:#aebde0;font-size:13px;}
+
+  /* ---------- Footer (matches main site) ---------- */
+  footer{background:linear-gradient(180deg,#0e1e35,#0a1730);color:#dfe6f5;border-radius:36px 36px 0 0;margin-top:20px;padding:56px 0 26px;}
+  .footgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:34px;}
+  .footgrid h5{font-family:'Golos Text';font-size:15px;font-weight:700;color:#fff;margin-bottom:16px;}
+  .footgrid .brand2{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+  .footgrid .brand2 .mark{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,#2457d6,#5f8ce8);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-family:'Golos Text';}
+  .footgrid p{color:#95a2bf;font-size:14px;line-height:1.6;}
+  .footgrid a{display:block;color:#c3ccdf;font-size:14.5px;margin-bottom:10px;}
+  .footgrid a:hover{color:#fff;}
+  .footbottom{display:flex;justify-content:space-between;align-items:center;margin-top:44px;padding-top:24px;border-top:1px solid rgba(255,255,255,.09);font-size:13px;color:#7684a3;flex-wrap:wrap;gap:12px;}
+  .social{display:flex;gap:10px;}
+  .social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:14px;}
+
+  @media(max-width:900px){
+    .request-card{grid-template-columns:1fr;padding:34px 26px;gap:32px;}
+  }
+  @media(max-width:820px){
+    .footgrid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:520px){
+    .footgrid{grid-template-columns:1fr;}
+  }
+
+  @media(max-width:900px){
+    .layout{grid-template-columns:1fr;}
+    .sidebar-card{position:static;}
+    .type-grid{grid-template-columns:1fr;}
+    nav{display:none;}
+  }
+  @media(max-width:520px){
+    .pagehead h1{font-size:29px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="headerbar">
+      <a class="brand" href="../../../index.html" style="text-decoration:none;">
+        <div class="mark">G</div>
+        <div><div class="name">GOLDI GROUP</div><div class="sub">Металобаза · з 2017</div></div>
+      </a>
+      <nav>
+        <a href="../../index.html">Каталог</a>
+        <a href="../../../index.html#delivery">Виробництво</a>
+        <a href="../../../index.html">Про нас</a>
+        <a href="../../../index.html#request">Контакти</a>
+      </nav>
+      <a class="btn-request" href="../../../index.html#request">Залишити заявку</a>
+    </div>
+  </header>
+
+  <div class="pagehead">
+    <div>
+      <div class="crumbs">
+        <a href="../../../index.html">Головна</a><span>/</span><a href="../../index.html">Каталог</a><span>/</span><a href="../index.html">Металопрокат</a><span>/</span>Арматура
+      </div>
+      <h1>Арматура</h1>
+      <p class="sub">Оберіть тип арматури, щоб переглянути детальну інформацію та залишити заявку.</p>
+    </div>
+  </div>
+
+  <div class="layout">
+    <!-- SIDEBAR / FILTERS -->
+    <aside class="sidebar-card">
+      <h3>Підбір арматури</h3>
+      <label class="field-label">Тип</label>
+      <div class="select-wrap">
+        <select id="typeFilter" onchange="applyFilter()">
+          <option value="all">Усі типи</option>
+          <option value="a400gost">А400 (ГОСТ)</option>
+          <option value="a400a500">А400/А500 (ДСТУ)</option>
+          <option value="at8001000">Ат800/Ат1000</option>
+          <option value="a240">А240</option>
+          <option value="ndv">Немірна довжина</option>
+        </select>
+      </div>
+      <span class="reset-link" onclick="resetFilter()">Скинути фільтри</span>
+
+      <div class="sb-divider"></div>
+
+      <div class="help-title">Потрібна допомога?</div>
+      <p class="help-text">Підберемо матеріал за вашою специфікацією.</p>
+      <div class="help-phone">066 744 00 55</div>
+    </aside>
+
+    <!-- CONTENT -->
+    <div>
+      <div class="content-top">
+        <div class="found-count" id="foundCount">Знайдено типів: 5</div>
+        <div class="price-note">Ціна та наявність — за запитом</div>
+      </div>
+
+      <div class="type-grid" id="typeGrid">
+
+        <a class="typecard" data-type="a400a500" href="a400-a500-dstu/index.html">
+          <div class="img" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164065468190-331x280.jpg')"></div>
+          <div class="body">
+            <div class="eyebrow">АРМАТУРА / РИФЛЕНИЙ</div>
+            <h4>Арматура А400/А500 (ДСТУ)</h4>
+            <div class="specs"><span><b>Діаметр</b> 8–32 мм</span><span><b>Довжина:</b> 6/12 м</span></div>
+            <div class="divider"></div>
+            <span class="pick">Детальніше<span class="arrow">→</span></span>
+          </div>
+        </a>
+
+        <a class="typecard" data-type="a240" href="a240/index.html">
+          <div class="img" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164074595700-331x280.jpg')"></div>
+          <div class="body">
+            <div class="eyebrow">АРМАТУРА / ГЛАДКИЙ</div>
+            <h4>Арматура А240</h4>
+            <div class="specs"><span><b>Діаметр</b> 6,5–32 мм</span><span><b>Довжина:</b> 6/12 м</span></div>
+            <div class="divider"></div>
+            <span class="pick">Детальніше<span class="arrow">→</span></span>
+          </div>
+        </a>
+
+        <a class="typecard" data-type="a400gost" href="a400-gost/index.html">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1763771420303-0f11ccf613d1?w=700&q=70&auto=format&fit=crop')"></div>
+          <div class="body">
+            <div class="eyebrow">АРМАТУРА / РИФЛЕНИЙ</div>
+            <h4>Арматура А400 (ГОСТ)</h4>
+            <div class="specs"><span><b>Діаметр</b> 8–40 мм</span><span><b>Довжина:</b> 12 м</span></div>
+            <div class="divider"></div>
+            <span class="pick">Детальніше<span class="arrow">→</span></span>
+          </div>
+        </a>
+
+        <a class="typecard" data-type="at8001000" href="at800-at1000/index.html">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1721622045835-51a5447f281c?w=700&q=70&auto=format&fit=crop')"></div>
+          <div class="body">
+            <div class="eyebrow">АРМАТУРА / ТЕРМОМІЦНА</div>
+            <h4>Арматура Ат800/Ат1000</h4>
+            <div class="specs"><span><b>Діаметр</b> 10–16 мм</span><span><b>Довжина:</b> 6,4–9,95 м</span></div>
+            <div class="divider"></div>
+            <span class="pick">Детальніше<span class="arrow">→</span></span>
+          </div>
+        </a>
+
+        <a class="typecard" data-type="ndv" href="ndv/index.html">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1764835746713-34a671e73569?w=700&q=70&auto=format&fit=crop')"></div>
+          <div class="body">
+            <div class="eyebrow">АРМАТУРА / НЕМІРНА ДОВЖИНА</div>
+            <h4>Арматура НДВ</h4>
+            <div class="specs"><span><b>Діаметр</b> 8–32 мм</span><span><b>Постачання:</b> зв'язками</span></div>
+            <div class="divider"></div>
+            <span class="pick">Детальніше<span class="arrow">→</span></span>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="empty-state" id="emptyState">Типів за цим фільтром не знайдено. Спробуйте скинути фільтр.</div>
+    </div>
+  </div>
+
+  <!-- REQUEST FORM -->
+  <div class="request-card" id="request">
+    <div>
+      <h2>Готові прорахувати ваше замовлення</h2>
+      <p class="r-sub">Залиште номер, і менеджер зателефонує протягом робочого дня, або зверніться напряму до філії у вашому місті.</p>
+      <div class="r-cities">
+        <div class="r-city">
+          <h5>м. Кременчук</h5>
+          <div class="addr">39631, вул. Бетонна, 23</div>
+          <div class="tel">066 744 00 55 · 066 333-03-41</div>
+          <div class="mail">info@goldigroup.com.ua</div>
+        </div>
+        <div class="r-city">
+          <h5>м. Київ</h5>
+          <div class="addr">01033, вул. Володимирська, 97</div>
+          <div class="tel">096 559 05 05</div>
+          <div class="mail">sbut-kv@goldigroup.com.ua</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="r-formcard">
+      <h3>Заявка на прорахунок</h3>
+      <form class="rform" id="leadForm">
+        <div>
+          <label>Ім'я</label>
+          <input type="text" name="name" placeholder="Як до вас звертатись" required>
+        </div>
+        <div>
+          <label>Телефон</label>
+          <input type="tel" name="phone" placeholder="+38 0__ ___ __ __" required>
+        </div>
+        <div>
+          <label>Що потрібно</label>
+          <textarea name="message" placeholder="Наприклад: арматура А500, 5 тонн, Кременчук"></textarea>
+        </div>
+        <button type="submit" class="submit">Надіслати заявку →</button>
+        <div class="r-success" id="leadSuccess">
+          <div class="check">✓</div>
+          <h4>Заявку надіслано</h4>
+          <p>Менеджер зв'яжеться з вами найближчим часом.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footgrid">
+      <div>
+        <div class="brand2"><div class="mark">G</div><div style="font-family:'Golos Text';font-weight:700;color:#fff;">GOLDI GROUP</div></div>
+        <p>Лідер реалізації металопрокату у Кременчуці. Метал дешевше, доставка — за так.</p>
+        <div class="social" style="margin-top:18px;">
+          <a href="#">V</a><a href="#">T</a><a href="#">F</a><a href="#">W</a>
+        </div>
+      </div>
+      <div>
+        <h5>м. Кременчук</h5>
+        <p style="margin-bottom:12px;">вул. Бетонна, 23</p>
+        <a href="tel:+380663330341">+38 (066) 333-03-41</a>
+        <a href="tel:+380683022525">+38 (068) 302-25-25</a>
+      </div>
+      <div>
+        <h5>м. Київ</h5>
+        <p style="margin-bottom:12px;">вул. Володимирська, 97</p>
+        <a href="tel:+380965590505">+38 (096) 559-05-05</a>
+        <a href="mailto:sbut-kv@goldigroup.com.ua">sbut-kv@goldigroup.com.ua</a>
+      </div>
+      <div>
+        <h5>Компанія</h5>
+        <a href="../../index.html">Каталог</a>
+        <a href="../../../index.html#price">Прайс</a>
+        <a href="../../../index.html#delivery">Доставка і оплата</a>
+        <a href="../../../index.html#request">Контакти</a>
+      </div>
+    </div>
+    <div class="footbottom">
+      <span>© 2026 GOLDI group. Всі права захищені.</span>
+      <span>info@goldigroup.com.ua</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---------- Filtering (display only, no cart) ----------
+  function applyFilter(){
+    const val = document.getElementById('typeFilter').value;
+    const cards = Array.from(document.querySelectorAll('.typecard'));
+    let visible = 0;
+    cards.forEach(c => {
+      const match = (val === 'all' || c.dataset.type === val);
+      c.classList.toggle('hidden', !match);
+      if(match) visible++;
+    });
+    document.getElementById('foundCount').textContent = 'Знайдено типів: ' + visible;
+    document.getElementById('emptyState').classList.toggle('show', visible === 0);
+  }
+  function resetFilter(){
+    document.getElementById('typeFilter').value = 'all';
+    applyFilter();
+  }
+
+  // ---------- Lead form: fake-submit UX ----------
+  const leadForm = document.getElementById('leadForm');
+  if(leadForm){
+    leadForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      leadForm.classList.add('hide-fields');
+      document.getElementById('leadSuccess').classList.add('show');
+    });
+  }
+</script>
+</body>
+</html>

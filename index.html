@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOLDI GROUP — Металобаза. Метал дешевше, доставка за так</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0e1e35;
+    --ink-soft:#28405e;
+    --muted:#607086;
+    --blue:#2457d6;
+    --blue-deep:#173d9e;
+    --blue-light:#7fa3e8;
+    --orange:#f2740f;
+    --orange-deep:#c85e0c;
+    --orange-soft:rgba(242,116,15,.14);
+    --line:rgba(20,50,100,.12);
+    --glass:rgba(255,255,255,.62);
+    --glass-strong:rgba(255,255,255,.82);
+    --glass-border:rgba(255,255,255,.75);
+    --steel1:rgba(255,255,255,.5);
+    --steel2:rgba(210,225,245,.35);
+    --radius-lg:28px;
+    --radius-md:20px;
+    --radius-sm:14px;
+    --shadow: 0 1px 1px rgba(20,50,100,.05), 0 20px 40px -20px rgba(20,60,140,.22);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(1200px 700px at 12% -8%, #cfe0f8 0%, transparent 55%),
+      radial-gradient(1100px 800px at 105% 5%, #dce8fb 0%, transparent 60%),
+      radial-gradient(900px 600px at 50% 100%, #e7eefb 0%, transparent 60%),
+      linear-gradient(180deg, #f4f8fd 0%, #eef3fb 40%, #f6f9fd 100%);
+    background-attachment: fixed;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1320px;margin:0 auto;padding:0 28px;}
+  h1,h2,h3,h4{font-family:'Golos Text',sans-serif;margin:0;color:var(--ink);}
+  p{margin:0;line-height:1.55;}
+
+  /* matte steel plate effect: subtle brushed diagonal sheen + glass blur */
+  .glass{
+    background:
+      linear-gradient(120deg, var(--steel1) 0%, transparent 30%, transparent 70%, var(--steel2) 100%),
+      var(--glass);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border:1px solid var(--glass-border);
+    box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.7);
+  }
+
+  /* ---------- Header ---------- */
+  header{padding:22px 0 8px;}
+  .headerbar{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .brand .mark{
+    width:52px;height:52px;border-radius:16px;
+    background:linear-gradient(140deg,#1c3f8f,#2457d6 55%,#5f8ce8);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Golos Text';font-weight:800;font-size:22px;color:#fff;
+    flex-shrink:0;box-shadow:0 8px 18px -6px rgba(36,87,214,.55);
+  }
+  .brand .name{font-family:'Golos Text';font-weight:700;font-size:19px;letter-spacing:.02em;line-height:1.15;}
+  .brand .sub{font-size:12.5px;color:var(--muted);margin-top:2px;}
+  nav{display:flex;gap:30px;font-size:15px;font-weight:500;color:var(--ink-soft);}
+  nav a:hover{color:var(--blue);}
+  .header-right{display:flex;align-items:center;gap:14px;}
+  .lang{display:flex;background:rgba(255,255,255,.7);border:1px solid var(--line);border-radius:999px;padding:4px;font-size:13px;font-weight:600;}
+  .lang span{padding:6px 13px;border-radius:999px;color:var(--muted);}
+  .lang span.active{background:var(--ink);color:#fff;}
+  .phone-pill{
+    background:linear-gradient(135deg,#2457d6,#173d9e);color:#fff;font-weight:700;font-size:15px;
+    padding:12px 22px;border-radius:999px;white-space:nowrap;box-shadow:0 10px 22px -8px rgba(23,61,158,.55);
+  }
+
+  /* ---------- Bento grid ---------- */
+  .bento{
+    display:grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap:18px;
+    margin-top:22px;
+  }
+  .card{border-radius:var(--radius-lg);}
+
+  /* Hero left */
+  .hero-main{padding:44px 44px 40px;display:flex;flex-direction:column;gap:24px;}
+  .badges{display:flex;gap:10px;flex-wrap:wrap;}
+  .badge{font-size:13px;font-weight:700;padding:9px 16px;border-radius:999px;}
+  .badge.blue{background:var(--orange-soft);color:var(--orange-deep);}
+  .badge.grey{background:rgba(255,255,255,.65);border:1px solid var(--line);color:var(--ink-soft);}
+  .hero-main h1{font-size:42px;line-height:1.15;font-weight:800;letter-spacing:-0.01em;}
+  .hero-main .lead{font-size:16.5px;color:var(--muted);max-width:520px;}
+  .btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px;}
+  .btn{padding:16px 26px;border-radius:999px;font-weight:700;font-size:15px;display:inline-flex;align-items:center;gap:8px;}
+  .btn-dark{background:linear-gradient(135deg,#c85e0c,#f2740f);color:#fff;box-shadow:0 14px 26px -10px rgba(200,94,12,.55);}
+  .btn-outline{background:rgba(255,255,255,.7);border:1px solid var(--line);color:var(--ink);}
+
+  /* Hero right - product slideshow (real product photos, name + in-stock badge) */
+  .hero-slider{
+    position:relative;overflow:hidden;color:#fff;
+    min-height:100%;border-radius:var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
+  .hero-slider .slide{
+    position:absolute;inset:0;background-size:cover;background-position:center;
+    opacity:0;transform:scale(1.045);
+    transition:opacity 1.1s ease, transform 6.5s ease;
+  }
+  .hero-slider .slide.active{opacity:1;transform:scale(1);z-index:1;}
+  .hero-slider .slide-overlay{
+    position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:linear-gradient(180deg, rgba(6,14,34,.12) 0%, rgba(7,16,38,.32) 45%, rgba(4,10,26,.92) 100%);
+  }
+  .hero-slider .slide-content{
+    position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:space-between;
+    padding:28px 28px 30px;
+  }
+  .hero-slider .tag{font-size:12px;font-weight:700;letter-spacing:.08em;color:#8fb2f5;}
+  .hero-slider .slide-name{
+    font-family:'Golos Text';font-weight:800;font-size:28px;line-height:1.15;
+    transition:opacity .25s ease;
+  }
+  .hero-slider .stock-badge{
+    display:inline-flex;align-items:center;gap:7px;width:fit-content;margin-top:14px;
+    background:linear-gradient(135deg,#ff9d43,#f2740f);color:#fff;font-weight:700;font-size:12.5px;
+    padding:9px 15px;border-radius:999px;
+    box-shadow:0 12px 22px -8px rgba(242,116,15,.6);
+    transition:opacity .25s ease;
+  }
+  .hero-slider .stock-badge i{width:6px;height:6px;border-radius:50%;background:#fff;display:inline-block;}
+  .hero-slider .slide-dots{position:absolute;bottom:24px;right:26px;z-index:4;display:flex;gap:6px;}
+  .hero-slider .slide-dots .dot{
+    width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.38);cursor:pointer;
+    transition:background .2s, width .2s;
+  }
+  .hero-slider .slide-dots .dot.active{background:#fff;width:20px;border-radius:4px;}
+
+  /* Advantages row — first screen, sales-focused */
+  .advstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:18px;}
+  .advtile{padding:24px 22px;border-radius:var(--radius-md);display:flex;flex-direction:column;gap:12px;}
+  .advtile .ico{
+    width:46px;height:46px;border-radius:13px;
+    background:var(--orange-soft);
+    display:flex;align-items:center;justify-content:center;color:var(--orange-deep);font-size:20px;font-weight:700;
+  }
+  .advtile h4{font-size:16.5px;font-weight:700;}
+  .advtile p{font-size:13.5px;color:var(--muted);}
+
+  .row2{margin-top:18px;}
+
+  /* Contacts card */
+  .contacts{padding:30px 34px;display:flex;flex-direction:column;gap:22px;}
+  .contacts .head{display:flex;align-items:center;justify-content:space-between;}
+  .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.08em;color:var(--muted);}
+  .dot{width:9px;height:9px;border-radius:50%;background:#2fb872;box-shadow:0 0 0 4px rgba(47,184,114,.18);}
+  .contacts .cities{display:flex;gap:40px;flex-wrap:wrap;}
+  .contacts .city .loc{font-size:14px;color:var(--muted);margin-bottom:6px;}
+  .contacts .city .num{font-family:'Golos Text';font-weight:700;font-size:22px;color:var(--blue-deep);}
+
+  /* Stat / stock card */
+  .stock{padding:26px;display:flex;flex-direction:column;gap:18px;border-radius:var(--radius-lg);}
+  .stock .top{display:flex;align-items:center;gap:16px;}
+  .stock .num{
+    width:64px;height:64px;border-radius:16px;
+    background:linear-gradient(135deg,#2457d6,#173d9e);
+    display:flex;align-items:center;justify-content:center;font-family:'Golos Text';
+    font-weight:800;font-size:18px;color:#fff;flex-shrink:0;
+  }
+  .stock .top h4{font-size:17px;font-weight:700;}
+  .stock .top p{font-size:13px;color:var(--muted);margin-top:2px;}
+  .stock .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .stock .mini{background:rgba(255,255,255,.55);border:1px solid var(--line);border-radius:14px;padding:12px 12px;}
+  .stock .mini .l{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--muted);}
+  .stock .mini .v{font-family:'Golos Text';font-weight:700;font-size:15px;margin-top:6px;}
+
+  /* delivery mini card */
+  .deliv{padding:26px;display:flex;flex-direction:column;gap:14px;justify-content:center;}
+  .deliv .tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--blue-deep);letter-spacing:.04em;}
+  .deliv .tag i{width:7px;height:7px;border-radius:2px;background:var(--blue);display:inline-block;transform:rotate(45deg);}
+  .deliv h3{font-size:22px;font-weight:700;line-height:1.2;}
+  .deliv .note{font-size:13px;color:var(--muted);}
+
+  /* Popular / base row */
+  .row3{display:grid;grid-template-columns:1.55fr 1.35fr;gap:18px;margin-top:18px;}
+  .popular{padding:28px 30px 12px;border-radius:var(--radius-lg);}
+  .popular .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+  .seeall{font-size:13.5px;font-weight:700;color:var(--orange-deep);}
+  .plist .item{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-top:1px solid var(--line);}
+  .plist .item:first-of-type{border-top:none;}
+  .plist .name{font-weight:600;font-size:15px;}
+  .plist .price{font-family:'Golos Text';font-weight:700;font-size:15px;color:var(--ink-soft);}
+
+  .base{
+    position:relative;overflow:hidden;color:#fff;padding:28px;min-height:290px;border-radius:var(--radius-lg);
+    display:flex;flex-direction:column;justify-content:flex-end;
+    background-image:
+      linear-gradient(180deg, rgba(8,20,46,0) 20%, rgba(6,15,38,.9) 100%),
+      linear-gradient(120deg, rgba(40,80,180,.3), transparent),
+      url('https://images.unsplash.com/photo-1686081590477-c97cc3b65f45?w=1000&q=70&auto=format&fit=crop');
+    background-size:cover;background-position:center;
+    box-shadow:var(--shadow);
+  }
+  .base .eyebrow{color:#cfe0fb;}
+  .base h3{font-size:22px;font-weight:700;margin-top:8px;max-width:360px;}
+
+  /* ---------- Sections ---------- */
+  section{padding:64px 0;}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:34px;flex-wrap:wrap;}
+  .section-head h2{font-size:34px;font-weight:800;letter-spacing:-.01em;}
+  .section-head .desc{color:var(--muted);font-size:15px;max-width:440px;}
+
+  /* Catalog three cards */
+  .catalog3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .catcard{border-radius:var(--radius-md);overflow:hidden;}
+  .catcard .img{height:190px;background-size:cover;background-position:center;position:relative;}
+  .catcard .img:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(20,50,110,.05), rgba(10,25,60,.35));}
+  .catcard .body{padding:22px 22px 24px;display:flex;justify-content:space-between;align-items:center;}
+  .catcard h4{font-size:18px;font-weight:700;}
+  .catcard .arrow{
+    width:38px;height:38px;border-radius:50%;background:var(--orange-soft);color:var(--orange-deep);
+    display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;
+  }
+
+  /* About */
+  .about{display:grid;grid-template-columns:1fr 0.95fr;gap:48px;align-items:center;}
+  .about .imgwrap{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);position:relative;}
+  .about .imgwrap:after{content:"";position:absolute;inset:0;background:linear-gradient(160deg, rgba(36,87,214,.18), transparent 55%);}
+  .about .imgwrap img{height:420px;width:100%;object-fit:cover;filter:saturate(.9) contrast(1.02);}
+  .about p{color:var(--ink-soft);font-size:16px;margin-top:18px;}
+  .stats-strip{display:flex;gap:34px;margin-top:28px;flex-wrap:wrap;}
+  .stats-strip .s .v{font-family:'Golos Text';font-weight:800;font-size:30px;color:var(--orange-deep);}
+  .stats-strip .s .l{font-size:13px;color:var(--muted);margin-top:2px;}
+
+  /* Chips grid - metalloprokat range */
+  .chipgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .chipcard{border-radius:var(--radius-sm);padding:20px 20px 26px;position:relative;overflow:hidden;min-height:96px;display:flex;align-items:flex-end;}
+  .chipcard .name{position:relative;z-index:1;font-weight:700;font-size:15.5px;}
+  .chipcard.final{background:linear-gradient(135deg,#c85e0c,#f2740f);border:none;}
+  .chipcard.final .name{color:#fff;}
+
+  /* production */
+  .prodgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+
+  /* Offer + advantages detail */
+  .offer{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+  .offer ul{margin:18px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;}
+  .offer li{display:flex;gap:12px;font-size:15.5px;color:var(--ink-soft);}
+  .offer li:before{content:"";width:7px;height:7px;border-radius:2px;background:var(--blue);margin-top:8px;transform:rotate(45deg);flex-shrink:0;}
+  .offer .imgwrap{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);position:relative;}
+  .offer .imgwrap:after{content:"";position:absolute;inset:0;background:linear-gradient(160deg, rgba(36,87,214,.2), transparent 55%);}
+  .offer .imgwrap img{height:360px;width:100%;object-fit:cover;}
+
+  /* FAQ */
+  .faq{display:flex;flex-direction:column;gap:14px;max-width:820px;}
+  .faqitem{border-radius:var(--radius-sm);padding:22px 26px;cursor:pointer;}
+  .faqitem .q{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:16px;gap:20px;}
+  .faqitem .q .plus{font-size:20px;color:var(--blue-deep);flex-shrink:0;transition:transform .2s;}
+  .faqitem .a{max-height:0;overflow:hidden;transition:max-height .25s ease;font-size:14.5px;color:var(--muted);}
+  .faqitem.open .a{max-height:200px;margin-top:14px;}
+  .faqitem.open .plus{transform:rotate(45deg);}
+
+  /* Reviews */
+  .revrow{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .revcard{border-radius:var(--radius-md);padding:24px;}
+  .revcard p{font-size:14.5px;color:var(--ink-soft);}
+  .revcard .who{display:flex;align-items:center;gap:10px;margin-top:16px;}
+  .revcard .avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#2457d6,#5f8ce8);display:flex;align-items:center;justify-content:center;font-family:'Golos Text';font-weight:700;font-size:13px;color:#fff;}
+  .revcard .who .name{font-weight:700;font-size:14px;}
+
+  /* Footer */
+  footer{background:linear-gradient(180deg,#0e1e35,#0a1730);color:#dfe6f5;border-radius:36px 36px 0 0;margin-top:20px;padding:56px 0 26px;}
+  .footgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:34px;}
+  .footgrid h5{font-family:'Golos Text';font-size:15px;font-weight:700;color:#fff;margin-bottom:16px;}
+  .footgrid .brand2{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+  .footgrid .brand2 .mark{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,#2457d6,#5f8ce8);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-family:'Golos Text';}
+  .footgrid p{color:#95a2bf;font-size:14px;line-height:1.6;}
+  .footgrid a{display:block;color:#c3ccdf;font-size:14.5px;margin-bottom:10px;}
+  .footgrid a:hover{color:#fff;}
+  .footbottom{display:flex;justify-content:space-between;align-items:center;margin-top:44px;padding-top:24px;border-top:1px solid rgba(255,255,255,.09);font-size:13px;color:#7684a3;flex-wrap:wrap;gap:12px;}
+  .social{display:flex;gap:10px;}
+  .social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:14px;}
+
+  /* ---------- Nav "Залишити заявку" button ---------- */
+  .btn-request{
+    background:linear-gradient(135deg,#c85e0c,#f2740f);color:#fff;font-weight:700;font-size:14.5px;
+    padding:12px 20px;border-radius:999px;white-space:nowrap;box-shadow:0 10px 22px -8px rgba(200,94,12,.5);
+    border:none;cursor:pointer;
+  }
+
+  /* ---------- Request / lead-form section (dark) ---------- */
+  .request-card{
+    background:
+      linear-gradient(150deg, rgba(80,130,230,.25), transparent 45%),
+      linear-gradient(165deg,#0d1c42,#122a63 55%,#0a1735);
+    border-radius:var(--radius-lg);
+    padding:54px;
+    display:grid;grid-template-columns:1fr 1fr;gap:56px;
+    color:#fff;
+    box-shadow:0 30px 60px -24px rgba(10,25,60,.5);
+  }
+  .request-card h2{color:#fff;font-size:32px;font-weight:800;line-height:1.15;}
+  .request-card .r-sub{color:#aebde0;font-size:15px;margin-top:16px;max-width:420px;}
+  .r-cities{display:flex;flex-direction:column;gap:14px;margin-top:28px;}
+  .r-city{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+    border-radius:var(--radius-sm);padding:20px 22px;
+  }
+  .r-city h5{font-family:'Golos Text';font-size:16px;font-weight:700;color:#fff;margin-bottom:8px;}
+  .r-city .addr{font-size:13.5px;color:#aebde0;margin-bottom:8px;}
+  .r-city .tel{font-weight:700;font-size:14.5px;color:#fff;}
+  .r-city .mail{font-weight:600;font-size:13.5px;color:#8fb2f5;margin-top:6px;}
+
+  .r-formcard{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+    border-radius:var(--radius-md);padding:30px 30px 32px;
+  }
+  .r-formcard h3{color:#fff;font-size:20px;font-weight:800;}
+  .r-formcard .r-note{color:#aebde0;font-size:13.5px;margin-top:8px;line-height:1.5;}
+  .rform{margin-top:24px;display:flex;flex-direction:column;gap:16px;}
+  .rform label{font-size:12.5px;font-weight:700;color:#c3cfe8;margin-bottom:7px;display:block;}
+  .rform input,.rform textarea{
+    width:100%;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.16);
+    background:rgba(255,255,255,.07);font-family:'Inter';font-size:14.5px;color:#fff;outline:none;
+    transition:border-color .15s, box-shadow .15s;
+  }
+  .rform input::placeholder,.rform textarea::placeholder{color:#7c88a8;}
+  .rform input:focus,.rform textarea:focus{border-color:var(--blue-light);box-shadow:0 0 0 4px rgba(95,140,232,.2);}
+  .rform textarea{resize:none;min-height:78px;}
+  .rform .submit{
+    margin-top:4px;border:none;cursor:pointer;
+    background:linear-gradient(135deg,#c85e0c,#f2740f);color:#fff;font-weight:700;font-size:15px;
+    padding:16px 22px;border-radius:999px;box-shadow:0 16px 30px -10px rgba(200,94,12,.55);
+    display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .rform .r-success{display:none;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:10px 0 4px;}
+  .rform .r-success.show{display:flex;}
+  .rform.hide-fields > *:not(.r-success){display:none;}
+  .r-success .check{
+    width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#2457d6,#5f8ce8);
+    color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;
+  }
+  .r-success h4{color:#fff;font-size:17px;font-weight:700;}
+  .r-success p{color:#aebde0;font-size:13.5px;}
+
+  @media(max-width:900px){
+    .request-card{grid-template-columns:1fr;padding:34px 26px;gap:32px;}
+  }
+
+  /* ---------- Mobile: advantage tiles stack and slide over one another ---------- */
+  @media(max-width:620px){
+    .advstrip{display:flex;flex-direction:column;gap:16px;}
+    .advtile{
+      position:sticky;
+      top:0;
+      background:
+        linear-gradient(120deg, var(--steel1) 0%, transparent 30%, transparent 70%, var(--steel2) 100%),
+        var(--glass-strong);
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+      border:1px solid var(--glass-border);
+      box-shadow:0 -18px 40px -22px rgba(20,50,100,.2), var(--shadow);
+      border-radius:32px 32px 20px 20px;
+      padding-top:34px;
+      padding-bottom:34px;
+    }
+    .advtile:nth-of-type(1){z-index:11;}
+    .advtile:nth-of-type(2){z-index:12;}
+    .advtile:nth-of-type(3){z-index:13;}
+    .advtile:nth-of-type(4){z-index:14;}
+  }
+
+  /* ---------- Scroll-reveal animation ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(30px);
+    transition:opacity .7s cubic-bezier(.16,.8,.4,1), transform .7s cubic-bezier(.16,.8,.4,1);
+    will-change:opacity, transform;
+  }
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+  }
+
+  @media(max-width:1080px){
+    .bento{grid-template-columns:1fr;}
+    .advstrip{grid-template-columns:repeat(2,1fr);}
+    .row2{grid-template-columns:1fr;}
+    .row3{grid-template-columns:1fr;}
+    .about{grid-template-columns:1fr;}
+    .offer{grid-template-columns:1fr;}
+    .catalog3,.chipgrid,.prodgrid,.revrow{grid-template-columns:repeat(2,1fr);}
+    .footgrid{grid-template-columns:1fr 1fr;}
+    .hero-main h1{font-size:40px;}
+    nav{display:none;}
+  }
+  @media(max-width:620px){
+    .advstrip,.chipgrid,.catalog3,.prodgrid,.revrow{grid-template-columns:1fr;}
+    .footgrid{grid-template-columns:1fr;}
+    .contacts .cities{gap:24px;}
+    .hero-main{padding:32px 26px;}
+    .hero-main h1{font-size:32px;}
+    .header-right .phone-pill{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="headerbar">
+      <div class="brand">
+        <div class="mark">G</div>
+        <div>
+          <div class="name">GOLDI GROUP</div>
+          <div class="sub">Металобаза · з 2017</div>
+        </div>
+      </div>
+      <nav>
+        <a href="catalog/index.html">Каталог</a>
+        <a href="#price">Прайс</a>
+        <a href="#delivery">Доставка</a>
+        <a href="#request">Контакти</a>
+      </nav>
+      <div class="header-right">
+        <div class="lang"><span class="active">UA</span><span>RU</span></div>
+        <a class="btn-request" href="#request">Залишити заявку</a>
+        <a class="phone-pill" href="tel:+380667440055">066 744 00 55</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="bento">
+    <div class="card glass hero-main">
+      <div class="badges">
+        <span class="badge blue">№1 у металопрокаті 2020</span>
+        <span class="badge grey">Прокат · Сервіс</span>
+      </div>
+      <h1>Металопрокат під вашу задачу: від підбору до готового замовлення</h1>
+      <p class="lead">Арматура, труби, лист, профілі та інший металопрокат для будівництва й виробництва. Підберемо потрібні позиції, виконаємо необхідну обробку та організуємо доставку — все в одному замовленні.</p>
+      <div class="btnrow">
+        <a class="btn btn-dark" href="#price">Переглянути прайс</a>
+        <a class="btn btn-outline" href="#request">Отримати розрахунок</a>
+      </div>
+    </div>
+
+    <div class="card hero-slider" id="heroSlider">
+      <div class="slide active" data-name="Арматура А500С" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164065468190-331x280.jpg')"></div>
+      <div class="slide" data-name="Кругла сталь" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164074595700-331x280.jpg')"></div>
+      <div class="slide" data-name="Труби профільні" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164070478978-331x280.jpg')"></div>
+      <div class="slide" data-name="Швелер" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164073419473-331x280.jpg')"></div>
+      <div class="slide" data-name="Катанка" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164072843088-331x280.jpg')"></div>
+      <div class="slide" data-name="Кутик" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164072163160-331x280.jpg')"></div>
+
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="tag">ГАРЯЧИЙ ПРОКАТ</div>
+        <div>
+          <div class="slide-name" id="slideName">Арматура А500С</div>
+          <div class="stock-badge"><i></i>В наявності</div>
+        </div>
+      </div>
+      <div class="slide-dots" id="slideDots"></div>
+    </div>
+  </div>
+
+  <!-- SALES-FOCUSED ADVANTAGES — first screen -->
+  <div class="advstrip" id="delivery">
+    <div class="card glass advtile">
+      <div class="ico">₴</div>
+      <h4>Ціна без посередників</h4>
+      <p>Продаємо напряму зі своєї бази — без націнок перекупників.</p>
+    </div>
+    <div class="card glass advtile">
+      <div class="ico">🚚</div>
+      <h4>Безкоштовна доставка</h4>
+      <p>5–10 км від бази — за так, від 6 м прокату на суму від 85 000 ₴.</p>
+    </div>
+    <div class="card glass advtile">
+      <div class="ico">⚙</div>
+      <h4>Власне виробництво</h4>
+      <p>Сітка кладочна, дріт ВР-1 та стикозварна арматура — робимо самі.</p>
+    </div>
+    <div class="card glass advtile">
+      <div class="ico">15k</div>
+      <h4>15 000+ позицій</h4>
+      <p>Завжди в наявності на складах у Кременчуці та Києві.</p>
+    </div>
+  </div>
+
+  <div class="row3">
+    <div class="card glass popular" id="price">
+      <div class="head">
+        <span class="eyebrow">НАЙПОПУЛЯРНІШЕ</span>
+        <a class="seeall" href="catalog/index.html">Усі →</a>
+      </div>
+      <div class="plist">
+        <div class="item"><span class="name">Арматура А500С Ø12</span><span class="price">28 400 ₴/т</span></div>
+        <div class="item"><span class="name">Труба профільна 40×20×2</span><span class="price">32 100 ₴/т</span></div>
+        <div class="item"><span class="name">Лист гарячекатаний 3 мм</span><span class="price">29 800 ₴/т</span></div>
+        <div class="item"><span class="name">Сітка кладочна 50×50</span><span class="price">185 ₴/шт</span></div>
+        <div class="item"><span class="name">Швелер 10П</span><span class="price">30 950 ₴/т</span></div>
+      </div>
+    </div>
+
+    <div class="base">
+      <span class="eyebrow">НАША БАЗА</span>
+      <h3>Склад і виробництво в Кременчуці та Києві — понад 15 000 позицій в наявності</h3>
+    </div>
+  </div>
+</div>
+
+<!-- CATALOG -->
+<section id="catalog">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Каталог</h2>
+      <p class="desc">Три напрямки роботи компанії: металопрокат, власне виробництво та будівельні матеріали.</p>
+    </div>
+    <div class="catalog3">
+      <a class="catcard glass" href="catalog/metalloprokat/index.html" style="display:block;">
+        <div class="img" style="background-image:url('https://images.unsplash.com/photo-1520697517317-6767553cc51a?w=700&q=70&auto=format&fit=crop')"></div>
+        <div class="body"><h4>Металопрокат</h4><div class="arrow">→</div></div>
+      </a>
+      <a class="catcard glass" href="catalog/vlasne-vyrobnytstvo/index.html" style="display:block;">
+        <div class="img" style="background-image:url('https://images.unsplash.com/photo-1538474705339-e87de81450e8?w=700&q=70&auto=format&fit=crop')"></div>
+        <div class="body"><h4>Власне виробництво</h4><div class="arrow">→</div></div>
+      </a>
+      <a class="catcard glass" href="catalog/budivelni-materialy/index.html" style="display:block;">
+        <div class="img" style="background-image:url('https://images.unsplash.com/photo-1600474848646-0142057eb600?w=700&q=70&auto=format&fit=crop')"></div>
+        <div class="body"><h4>Будівельні матеріали</h4><div class="arrow">→</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section>
+  <div class="wrap">
+    <div class="about">
+      <div>
+        <span class="eyebrow">ПРО НАС</span>
+        <h2 style="margin-top:14px;font-size:32px;">Від складу металопрокату до великої будівельної бази</h2>
+        <p>Працюючи з 2017 року, Goldi Group завдяки гнучкому і індивідуальному підходу до кожного клієнта стала лідером реалізації металопрокату в Кременчуці. Щодня ми реалізуємо металопрокат і будматеріали, виробляємо сітку кладочну зварену «Армопояс», надаємо послуги плазмового різання металу на ЧПУ Hypertherm і доставляємо від 10 кг до 22 т.</p>
+        <div class="stats-strip">
+          <div class="s"><div class="v">2017</div><div class="l">рік заснування</div></div>
+          <div class="s"><div class="v">15k+</div><div class="l">позицій на складі</div></div>
+          <div class="s"><div class="v">2</div><div class="l">філії — Кременчук, Київ</div></div>
+        </div>
+      </div>
+      <div class="imgwrap">
+        <img src="https://images.unsplash.com/photo-1721622045835-51a5447f281c?w=800&q=70&auto=format&fit=crop" alt="Металопрокат на складі">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METALLOPROKAT RANGE -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Металопрокат</h2>
+      <p class="desc">Повний асортимент прокату для будівництва і виробництва.</p>
+    </div>
+    <div class="chipgrid">
+      <div class="chipcard glass"><span class="name">Балка двотаврова</span></div>
+      <div class="chipcard glass"><span class="name">Квадрат</span></div>
+      <div class="chipcard glass"><span class="name">Листовий прокат</span></div>
+      <div class="chipcard glass"><span class="name">Труби</span></div>
+      <div class="chipcard glass"><span class="name">Смуга</span></div>
+      <div class="chipcard glass"><span class="name">Кутик</span></div>
+      <div class="chipcard glass"><span class="name">Катанка</span></div>
+      <div class="chipcard glass"><span class="name">Швелер</span></div>
+      <div class="chipcard glass"><span class="name">Круги</span></div>
+      <div class="chipcard glass"><span class="name">Шестигранник</span></div>
+      <div class="chipcard glass"><span class="name">Арматура</span></div>
+      <div class="chipcard final"><span class="name">Переглянути все →</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- OWN PRODUCTION -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Власне виробництво</h2>
+      <p class="desc">Виробляємо самостійно — контролюємо якість на кожному етапі.</p>
+    </div>
+    <div class="prodgrid">
+      <div class="catcard glass">
+        <div class="img" style="background-image:url('https://images.unsplash.com/photo-1764835746713-34a671e73569?w=700&q=70&auto=format&fit=crop')"></div>
+        <div class="body"><h4>Сітка зварювальна кладочна</h4><div class="arrow">→</div></div>
+      </div>
+      <div class="catcard glass">
+        <div class="img" style="background-image:url('https://images.unsplash.com/photo-1520697517317-6767553cc51a?w=700&q=70&auto=format&fit=crop')"></div>
+        <div class="body"><h4>Дріт ВР-1</h4><div class="arrow">→</div></div>
+      </div>
+      <div class="catcard glass">
+        <div class="img" style="background-image:url('https://images.unsplash.com/photo-1763771420303-0f11ccf613d1?w=700&q=70&auto=format&fit=crop')"></div>
+        <div class="body"><h4>Арматура стикозварювальна</h4><div class="arrow">→</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WE OFFER -->
+<section>
+  <div class="wrap">
+    <div class="offer">
+      <div>
+        <span class="eyebrow">МИ ПРОПОНУЄМО</span>
+        <h2 style="margin-top:14px;font-size:32px;">Виробничі потужності в Києві та Кременчуці</h2>
+        <ul>
+          <li>Виготовлення стикозварної арматури</li>
+          <li>Виробництво дроту ВР-1, ОК і сітки кладочної</li>
+          <li>Розкочування круга та сортування арматури</li>
+          <li>Послуги з переробки продукції під замовлення</li>
+        </ul>
+      </div>
+      <div class="imgwrap">
+        <img src="https://images.unsplash.com/photo-1686081590477-c97cc3b65f45?w=800&q=70&auto=format&fit=crop" alt="Виробнича база">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Поширені запитання</h2>
+    </div>
+    <div class="faq">
+      <div class="faqitem glass" onclick="this.classList.toggle('open')">
+        <div class="q"><span>Якщо продукції немає на складі, за який час здійснюється поставка?</span><span class="plus">+</span></div>
+        <div class="a">Час поставки залежить від асортименту і кількості та зазвичай займає від 7 до 20 робочих днів.</div>
+      </div>
+      <div class="faqitem glass" onclick="this.classList.toggle('open')">
+        <div class="q"><span>Яку трубу використовувати як напрямні для забору з металопрофілю?</span><span class="plus">+</span></div>
+        <div class="a">Найчастіше використовують профільну трубу 40×20×1,5 або 40×20×2,0 — вона легка, але достатньо міцна.</div>
+      </div>
+      <div class="faqitem glass" onclick="this.classList.toggle('open')">
+        <div class="q"><span>Які у вас знижки?</span><span class="plus">+</span></div>
+        <div class="a">Про розмір та умови знижок можна дізнатися у менеджера. Для постійних клієнтів діє бонусна програма.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section>
+  <div class="wrap">
+    <div class="section-head"><h2>Відгуки</h2></div>
+    <div class="revrow">
+      <div class="revcard glass">
+        <p>«Відмінна металобаза. Чотири рази вже замовляв товар, усе привезли прямо на будівництво вчасно!»</p>
+        <div class="who"><div class="avatar">В</div><div class="name">Володимир</div></div>
+      </div>
+      <div class="revcard glass">
+        <p>«Хороші ціни, чудовий сервіс! Рекомендую всім, хто шукає надійного постачальника металопрокату.»</p>
+        <div class="who"><div class="avatar">М</div><div class="name">Марія</div></div>
+      </div>
+      <div class="revcard glass">
+        <p>«Працюємо з компанією вже 3 роки. Завжди на зв'язку, завжди проконсультують. Дуже задоволені співпрацею.»</p>
+        <div class="who"><div class="avatar">Б</div><div class="name">Богдан</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUEST FORM -->
+<section id="request">
+  <div class="wrap">
+    <div class="request-card">
+      <div>
+        <h2>Готові прорахувати ваше замовлення</h2>
+        <p class="r-sub">Залиште номер, і менеджер зателефонує протягом робочого дня, або зверніться напряму до філії у вашому місті.</p>
+        <div class="r-cities">
+          <div class="r-city">
+            <h5>м. Кременчук</h5>
+            <div class="addr">39631, вул. Бетонна, 23</div>
+            <div class="tel">066 744 00 55 · 066 333-03-41</div>
+            <div class="mail">info@goldigroup.com.ua</div>
+          </div>
+          <div class="r-city">
+            <h5>м. Київ</h5>
+            <div class="addr">01033, вул. Володимирська, 97</div>
+            <div class="tel">096 559 05 05</div>
+            <div class="mail">sbut-kv@goldigroup.com.ua</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="r-formcard">
+        <h3>Заявка на прорахунок</h3>
+        <form class="rform" id="leadForm">
+          <div>
+            <label>Ім'я</label>
+            <input type="text" name="name" placeholder="Як до вас звертатись" required>
+          </div>
+          <div>
+            <label>Телефон</label>
+            <input type="tel" name="phone" placeholder="+38 0__ ___ __ __" required>
+          </div>
+          <div>
+            <label>Що потрібно</label>
+            <textarea name="message" placeholder="Наприклад: арматура А500, 5 тонн, Кременчук"></textarea>
+          </div>
+          <button type="submit" class="submit">Надіслати заявку →</button>
+          <div class="r-success" id="leadSuccess">
+            <div class="check">✓</div>
+            <h4>Заявку надіслано</h4>
+            <p>Менеджер зв'яжеться з вами найближчим часом.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footgrid">
+      <div>
+        <div class="brand2"><div class="mark">G</div><div style="font-family:'Golos Text';font-weight:700;color:#fff;">GOLDI GROUP</div></div>
+        <p>Лідер реалізації металопрокату у Кременчуці. Метал дешевше, доставка — за так.</p>
+        <div class="social" style="margin-top:18px;">
+          <a href="#">V</a><a href="#">T</a><a href="#">F</a><a href="#">W</a>
+        </div>
+      </div>
+      <div>
+        <h5>м. Кременчук</h5>
+        <p style="margin-bottom:12px;">вул. Бетонна, 23</p>
+        <a href="tel:+380663330341">+38 (066) 333-03-41</a>
+        <a href="tel:+380683022525">+38 (068) 302-25-25</a>
+      </div>
+      <div>
+        <h5>м. Київ</h5>
+        <p style="margin-bottom:12px;">вул. Володимирська, 97</p>
+        <a href="tel:+380965590505">+38 (096) 559-05-05</a>
+        <a href="mailto:sbut-kv@goldigroup.com.ua">sbut-kv@goldigroup.com.ua</a>
+      </div>
+      <div>
+        <h5>Компанія</h5>
+        <a href="#catalog">Каталог</a>
+        <a href="#price">Прайс</a>
+        <a href="#delivery">Доставка і оплата</a>
+        <a href="#request">Контакти</a>
+      </div>
+    </div>
+    <div class="footbottom">
+      <span>© 2026 GOLDI group. Всі права захищені.</span>
+      <span>info@goldigroup.com.ua</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- Hero product slideshow: auto-rotate real product photos ----
+  (function(){
+    const slider = document.getElementById('heroSlider');
+    if(!slider) return;
+    const slides = Array.from(slider.querySelectorAll('.slide'));
+    const nameEl = document.getElementById('slideName');
+    const dotsWrap = document.getElementById('slideDots');
+    let current = 0;
+    let timer = null;
+
+    slides.forEach((_, i) => {
+      const d = document.createElement('span');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(d);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    function goTo(i){
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = i;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      nameEl.style.opacity = 0;
+      setTimeout(() => {
+        nameEl.textContent = slides[current].dataset.name;
+        nameEl.style.opacity = 1;
+      }, 200);
+    }
+    function next(){ goTo((current + 1) % slides.length); }
+
+    function start(){ timer = setInterval(next, 3500); }
+    function stop(){ clearInterval(timer); }
+    start();
+    slider.addEventListener('mouseenter', stop);
+    slider.addEventListener('mouseleave', start);
+  })();
+
+  // ---- Lead form: fake-submit UX (a real backend/CRM would replace this) ----
+  const leadForm = document.getElementById('leadForm');
+  if(leadForm){
+    leadForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      leadForm.classList.add('hide-fields');
+      document.getElementById('leadSuccess').classList.add('show');
+    });
+  }
+
+  // ---- Scroll-reveal animation for every block on the page ----
+  document.addEventListener('DOMContentLoaded', function(){
+    const selectors = [
+      '.hero-main', '.hero-slider', '.advtile',
+      '.popular', '.base',
+      '.section-head',
+      '.catcard',
+      '.about > div', '.about .imgwrap',
+      '.chipcard',
+      '.offer > div', '.offer .imgwrap',
+      '.faqitem',
+      '.revcard',
+      '.request-card > div'
+    ];
+    const els = Array.from(document.querySelectorAll(selectors.join(',')));
+    els.forEach((el, i) => {
+      el.classList.add('reveal');
+      el.style.transitionDelay = ((i % 4) * 0.07) + 's';
+    });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+    els.forEach(el => io.observe(el));
+  });
+</script>
+</body>
+</html>
