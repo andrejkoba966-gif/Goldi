@@ -101,8 +101,8 @@
   .badge{font-size:clamp(13px, 10.4px + 0.238vw, 15px);font-weight:700;padding:9px 16px;border-radius:999px;}
   .badge.blue{background:var(--orange-soft);color:var(--orange-deep);}
   .badge.grey{background:rgba(255,255,255,.65);border:1px solid var(--line);color:var(--ink-soft);}
-  .hero-main h1{font-size:clamp(42px, 16.2px + 2.384vw, 62px);line-height:1.15;font-weight:800;letter-spacing:-0.01em;}
-  .hero-main .lead{font-size:clamp(16.5px, 12px + 0.417vw, 20px);color:var(--muted);max-width:clamp(520px, 391px + 11.9vw, 620px);}
+  .hero-main h1{font-size:clamp(42px, 24px + 1.4vw, 52px);line-height:1.15;font-weight:800;letter-spacing:-0.01em;}
+  .hero-main .lead{font-size:clamp(16.5px, 14px + 0.2vw, 18px);color:var(--muted);max-width:clamp(480px, 420px + 4vw, 540px);}
   .btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px;}
   .btn{padding:16px 26px;border-radius:999px;font-weight:700;font-size:clamp(15px, 11.8px + 0.298vw, 17.5px);display:inline-flex;align-items:center;gap:8px;}
   .btn-dark{background:linear-gradient(135deg,#c85e0c,#f2740f);color:#fff;box-shadow:0 14px 26px -10px rgba(200,94,12,.55);}
@@ -150,14 +150,31 @@
 
   /* Advantages row — first screen, sales-focused */
   .advstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:18px;}
-  .advtile{padding:24px 22px;border-radius:var(--radius-md);display:flex;flex-direction:column;gap:12px;}
-  .advtile .ico{
-    width:46px;height:46px;border-radius:13px;
-    background:var(--orange-soft);
-    display:flex;align-items:center;justify-content:center;color:var(--orange-deep);font-size:20px;font-weight:700;
+  .advcard{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;
+    box-shadow:0 1px 1px rgba(20,50,100,.04), 0 14px 30px -18px rgba(20,60,140,.18);
+    display:flex;flex-direction:column;
   }
-  .advtile h4{font-size:16.5px;font-weight:700;}
-  .advtile p{font-size:13.5px;color:var(--muted);}
+  .advcard .photo{
+    height:150px;background-size:cover;background-position:center;position:relative;flex-shrink:0;
+  }
+  .advcard .photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,25,55,.02), rgba(8,18,42,.28));}
+  .advcard .stat{
+    height:150px;flex-shrink:0;position:relative;
+    background:linear-gradient(135deg, rgba(36,87,214,.08), rgba(242,116,15,.06));
+    display:flex;flex-direction:column;justify-content:center;padding:18px 20px;
+  }
+  .advcard .stat .big{font-family:'Golos Text';font-weight:800;font-size:38px;color:var(--blue-deep);line-height:1;}
+  .advcard .stat .big span{font-size:17px;font-weight:700;margin-left:4px;}
+  .advcard .stat .cap{position:absolute;top:16px;right:18px;font-size:12px;color:var(--muted);text-align:right;line-height:1.4;font-weight:600;}
+  .advcard .pill{
+    position:absolute;top:14px;left:14px;z-index:1;
+    background:rgba(255,255,255,.94);color:var(--ink-soft);font-weight:700;font-size:12px;
+    padding:7px 13px;border-radius:999px;box-shadow:0 6px 14px -6px rgba(10,25,60,.25);
+  }
+  .advcard .advbody{padding:20px 20px 22px;display:flex;flex-direction:column;gap:8px;flex:1;}
+  .advcard h4{font-size:17px;font-weight:800;line-height:1.25;}
+  .advcard p{font-size:13.5px;color:var(--muted);line-height:1.5;}
 
   .row2{margin-top:18px;}
 
@@ -363,27 +380,10 @@
     .request-card{grid-template-columns:1fr;grid-template-areas:"intro" "cities" "form";padding:34px 26px;gap:32px;}
   }
 
-  /* ---------- Mobile: advantage tiles stack and slide over one another ---------- */
+  /* ---------- Mobile: advantage cards stack full-width ---------- */
   @media(max-width:620px){
     .advstrip{display:flex;flex-direction:column;gap:16px;}
-    .advtile{
-      position:sticky;
-      top:0;
-      background:
-        linear-gradient(120deg, var(--steel1) 0%, transparent 30%, transparent 70%, var(--steel2) 100%),
-        var(--glass-strong);
-      backdrop-filter: blur(20px) saturate(140%);
-      -webkit-backdrop-filter: blur(20px) saturate(140%);
-      border:1px solid var(--glass-border);
-      box-shadow:0 -18px 40px -22px rgba(20,50,100,.2), var(--shadow);
-      border-radius:32px 32px 20px 20px;
-      padding-top:34px;
-      padding-bottom:34px;
-    }
-    .advtile:nth-of-type(1){z-index:11;}
-    .advtile:nth-of-type(2){z-index:12;}
-    .advtile:nth-of-type(3){z-index:13;}
-    .advtile:nth-of-type(4){z-index:14;}
+    .advcard .photo,.advcard .stat{height:170px;}
   }
 
   /* ---------- Scroll-reveal animation ---------- */
@@ -479,20 +479,21 @@
   @media(min-width:1081px){
     header{padding:clamp(22px,16px + 0.6vw,32px) 0 clamp(8px,4px + 0.4vw,16px);}
     .bento{gap:clamp(18px,8px + 1vw,30px);margin-top:clamp(22px,12px + 1vw,34px);}
-    .hero-main{padding:clamp(44px,20px + 2.4vw,66px) clamp(44px,20px + 2.4vw,66px) clamp(40px,18px + 2.2vw,58px);gap:clamp(24px,14px + 1vw,34px);}
+    .hero-main{padding:clamp(44px,32px + 1vw,54px) clamp(44px,32px + 1vw,54px) clamp(40px,30px + 0.8vw,48px);gap:clamp(24px,18px + 0.5vw,28px);}
     .btn{padding:clamp(16px,10px + 0.6vw,21px) clamp(26px,16px + 1vw,36px);}
     .btn-request{padding:clamp(12px,8px + 0.4vw,16px) clamp(20px,14px + 0.6vw,26px);font-size:clamp(14.5px,11.9px + 0.238vw,16.5px);}
     .phone-pill{padding:clamp(12px,8px + 0.4vw,16px) clamp(22px,16px + 0.6vw,28px);font-size:clamp(15px,12.4px + 0.238vw,17px);}
 
-    .hero-slider .slide-content{padding:clamp(28px,14px + 1.3vw,42px);}
-    .hero-slider .slide-name{font-size:clamp(28px,15.1px + 1.192vw,38px);}
+    .hero-slider .slide-content{padding:clamp(28px,20px + 0.6vw,34px);}
+    .hero-slider .slide-name{font-size:clamp(28px,22px + 0.5vw,32px);}
     .hero-slider .stock-badge{padding:clamp(9px,5px + 0.4vw,13px) clamp(15px,9px + 0.6vw,20px);font-size:clamp(12.5px,10.5px + 0.2vw,14px);}
 
     .advstrip{gap:clamp(16px,6px + 1vw,26px);margin-top:clamp(18px,8px + 1vw,28px);}
-    .advtile{padding:clamp(24px,12px + 1.2vw,34px) clamp(22px,10px + 1.2vw,32px);}
-    .advtile .ico{width:clamp(46px,33.1px + 1.192vw,56px);height:clamp(46px,33.1px + 1.192vw,56px);font-size:clamp(20px,15px + 0.5vw,24px);}
-    .advtile h4{font-size:clamp(16.5px,13.3px + 0.298vw,19px);}
-    .advtile p{font-size:clamp(13.5px,10.9px + 0.238vw,15.5px);}
+    .advcard .photo,.advcard .stat{height:clamp(150px,110px + 3.5vw,190px);}
+    .advcard .advbody{padding:clamp(20px,12px + 0.7vw,26px);}
+    .advcard h4{font-size:clamp(17px,13.8px + 0.3vw,19.5px);}
+    .advcard p{font-size:clamp(13.5px,10.9px + 0.238vw,15.5px);}
+    .advcard .stat .big{font-size:clamp(38px,26px + 1.1vw,48px);}
 
     section{padding:clamp(64px,40px + 2.2vw,88px) 0;}
     .section-head{margin-bottom:clamp(34px,20px + 1.4vw,46px);}
@@ -540,7 +541,6 @@
     .footgrid{gap:clamp(34px,20px + 1.4vw,48px);}
   }
   @media(min-width:1780px){
-    .hero-slider{min-height:520px;}
     section{padding:clamp(88px,70px + 1vw,104px) 0;}
   }
 </style>
@@ -608,25 +608,42 @@
 
   <!-- SALES-FOCUSED ADVANTAGES — first screen -->
   <div class="advstrip" id="delivery">
-    <div class="card glass advtile">
-      <div class="ico">₴</div>
-      <h4>Ціна без посередників</h4>
-      <p>Продаємо напряму зі своєї бази — без націнок перекупників.</p>
+    <div class="advcard">
+      <div class="photo" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164070478978-331x280.jpg')">
+        <span class="pill">Напряму з бази</span>
+      </div>
+      <div class="advbody">
+        <h4>Ціна без посередників</h4>
+        <p>Купуйте метал напряму з нашої бази — без додаткових націнок перекупників.</p>
+      </div>
     </div>
-    <div class="card glass advtile">
-      <div class="ico">🚚</div>
-      <h4>Безкоштовна доставка</h4>
-      <p>5–10 км від бази — за так, від 6 м прокату на суму від 85 000 ₴.</p>
+    <div class="advcard">
+      <div class="stat">
+        <span class="cap">5–10 км<br>від металобази</span>
+        <div class="big">0<span>грн</span></div>
+      </div>
+      <div class="advbody">
+        <h4>Безкоштовна доставка</h4>
+        <p>У радіусі 5–10 км від бази: замовляйте металопрокат довжиною від 6 м на суму від 85 000 грн.</p>
+      </div>
     </div>
-    <div class="card glass advtile">
-      <div class="ico">⚙</div>
-      <h4>Власне виробництво</h4>
-      <p>Сітка кладочна, дріт ВР-1 та стикозварна арматура — робимо самі.</p>
+    <div class="advcard">
+      <div class="photo" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164076653400-331x280.jpg')">
+        <span class="pill">Робимо самі</span>
+      </div>
+      <div class="advbody">
+        <h4>Власне виробництво</h4>
+        <p>Сітка кладочна, дріт ВР-1 та стикозварна арматура — виготовляємо на власних потужностях.</p>
+      </div>
     </div>
-    <div class="card glass advtile">
-      <div class="ico">15k</div>
-      <h4>15 000+ позицій</h4>
-      <p>Завжди в наявності на складах у Кременчуці та Києві.</p>
+    <div class="advcard">
+      <div class="photo" style="background-image:url('https://goldigroup.com.ua/storage/images/16129582671025.jpg')">
+        <span class="pill">Широкий асортимент</span>
+      </div>
+      <div class="advbody">
+        <h4>2000+ одиниць продукції</h4>
+        <p>Завжди в наявності на складах у Кременчуці та Києві.</p>
+      </div>
     </div>
   </div>
 
@@ -951,7 +968,7 @@
   // ---- Scroll-reveal animation for every block on the page ----
   document.addEventListener('DOMContentLoaded', function(){
     const selectors = [
-      '.hero-main', '.hero-slider', '.advtile',
+      '.hero-main', '.hero-slider', '.advcard',
       '.popular', '.base',
       '.section-head',
       '.catcard',
