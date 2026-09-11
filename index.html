@@ -96,12 +96,14 @@
 
   .headbottom{
     position:sticky;top:0;z-index:40;
-    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
     border-top:1px solid var(--line);border-bottom:1px solid transparent;
-    padding:14px 0;
     background:rgba(246,249,253,.88);
     backdrop-filter:blur(14px) saturate(140%);
     -webkit-backdrop-filter:blur(14px) saturate(140%);
+  }
+  .headbottom .wrap{
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+    padding-top:14px;padding-bottom:14px;
   }
   nav{display:flex;gap:30px;font-size:clamp(15px, 12.4px + 0.238vw, 15.7px);font-weight:500;color:var(--ink-soft);}
   nav a:hover{color:var(--blue);}
@@ -485,7 +487,7 @@
     .brand .sub{font-size:11px;}
     .head-cities{display:none;}
     .head-social{display:none;}
-    .headbottom{padding:10px 0;gap:10px;}
+    .headbottom .wrap{padding-top:10px;padding-bottom:10px;gap:10px;}
     nav{display:none;}
     .menu-toggle{display:flex;}
     .mobile-quick-social{display:flex;margin-left:auto;}
@@ -606,42 +608,42 @@
 </head>
 <body>
 
-<div class="wrap">
-  <header>
-    <div class="headtop">
-      <div class="brand">
-        <div class="mark">G</div>
-        <div>
-          <div class="name">GOLDI GROUP</div>
-          <div class="sub">Металобаза · з 2017</div>
-        </div>
-      </div>
-      <div class="head-cities">
-        <a class="head-city" href="tel:+380667440055">
-          <span class="c-label">м. Кременчук</span>
-          <span class="c-num">066 744 00 55</span>
-        </a>
-        <a class="head-city" href="tel:+380965590505">
-          <span class="c-label">м. Київ</span>
-          <span class="c-num">096 559 05 05</span>
-        </a>
-      </div>
-      <div class="head-social">
-        <a class="soc" href="viber://chat?number=%2B380667440055" aria-label="Viber" title="Viber">
-          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7360F2"/><path d="M12 6.2c-3.3 0-6 2.4-6 5.6 0 1.8 1 3.4 2.5 4.5l-.6 2.3 2.5-1.1c.5.1 1.1.2 1.6.2 3.3 0 6-2.4 6-5.6s-2.7-6-6-6.0z" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/><path d="M9.7 10.3s.3 1.7 1.9 3.1c1.6 1.4 3.1 1.4 3.1 1.4l.6-1c.2-.3.6-.4.9-.2l1 .6c.3.2.4.6.2.9-.3.5-.9 1-1.6 1.1-1 .1-2.6-.1-4.3-1.7-1.7-1.5-2.2-3-2.4-3.9-.1-.7.3-1.4.8-1.7l1-.6c.3-.2.7-.1.9.2l.6 1c.2.3.1.7-.2.9l-.5.3z" fill="#fff"/></svg>
-        </a>
-        <a class="soc" href="https://t.me/+380667440055" aria-label="Telegram" title="Telegram">
-          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#26A5E4"/><path d="M17.8 7.2 6.6 11.6c-.7.3-.7.7-.1.9l2.9.9 1.1 3.4c.1.4.3.5.6.5.2 0 .3-.1.5-.2l1.6-1.5 3 2.2c.5.3 1 .1 1.1-.5l2-9.5c.2-.7-.2-1-.5-.6z" fill="#fff"/></svg>
-        </a>
-        <a class="soc" href="#" aria-label="Facebook" title="Facebook">
-          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path d="M13.4 20v-6.8h2.3l.3-2.6h-2.6V8.9c0-.8.2-1.3 1.3-1.3h1.4V5.3c-.2 0-1-.1-1.9-.1-1.9 0-3.2 1.2-3.2 3.3v1.9H8.7v2.6H11V20h2.4z" fill="#fff"/></svg>
-        </a>
-        <a class="soc" href="https://wa.me/380667440055" aria-label="WhatsApp" title="WhatsApp">
-          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#25D366"/><path d="M12 6.5c-3.3 0-6 2.6-6 5.9 0 1.1.3 2.1.8 3l-.9 3.1 3.2-.9c.9.5 1.9.7 2.9.7 3.3 0 6-2.6 6-5.9s-2.7-5.9-6-5.9z" stroke="#fff" stroke-width="1.2"/><path d="M9.8 10c.1-.3.4-.3.6-.3h.4c.1 0 .3 0 .4.3.2.4.6 1.3.6 1.4.1.1.1.3 0 .4l-.3.4c-.1.1-.2.3-.1.5.2.4.6 1 1.2 1.5.7.6 1.2.8 1.4.9.2.1.3 0 .4-.1l.4-.5c.1-.2.3-.2.5-.1l1.2.6c.2.1.3.2.3.3 0 .5-.2 1.1-.5 1.3-.4.3-.9.5-1.5.4-1-.1-2.3-.6-3.5-1.7-1.1-1-1.8-2.2-2-3.2-.1-.6.1-1.1.4-1.5.1-.2.3-.4.5-.5z" fill="#fff"/></svg>
-        </a>
+<header>
+  <div class="wrap headtop">
+    <div class="brand">
+      <div class="mark">G</div>
+      <div>
+        <div class="name">GOLDI GROUP</div>
+        <div class="sub">Металобаза · з 2017</div>
       </div>
     </div>
-    <div class="headbottom">
+    <div class="head-cities">
+      <a class="head-city" href="tel:+380667440055">
+        <span class="c-label">м. Кременчук</span>
+        <span class="c-num">066 744 00 55</span>
+      </a>
+      <a class="head-city" href="tel:+380965590505">
+        <span class="c-label">м. Київ</span>
+        <span class="c-num">096 559 05 05</span>
+      </a>
+    </div>
+    <div class="head-social">
+      <a class="soc" href="viber://chat?number=%2B380667440055" aria-label="Viber" title="Viber">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7360F2"/><path d="M12 6.2c-3.3 0-6 2.4-6 5.6 0 1.8 1 3.4 2.5 4.5l-.6 2.3 2.5-1.1c.5.1 1.1.2 1.6.2 3.3 0 6-2.4 6-5.6s-2.7-6-6-6.0z" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/><path d="M9.7 10.3s.3 1.7 1.9 3.1c1.6 1.4 3.1 1.4 3.1 1.4l.6-1c.2-.3.6-.4.9-.2l1 .6c.3.2.4.6.2.9-.3.5-.9 1-1.6 1.1-1 .1-2.6-.1-4.3-1.7-1.7-1.5-2.2-3-2.4-3.9-.1-.7.3-1.4.8-1.7l1-.6c.3-.2.7-.1.9.2l.6 1c.2.3.1.7-.2.9l-.5.3z" fill="#fff"/></svg>
+      </a>
+      <a class="soc" href="https://t.me/+380667440055" aria-label="Telegram" title="Telegram">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#26A5E4"/><path d="M17.8 7.2 6.6 11.6c-.7.3-.7.7-.1.9l2.9.9 1.1 3.4c.1.4.3.5.6.5.2 0 .3-.1.5-.2l1.6-1.5 3 2.2c.5.3 1 .1 1.1-.5l2-9.5c.2-.7-.2-1-.5-.6z" fill="#fff"/></svg>
+      </a>
+      <a class="soc" href="#" aria-label="Facebook" title="Facebook">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path d="M13.4 20v-6.8h2.3l.3-2.6h-2.6V8.9c0-.8.2-1.3 1.3-1.3h1.4V5.3c-.2 0-1-.1-1.9-.1-1.9 0-3.2 1.2-3.2 3.3v1.9H8.7v2.6H11V20h2.4z" fill="#fff"/></svg>
+      </a>
+      <a class="soc" href="https://wa.me/380667440055" aria-label="WhatsApp" title="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#25D366"/><path d="M12 6.5c-3.3 0-6 2.6-6 5.9 0 1.1.3 2.1.8 3l-.9 3.1 3.2-.9c.9.5 1.9.7 2.9.7 3.3 0 6-2.6 6-5.9s-2.7-5.9-6-5.9z" stroke="#fff" stroke-width="1.2"/><path d="M9.8 10c.1-.3.4-.3.6-.3h.4c.1 0 .3 0 .4.3.2.4.6 1.3.6 1.4.1.1.1.3 0 .4l-.3.4c-.1.1-.2.3-.1.5.2.4.6 1 1.2 1.5.7.6 1.2.8 1.4.9.2.1.3 0 .4-.1l.4-.5c.1-.2.3-.2.5-.1l1.2.6c.2.1.3.2.3.3 0 .5-.2 1.1-.5 1.3-.4.3-.9.5-1.5.4-1-.1-2.3-.6-3.5-1.7-1.1-1-1.8-2.2-2-3.2-.1-.6.1-1.1.4-1.5.1-.2.3-.4.5-.5z" fill="#fff"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="headbottom">
+    <div class="wrap">
       <button class="menu-toggle" id="menuToggle" aria-label="Меню" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -667,8 +669,10 @@
         <a href="#request">Контакти</a>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 
+<div class="wrap">
   <!-- HERO -->
   <div class="bento">
     <div class="card glass hero-main">
