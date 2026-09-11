@@ -53,8 +53,7 @@
   .headerbar{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
   .brand{display:flex;align-items:center;gap:12px;}
   .brand .mark{
-    width:46px;height:46px;border-radius:14px;background:linear-gradient(140deg,#1c3f8f,#2457d6 55%,#5f8ce8);
-    display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Golos Text';font-weight:800;font-size:19px;flex-shrink:0;
+    height:46px;width:auto;object-fit:contain;flex-shrink:0;display:block;
   }
   .brand .name{font-family:'Golos Text';font-weight:700;font-size:17px;}
   .brand .sub{font-size:12px;color:var(--muted);margin-top:1px;}
@@ -98,7 +97,7 @@
   .footgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:34px;}
   .footgrid h5{font-family:'Golos Text';font-size:15px;font-weight:700;color:#fff;margin-bottom:16px;}
   .footgrid .brand2{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
-  .footgrid .brand2 .mark{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,#2457d6,#5f8ce8);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-family:'Golos Text';}
+  .footgrid .brand2 .mark{height:34px;width:auto;object-fit:contain;flex-shrink:0;display:block;filter:brightness(0) invert(1);}
   .footgrid p{color:#95a2bf;font-size:14px;line-height:1.6;}
   .footgrid a{display:block;color:#c3ccdf;font-size:14.5px;margin-bottom:10px;}
   .footgrid a:hover{color:#fff;}
@@ -126,7 +125,7 @@
      ================================================================== */
   @media(min-width:1081px){
     header{padding:clamp(20px, 14px + 0.5vw, 21px) 0 clamp(6px, 2px + 0.3vw, 6.2px);}
-    .brand .mark{width:clamp(46px, 32px + 1.3vw, 50.2px);height:clamp(46px, 32px + 1.3vw, 50.2px);font-size:clamp(19px, 13.6px + 0.5vw, 20.6px);}
+    .brand .mark{height:clamp(46px, 32px + 1.3vw, 50.2px);width:auto;}
     .brand .name{font-size:clamp(17px, 12.4px + 0.43vw, 18.4px);}
     .brand .sub{font-size:clamp(12px, 10.2px + 0.17vw, 12.6px);}
     nav{gap:clamp(26px, 18px + 0.75vw, 28.5px);font-size:clamp(14.5px, 12px + 0.23vw, 15.2px);}
@@ -153,7 +152,7 @@
   <header>
     <div class="headerbar">
       <a class="brand" href="../index.html" style="text-decoration:none;">
-        <div class="mark">G</div>
+        <img class="mark" src="https://goldigroup.com.ua/storage/images/16159800818388.png" alt="GOLDI GROUP">
         <div><div class="name">GOLDI GROUP</div><div class="sub">Металобаза · з 2017</div></div>
       </a>
       <nav>
@@ -213,7 +212,7 @@
   <div class="wrap">
     <div class="footgrid">
       <div>
-        <div class="brand2"><div class="mark">G</div><div style="font-family:'Golos Text';font-weight:700;color:#fff;">GOLDI GROUP</div></div>
+        <div class="brand2"><img class="mark" src="https://goldigroup.com.ua/storage/images/16159800818388.png" alt="GOLDI GROUP"></div>
         <p>Лідер реалізації металопрокату у Кременчуці. Метал дешевше, доставка — за так.</p>
         <div class="social" style="margin-top:18px;">
           <a href="viber://chat?number=%2B380667440055" aria-label="Viber" title="Viber">
