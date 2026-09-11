@@ -95,11 +95,38 @@
   .soc svg{width:18px;height:18px;display:block;}
 
   .headbottom{
+    position:sticky;top:0;z-index:40;
     display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
-    border-top:1px solid var(--line);padding:14px 0;
+    border-top:1px solid var(--line);border-bottom:1px solid transparent;
+    padding:14px 0;
+    background:rgba(246,249,253,.88);
+    backdrop-filter:blur(14px) saturate(140%);
+    -webkit-backdrop-filter:blur(14px) saturate(140%);
   }
   nav{display:flex;gap:30px;font-size:clamp(15px, 12.4px + 0.238vw, 15.7px);font-weight:500;color:var(--ink-soft);}
   nav a:hover{color:var(--blue);}
+
+  /* Mobile menu toggle + dropdown panel (hidden on desktop) */
+  .menu-toggle{
+    display:none;width:38px;height:38px;border-radius:12px;border:1px solid var(--line);
+    background:#fff;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+    cursor:pointer;flex-shrink:0;
+  }
+  .menu-toggle span{width:18px;height:2px;background:var(--ink);border-radius:2px;transition:transform .2s, opacity .2s;}
+  .menu-toggle.active span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+  .menu-toggle.active span:nth-child(2){opacity:0;}
+  .menu-toggle.active span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+  .mobile-quick-social{display:none;align-items:center;gap:8px;}
+  .mobile-nav-panel{
+    display:none;flex-direction:column;
+    width:100%;flex-basis:100%;order:99;
+    background:#fff;border:1px solid var(--line);border-radius:16px;
+    box-shadow:0 20px 40px -20px rgba(20,50,100,.25);
+    padding:10px;margin:14px 0 0;
+  }
+  .mobile-nav-panel a{padding:13px 14px;border-radius:10px;font-weight:600;color:var(--ink-soft);}
+  .mobile-nav-panel a:hover{background:rgba(36,87,214,.06);color:var(--blue-deep);}
+  .mobile-nav-panel.open{display:flex;}
 
   /* ---------- Bento grid ---------- */
   .bento{
@@ -457,11 +484,13 @@
     .brand .name{font-size:15.5px;}
     .brand .sub{font-size:11px;}
     .head-cities{display:none;}
-    .head-social{gap:7px;}
-    .soc{width:32px;height:32px;}
-    .soc svg{width:16px;height:16px;}
-    .headbottom{padding:10px 0;gap:12px;}
+    .head-social{display:none;}
+    .headbottom{padding:10px 0;gap:10px;}
     nav{display:none;}
+    .menu-toggle{display:flex;}
+    .mobile-quick-social{display:flex;margin-left:auto;}
+    .mobile-quick-social .soc{width:32px;height:32px;}
+    .mobile-quick-social .soc svg{width:16px;height:16px;}
     .btn-request{padding:10px 15px;font-size:12.5px;}
 
     /* Hero: no white tile, sits directly on page background, near-full width */
@@ -613,13 +642,30 @@
       </div>
     </div>
     <div class="headbottom">
+      <button class="menu-toggle" id="menuToggle" aria-label="Меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
       <nav>
         <a href="catalog/index.html">Каталог</a>
         <a href="#price">Прайс</a>
         <a href="#delivery">Доставка</a>
         <a href="#request">Контакти</a>
       </nav>
+      <div class="mobile-quick-social">
+        <a class="soc" href="https://t.me/+380667440055" aria-label="Telegram" title="Telegram">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#26A5E4"/><path d="M17.8 7.2 6.6 11.6c-.7.3-.7.7-.1.9l2.9.9 1.1 3.4c.1.4.3.5.6.5.2 0 .3-.1.5-.2l1.6-1.5 3 2.2c.5.3 1 .1 1.1-.5l2-9.5c.2-.7-.2-1-.5-.6z" fill="#fff"/></svg>
+        </a>
+        <a class="soc" href="viber://chat?number=%2B380667440055" aria-label="Viber" title="Viber">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7360F2"/><path d="M12 6.2c-3.3 0-6 2.4-6 5.6 0 1.8 1 3.4 2.5 4.5l-.6 2.3 2.5-1.1c.5.1 1.1.2 1.6.2 3.3 0 6-2.4 6-5.6s-2.7-6-6-6.0z" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/><path d="M9.7 10.3s.3 1.7 1.9 3.1c1.6 1.4 3.1 1.4 3.1 1.4l.6-1c.2-.3.6-.4.9-.2l1 .6c.3.2.4.6.2.9-.3.5-.9 1-1.6 1.1-1 .1-2.6-.1-4.3-1.7-1.7-1.5-2.2-3-2.4-3.9-.1-.7.3-1.4.8-1.7l1-.6c.3-.2.7-.1.9.2l.6 1c.2.3.1.7-.2.9l-.5.3z" fill="#fff"/></svg>
+        </a>
+      </div>
       <a class="btn-request" href="#request">Залишити заявку</a>
+      <div class="mobile-nav-panel" id="mobileNavPanel">
+        <a href="catalog/index.html">Каталог</a>
+        <a href="#price">Прайс</a>
+        <a href="#delivery">Доставка</a>
+        <a href="#request">Контакти</a>
+      </div>
     </div>
   </header>
 
@@ -971,6 +1017,23 @@
 </footer>
 
 <script>
+  // ---- Mobile menu toggle ----
+  (function(){
+    const btn = document.getElementById('menuToggle');
+    const panel = document.getElementById('mobileNavPanel');
+    if(!btn || !panel) return;
+    btn.addEventListener('click', function(){
+      const isOpen = panel.classList.toggle('open');
+      btn.classList.toggle('active', isOpen);
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    panel.querySelectorAll('a').forEach(a => a.addEventListener('click', function(){
+      panel.classList.remove('open');
+      btn.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+    }));
+  })();
+
   // ---- Hero product slideshow: auto-rotate real product photos ----
   (function(){
     const slider = document.getElementById('heroSlider');
