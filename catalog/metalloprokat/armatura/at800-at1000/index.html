@@ -95,14 +95,18 @@
       linear-gradient(165deg,#0d1c42,#122a63 55%,#0a1735);
     border-radius:var(--radius-lg);
     padding:54px;
-    display:grid;grid-template-columns:1fr 1fr;gap:56px;
+    display:grid;grid-template-columns:1fr 1fr;
+    grid-template-areas:"intro form" "cities form";
+    gap:56px;
     color:#fff;
     box-shadow:0 30px 60px -24px rgba(10,25,60,.5);
     margin-bottom:56px;
   }
+  .r-intro{grid-area:intro;}
+  .r-formcard{grid-area:form;}
   .request-card h2{color:#fff;font-size:28px;font-weight:800;line-height:1.15;}
   .request-card .r-sub{color:#aebde0;font-size:14.5px;margin-top:14px;max-width:420px;}
-  .r-cities{display:flex;flex-direction:column;gap:14px;margin-top:24px;}
+  .r-cities{grid-area:cities;display:flex;flex-direction:column;gap:14px;margin-top:24px;}
   .r-city{
     background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
     border-radius:var(--radius-sm);padding:18px 20px;
@@ -164,7 +168,21 @@
   }
   @media(max-width:900px){
     nav{display:none;}
-    .request-card{grid-template-columns:1fr;padding:34px 26px;gap:32px;}
+    .request-card{grid-template-columns:1fr;grid-template-areas:"intro" "cities" "form";padding:34px 26px;gap:32px;}
+  }
+  @media(max-width:640px){
+    .request-card{
+      grid-template-areas:"intro" "form" "cities";
+      margin-left:-28px;margin-right:-28px;
+      border-radius:16px;
+      padding:32px 20px 30px;
+      gap:26px;
+      box-shadow:none;
+    }
+    .request-card h2{font-size:25px;}
+    .r-city{padding:14px 16px;border-radius:12px;}
+    .r-formcard{padding:22px 18px 24px;border-radius:14px;}
+    .rform .submit{width:100%;}
   }
   @media(max-width:620px){
     .p-specs{grid-template-columns:1fr 1fr;}
@@ -227,22 +245,22 @@
 
   <!-- REQUEST FORM -->
   <div class="request-card" id="request">
-    <div>
+    <div class="r-intro">
       <h2>Готові прорахувати ваше замовлення</h2>
       <p class="r-sub">Залиште номер, і менеджер зателефонує протягом робочого дня, або зверніться напряму до філії у вашому місті.</p>
-      <div class="r-cities">
-        <div class="r-city">
-          <h5>м. Кременчук</h5>
-          <div class="addr">39631, вул. Бетонна, 23</div>
-          <div class="tel">066 744 00 55 · 066 333-03-41</div>
-          <div class="mail">info@goldigroup.com.ua</div>
-        </div>
-        <div class="r-city">
-          <h5>м. Київ</h5>
-          <div class="addr">01033, вул. Володимирська, 97</div>
-          <div class="tel">096 559 05 05</div>
-          <div class="mail">sbut-kv@goldigroup.com.ua</div>
-        </div>
+    </div>
+    <div class="r-cities">
+      <div class="r-city">
+        <h5>м. Кременчук</h5>
+        <div class="addr">39631, вул. Бетонна, 23</div>
+        <div class="tel">066 744 00 55 · 066 333-03-41</div>
+        <div class="mail">info@goldigroup.com.ua</div>
+      </div>
+      <div class="r-city">
+        <h5>м. Київ</h5>
+        <div class="addr">01033, вул. Володимирська, 97</div>
+        <div class="tel">096 559 05 05</div>
+        <div class="mail">sbut-kv@goldigroup.com.ua</div>
       </div>
     </div>
 
