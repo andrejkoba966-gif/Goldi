@@ -134,14 +134,24 @@
   /* ---------- Bento grid ---------- */
   .bento{
     display:grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1.15fr 1fr;
     gap:18px;
     margin-top:22px;
   }
   .card{border-radius:var(--radius-lg);}
 
   /* Hero left */
-  .hero-main{padding:44px 44px 40px;display:flex;flex-direction:column;gap:24px;}
+  .hero-main{padding:44px 44px 40px;display:flex;flex-direction:column;gap:24px;position:relative;overflow:hidden;}
+  .hero-main::after{
+    content:"";
+    position:absolute;top:0;right:0;bottom:0;width:48%;
+    background-image:repeating-linear-gradient(135deg, rgba(20,50,100,.55) 0px, rgba(20,50,100,.55) 2px, transparent 2px, transparent 16px);
+    opacity:.07;
+    -webkit-mask-image:linear-gradient(to left, #000 35%, transparent 100%);
+    mask-image:linear-gradient(to left, #000 35%, transparent 100%);
+    pointer-events:none;
+  }
+  .hero-main > *{position:relative;z-index:1;}
   .badges{display:flex;gap:10px;flex-wrap:wrap;}
   .badge{font-size:clamp(13px, 10.4px + 0.238vw, 13.7px);font-weight:700;padding:9px 16px;border-radius:999px;}
   .badge.blue{background:var(--orange-soft);color:var(--orange-deep);}
