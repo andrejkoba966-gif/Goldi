@@ -159,7 +159,22 @@
   .badge.blue{background:var(--orange-soft);color:var(--orange-deep);}
   .badge.grey{background:rgba(255,255,255,.65);border:1px solid var(--line);color:var(--ink-soft);}
   .hero-main h1{font-size:clamp(48px, 4.3vw, 72px);line-height:1.02;letter-spacing:-0.04em;font-weight:800;}
-  .hero-main h1 .accent{color:#FF671A;}
+  .hero-main h1 .accent{
+    background:linear-gradient(90deg, #E84B1C, #FF9A6C, #E84B1C);
+    background-size:200% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    -webkit-text-fill-color:transparent;
+    animation:accentGradient 2s linear infinite alternate;
+  }
+  @keyframes accentGradient{
+    0%{background-position:0% 50%;}
+    100%{background-position:100% 50%;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .hero-main h1 .accent{animation:none;background-position:0% 50%;}
+  }
   .hero-main .lead{font-size:16px;color:var(--muted);max-width:460px;line-height:1.55;}
   .herofacts{display:flex;align-items:center;gap:14px;font-size:13.5px;color:var(--muted);margin-top:-6px;}
   .herofacts .divider{width:1px;height:14px;background:var(--line);}
