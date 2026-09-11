@@ -460,10 +460,19 @@
     .request-card{grid-template-columns:1fr;grid-template-areas:"intro" "cities" "form";padding:34px 26px;gap:32px;}
   }
 
-  /* ---------- Mobile: advantage cards stack full-width ---------- */
+  /* ---------- Mobile: advantage cards stack like a deck on scroll ---------- */
   @media(max-width:620px){
     .advstrip{display:flex;flex-direction:column;gap:16px;}
-    .advcard{min-height:300px;}
+    .advcard{
+      min-height:300px;
+      position:sticky;
+      top:78px;
+      box-shadow:0 24px 48px -20px rgba(20,50,100,.35);
+    }
+    .advcard:nth-of-type(1){z-index:1;}
+    .advcard:nth-of-type(2){z-index:2;}
+    .advcard:nth-of-type(3){z-index:3;}
+    .advcard:nth-of-type(4){z-index:4;}
     .advcard .advbody{padding:16px 22px 24px;}
     .advcard .pill{left:20px;top:20px;}
   }
