@@ -462,19 +462,7 @@
 
   /* ---------- Mobile: advantage cards stack full-width ---------- */
   @media(max-width:620px){
-    .advstrip{
-      display:flex;flex-direction:column;gap:16px;
-      background:#f6f9fd;
-      border-radius:48px 48px 0 0;
-      margin:0 -16px;
-      padding:32px 16px 8px;
-      box-shadow:0 -24px 50px -20px rgba(20,50,100,.22);
-      position:relative;
-      transform:translateY(36px);
-      opacity:0;
-      transition:transform .6s cubic-bezier(.22,.68,0,1.01), opacity .6s ease;
-    }
-    .advstrip.in-view{transform:translateY(0);opacity:1;}
+    .advstrip{display:flex;flex-direction:column;gap:16px;}
     .advcard{min-height:300px;}
     .advcard .advbody{padding:16px 22px 24px;}
     .advcard .pill{left:20px;top:20px;}
@@ -1076,21 +1064,6 @@
 </footer>
 
 <script>
-  // ---- Mobile: advantage-cards "sheet slides up to cover" reveal ----
-  (function(){
-    const strip = document.querySelector('.advstrip');
-    if(!strip) return;
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          strip.classList.add('in-view');
-          io.unobserve(strip);
-        }
-      });
-    }, { threshold: 0.15 });
-    io.observe(strip);
-  })();
-
   // ---- Sticky nav: frosted-glass background once actually scrolled ----
   (function(){
     const bar = document.querySelector('.headbottom');
