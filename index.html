@@ -96,7 +96,15 @@
 
   .headbottom{
     position:sticky;top:0;z-index:40;
-    border-bottom:1px solid var(--line);
+    border-bottom:1px solid transparent;
+    transition:background-color .25s ease, backdrop-filter .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .headbottom.is-stuck{
+    background:rgba(255,255,255,.62);
+    backdrop-filter:blur(18px) saturate(160%);
+    -webkit-backdrop-filter:blur(18px) saturate(160%);
+    border-bottom-color:var(--line);
+    box-shadow:0 10px 30px -18px rgba(20,50,100,.35);
   }
   .headbottom .wrap{
     display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
@@ -1019,6 +1027,17 @@
 </footer>
 
 <script>
+  // ---- Sticky nav: frosted-glass background once actually scrolled ----
+  (function(){
+    const bar = document.querySelector('.headbottom');
+    if(!bar) return;
+    function updateStuck(){
+      bar.classList.toggle('is-stuck', window.scrollY > 4);
+    }
+    updateStuck();
+    window.addEventListener('scroll', updateStuck, { passive: true });
+  })();
+
   // ---- Mobile menu toggle ----
   (function(){
     const btn = document.getElementById('menuToggle');
