@@ -524,12 +524,15 @@
       padding:6px 24px 4px;
       gap:14px;
     }
+    .hero-main::after{background-size:220px auto;opacity:.06;}
     .badges{gap:8px;}
     .badge{font-size:12px;padding:8px 14px;}
-    .hero-main h1{font-size:30px;line-height:1.18;letter-spacing:-0.005em;}
+    .badge.blue{display:none;}
+    .hero-main h1{font-size:38px;line-height:1.08;letter-spacing:-0.02em;}
     .hero-main .lead{font-size:15px;max-width:none;line-height:1.55;}
-    .hero-main .btnrow{flex-direction:column;gap:10px;margin-top:2px;}
-    .hero-main .btn{width:100%;justify-content:center;padding:15px 22px;}
+    .hero-main .btnrow{margin-top:2px;}
+    .hero-main .btnrow .btn-outline{display:none;}
+    .hero-main .btn{width:auto;justify-content:center;padding:13px 24px;font-size:15px;}
     .herofacts{font-size:12.5px;gap:10px;flex-wrap:wrap;margin-top:0;}
 
     /* Hero visual: full-bleed block right after CTA */
