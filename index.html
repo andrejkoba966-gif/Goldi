@@ -45,6 +45,9 @@
   img{display:block;max-width:100%;}
   a{color:inherit;text-decoration:none;}
   .wrap{width:calc(100% - 48px);max-width:1280px;margin-inline:auto;}
+  @media(min-width:1600px){
+    .wrap{width:calc(100% - 64px);max-width:1440px;}
+  }
   @media(max-width:620px){
     .wrap{width:calc(100% - 32px);}
   }
@@ -189,7 +192,7 @@
     background:#EDF3FF;color:#2454C7;border:1px solid #DBE6FB;
     font-weight:700;font-size:12.5px;padding:7px 13px;border-radius:14px;
   }
-  .advcard .advbody{padding:18px 28px 28px;display:flex;flex-direction:column;gap:10px;flex:1;}
+  .advcard .advbody{padding:24px 28px 28px;display:flex;flex-direction:column;gap:10px;flex:1;}
   .advcard h4{font-size:22px;font-weight:800;line-height:1.25;color:#202C43;}
   .advcard p{font-size:15.5px;color:#6C7482;line-height:1.65;}
 
