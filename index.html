@@ -163,8 +163,14 @@
   .advcard .top .photo{
     position:absolute;top:0;right:0;width:70%;height:100%;
     object-fit:cover;display:block;
-    -webkit-mask-image:linear-gradient(130deg, transparent 0%, transparent 12%, #000 52%);
-    mask-image:linear-gradient(130deg, transparent 0%, transparent 12%, #000 52%);
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, #000 58%),
+      linear-gradient(to top, transparent 0%, #000 48%);
+    -webkit-mask-composite:source-in;
+    mask-image:
+      linear-gradient(to right, transparent 0%, #000 58%),
+      linear-gradient(to top, transparent 0%, #000 48%);
+    mask-composite:intersect;
     transition:transform .35s ease;
   }
   .advcard:hover .top .photo{transform:scale(1.04);}
