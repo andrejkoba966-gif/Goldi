@@ -146,8 +146,11 @@
   .badge{font-size:clamp(13px, 10.4px + 0.238vw, 13.7px);font-weight:700;padding:9px 16px;border-radius:999px;}
   .badge.blue{background:var(--orange-soft);color:var(--orange-deep);}
   .badge.grey{background:rgba(255,255,255,.65);border:1px solid var(--line);color:var(--ink-soft);}
-  .hero-main h1{font-size:clamp(42px, 24px + 1.4vw, 43.6px);line-height:1.15;font-weight:800;letter-spacing:-0.01em;}
-  .hero-main .lead{font-size:16px;color:var(--muted);max-width:480px;}
+  .hero-main h1{font-size:clamp(44px, 26px + 1.5vw, 50px);line-height:1.12;font-weight:800;letter-spacing:-0.01em;}
+  .hero-main h1 .accent{color:#FF671A;}
+  .hero-main .lead{font-size:17px;color:var(--muted);max-width:420px;}
+  .btn-arrow{display:inline-flex;font-size:1.1em;transition:transform .2s ease;}
+  .btn-dark:hover .btn-arrow{transform:translate(2px,-2px);}
   .btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px;}
   .btn{padding:16px 26px;border-radius:999px;font-weight:700;font-size:clamp(15px, 11.8px + 0.298vw, 16px);display:inline-flex;align-items:center;gap:8px;}
   .btn-dark{background:linear-gradient(110deg, #FF872D 0%, #FF671A 100%);color:#14243B;box-shadow:0 9px 20px rgba(250,116,25,.18);}
@@ -472,7 +475,7 @@
     .offer{grid-template-columns:1fr;}
     .catalog3,.chipgrid,.prodgrid,.revrow{grid-template-columns:repeat(2,1fr);}
     .footgrid{grid-template-columns:1fr 1fr;}
-    .hero-main h1{font-size:40px;}
+    .hero-main h1{font-size:44px;}
     nav{display:none;}
   }
   @media(max-width:620px){
@@ -509,8 +512,8 @@
     }
     .badges{gap:8px;}
     .badge{font-size:12px;padding:8px 14px;}
-    .hero-main h1{font-size:27px;line-height:1.2;letter-spacing:-0.005em;}
-    .hero-main .lead{font-size:14.5px;max-width:none;line-height:1.55;}
+    .hero-main h1{font-size:30px;line-height:1.18;letter-spacing:-0.005em;}
+    .hero-main .lead{font-size:15px;max-width:none;line-height:1.55;}
     .hero-main .btnrow{flex-direction:column;gap:10px;margin-top:2px;}
     .hero-main .btn{width:100%;justify-content:center;padding:15px 22px;}
 
@@ -684,11 +687,11 @@
         <span class="badge blue">№1 у металопрокаті 2020</span>
         <span class="badge grey">Прокат · Сервіс</span>
       </div>
-      <h1>Металопрокат під вашу задачу: від підбору до готового замовлення</h1>
-      <p class="lead">Арматура, труби, лист, профілі та інший металопрокат для будівництва й виробництва. Підберемо потрібні позиції, виконаємо необхідну обробку та організуємо доставку — все в одному замовленні.</p>
+      <h1>Металопрокат під вашу <span class="accent">задачу</span>.</h1>
+      <p class="lead">Підберемо метал, виконаємо обробку та організуємо доставку.</p>
       <div class="btnrow">
-        <a class="btn btn-dark" href="#price">Переглянути прайс</a>
-        <a class="btn btn-outline" href="#request">Отримати розрахунок</a>
+        <a class="btn btn-dark" href="#request">Отримати розрахунок <span class="btn-arrow">↗</span></a>
+        <a class="btn btn-outline" href="catalog/index.html">Переглянути каталог</a>
       </div>
     </div>
 
