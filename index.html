@@ -306,24 +306,28 @@
   .deliv .note{font-size:13px;color:var(--muted);}
 
   /* Popular / base row */
-  /* Own-production video block — single unified card */
-  .prod-card{padding:44px 44px 32px;display:flex;flex-direction:column;}
+  /* Own-production video block — single unified card (dark, matches footer) */
+  .prod-card{
+    padding:44px 44px 32px;display:flex;flex-direction:column;
+    background:linear-gradient(180deg,#0e1e35,#0a1730);
+    border:none;box-shadow:0 30px 60px -24px rgba(10,25,60,.5);
+  }
   .prod-top{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:start;}
   .prod-badge{
-    display:inline-block;background:var(--orange-soft);color:var(--orange-deep);
+    display:inline-block;background:rgba(255,135,45,.16);color:#FF9D5C;
     font-weight:800;font-size:13px;letter-spacing:.04em;padding:9px 16px;border-radius:999px;
   }
-  .prod-left h2{margin-top:16px;font-size:30px;font-weight:800;letter-spacing:-.01em;line-height:1.25;color:var(--ink);}
-  .prod-left .prod-accent{color:#FF671A;}
+  .prod-left h2{margin-top:16px;font-size:30px;font-weight:800;letter-spacing:-.01em;line-height:1.25;color:#fff;}
+  .prod-left .prod-accent{color:#FF9D5C;}
   .prod-right{padding-top:12px;}
-  .prod-right .desc{color:var(--muted);font-size:15px;line-height:1.65;max-width:400px;}
-  .prod-right .desc b{color:var(--ink);font-weight:700;}
+  .prod-right .desc{color:#aebde0;font-size:15px;line-height:1.65;max-width:400px;}
+  .prod-right .desc b{color:#fff;font-weight:700;}
   .prod-steps{
     display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;
     margin-top:32px;padding:20px 0;
-    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);
   }
-  .prod-steps .step{font-family:'Golos Text';font-weight:800;font-size:16px;color:var(--blue-deep);}
+  .prod-steps .step{font-family:'Golos Text';font-weight:800;font-size:16px;color:#8fb2f5;}
   .prod-video-wrap{margin-top:32px;border-radius:22px;overflow:hidden;}
   .prod-video{display:block;width:100%;height:auto;}
   .prod-cta{text-align:center;margin-top:24px;}
