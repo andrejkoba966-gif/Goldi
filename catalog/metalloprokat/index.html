@@ -96,7 +96,9 @@
   .subcard .arrow{
     width:36px;height:36px;border-radius:50%;background:linear-gradient(110deg, #FF872D 0%, #FF671A 100%);color:#14243B;box-shadow:0 9px 20px rgba(250,116,25,.18);
     display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;
+    transition:transform .2s ease;
   }
+  .subcard:hover .arrow{transform:translate(3px,-3px);}
 
   /* ---------- Footer (matches main site) ---------- */
   footer{background:linear-gradient(180deg,#0e1e35,#0a1730);color:#dfe6f5;border-radius:36px 36px 0 0;margin-top:20px;padding:56px 0 26px;}

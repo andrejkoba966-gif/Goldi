@@ -326,7 +326,8 @@
 
   /* Catalog three cards */
   .catalog3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-  .catcard{border-radius:var(--radius-md);overflow:hidden;}
+  .catcard{border-radius:var(--radius-md);overflow:hidden;transition:transform .18s ease, box-shadow .18s ease;}
+  .catcard:hover{transform:translateY(-4px);box-shadow:0 26px 46px -20px rgba(20,60,140,.3);}
   .catcard .img{height:190px;background-size:cover;background-position:center;position:relative;}
   .catcard .img:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(20,50,110,.05), rgba(10,25,60,.35));}
   .catcard .body{padding:22px 22px 24px;display:flex;justify-content:space-between;align-items:center;}
@@ -334,7 +335,9 @@
   .catcard .arrow{
     width:38px;height:38px;border-radius:50%;background:linear-gradient(110deg, #FF872D 0%, #FF671A 100%);color:#14243B;box-shadow:0 9px 20px rgba(250,116,25,.18);
     display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;
+    transition:transform .2s ease;
   }
+  .catcard:hover .arrow{transform:translate(3px,-3px);}
 
   /* About */
   .about{display:grid;grid-template-columns:1fr 0.95fr;gap:48px;align-items:center;}
