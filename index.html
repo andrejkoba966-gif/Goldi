@@ -192,12 +192,6 @@
     min-height:100%;border-radius:var(--radius-lg);
     box-shadow: var(--shadow);
   }
-  .hero-glare{
-    position:absolute;top:-60%;left:-100%;width:200%;height:220%;
-    pointer-events:none;opacity:0;z-index:2;
-    filter:blur(40px);
-  }
-  .hero-glare-warm{background:linear-gradient(65deg, transparent 43%, rgba(255,135,45,.1) 50%, transparent 57%);}
   .hero-slider .slide{
     position:absolute;inset:0;background-size:cover;background-position:center;
     opacity:0;transform:scale(1.045);
@@ -620,20 +614,6 @@
     body.play-intro .advstrip .advcard:nth-child(4){animation-delay:1.51s;}
   }
 
-  /* ---- Single soft warm glare on the slider card: plays on load on both
-     desktop and mobile (gated by body.play-glare), independent of the
-     desktop-only intro sequence above. ---- */
-  @keyframes introGlareWarm{
-    0%{transform:translateX(-60%);opacity:0;}
-    22%{opacity:var(--glare-peak,1);}
-    72%{opacity:var(--glare-peak,1);}
-    100%{transform:translateX(60%);opacity:0;}
-  }
-  body.play-glare .hero-glare-warm{animation:introGlareWarm .95s ease-in-out .85s forwards;}
-  @media(max-width:1080px){
-    :root{--glare-peak:.5;}
-  }
-
   @media(prefers-reduced-motion:reduce){
     body.play-intro header,
     body.play-intro .hero-main .badges,
@@ -642,7 +622,6 @@
     body.play-intro .hero-main .herofacts,
     body.play-intro .advstrip .advcard{opacity:1;animation:none;}
     body.play-intro .hero-slider{clip-path:none;animation:none;}
-    body.play-glare .hero-glare-warm{animation:none;opacity:0;}
   }
 
   /* ==================================================================
@@ -748,7 +727,6 @@
       var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var hasHash = !!window.location.hash;
       if(!reduced && !hasHash){
-        document.body.classList.add('play-glare');
         if(isDesktop){
           document.body.classList.add('play-intro');
         }
@@ -845,7 +823,6 @@
     </div>
 
     <div class="card hero-slider" id="heroSlider">
-      <div class="hero-glare hero-glare-warm" aria-hidden="true"></div>
       <div class="slide active" data-name="Арматура А500С" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164065468190-331x280.jpg')"></div>
       <div class="slide" data-name="Кругла сталь" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164074595700-331x280.jpg')"></div>
       <div class="slide" data-name="Труби профільні" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164070478978-331x280.jpg')"></div>
