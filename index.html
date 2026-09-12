@@ -143,6 +143,7 @@
     grid-template-columns: 1.15fr 1fr;
     gap:18px;
     margin-top:22px;
+    align-items:stretch;
   }
   .card{border-radius:var(--radius-lg);}
 
@@ -189,42 +190,17 @@
   /* Hero right - product slideshow (real product photos, name + in-stock badge) */
   .hero-slider{
     position:relative;overflow:hidden;color:#fff;
-    min-height:100%;border-radius:var(--radius-lg);
+    aspect-ratio:4 / 5;
+    width:100%;max-width:480px;
+    justify-self:end;
+    border-radius:var(--radius-lg);
     box-shadow: var(--shadow);
   }
-  .hero-slider .slide{
-    position:absolute;inset:0;background-size:cover;background-position:center;
-    opacity:0;transform:scale(1.045);
-    transition:opacity 1.1s ease, transform 6.5s ease;
+  .hero-video{
+    width:100%;height:100%;
+    object-fit:cover;object-position:center 52%;
+    display:block;
   }
-  .hero-slider .slide.active{opacity:1;transform:scale(1);z-index:1;}
-  .hero-slider .slide-overlay{
-    position:absolute;inset:0;z-index:2;pointer-events:none;
-    background:linear-gradient(180deg, rgba(6,14,34,.12) 0%, rgba(7,16,38,.32) 45%, rgba(4,10,26,.92) 100%);
-  }
-  .hero-slider .slide-content{
-    position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:space-between;
-    padding:28px 28px 30px;
-  }
-  .hero-slider .tag{font-size:12px;font-weight:700;letter-spacing:.08em;color:#8fb2f5;}
-  .hero-slider .slide-name{
-    font-family:'Golos Text';font-weight:800;font-size:28px;line-height:1.15;
-    transition:opacity .25s ease;
-  }
-  .hero-slider .stock-badge{
-    display:inline-flex;align-items:center;gap:7px;width:fit-content;margin-top:14px;
-    background:linear-gradient(110deg, #FF872D 0%, #FF671A 100%);color:#14243B;font-weight:700;font-size:12.5px;
-    padding:9px 15px;border-radius:999px;
-    box-shadow:0 9px 20px rgba(250,116,25,.18);
-    transition:opacity .25s ease;
-  }
-  .hero-slider .stock-badge i{width:6px;height:6px;border-radius:50%;background:#14243B;display:inline-block;}
-  .hero-slider .slide-dots{position:absolute;bottom:24px;right:26px;z-index:4;display:flex;gap:6px;}
-  .hero-slider .slide-dots .dot{
-    width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.38);cursor:pointer;
-    transition:background .2s, width .2s;
-  }
-  .hero-slider .slide-dots .dot.active{background:#fff;width:20px;border-radius:4px;}
 
   /* Advantages row — first screen, sales-focused */
   .advstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:18px;}
@@ -609,11 +585,11 @@
     .hero-main .btn{width:auto;justify-content:center;padding:13px 24px;font-size:15px;}
     .herofacts{font-size:12.5px;gap:10px;flex-wrap:wrap;margin-top:0;}
 
-    /* Hero visual: proper rounded tile on mobile, not full-bleed */
+    /* Hero visual: keeps the same 4:5 ratio, full width within page gutters */
     .hero-slider{
       margin-left:0;margin-right:0;
       border-radius:24px;
-      height:230px;min-height:0;
+      max-width:none;
       box-shadow:0 20px 40px -22px rgba(20,50,100,.35);
     }
 
@@ -684,10 +660,6 @@
     .bento{gap:clamp(18px, 8px + 1vw, 22px);margin-top:clamp(22px, 12px + 1vw, 26px);}
     .hero-main{padding:clamp(44px, 32px + 1vw, 46px) clamp(44px, 32px + 1vw, 46px) clamp(40px, 30px + 0.8vw, 41.2px);gap:clamp(24px, 18px + 0.5vw, 25px);}
     .btn-request{padding:clamp(12px, 8px + 0.4vw, 13.6px) clamp(20px, 14px + 0.6vw, 22.4px);font-size:clamp(14.5px, 11.9px + 0.238vw, 15.2px);}
-
-    .hero-slider .slide-content{padding:clamp(28px, 20px + 0.6vw, 28.4px);}
-    .hero-slider .slide-name{font-size:clamp(28px, 22px + 0.5vw, 29px);}
-    .hero-slider .stock-badge{padding:clamp(9px, 5px + 0.4vw, 10.6px) clamp(15px, 9px + 0.6vw, 17.4px);font-size:clamp(12.5px, 10.5px + 0.2vw, 13.3px);}
 
     .advstrip{gap:20px;margin-top:clamp(18px, 8px + 1vw, 22px);}
 
@@ -869,22 +841,7 @@
     </div>
 
     <div class="card hero-slider" id="heroSlider">
-      <div class="slide active" data-name="Арматура А500С" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164065468190-331x280.jpg')"></div>
-      <div class="slide" data-name="Кругла сталь" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164074595700-331x280.jpg')"></div>
-      <div class="slide" data-name="Труби профільні" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164070478978-331x280.jpg')"></div>
-      <div class="slide" data-name="Швелер" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164073419473-331x280.jpg')"></div>
-      <div class="slide" data-name="Катанка" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164072843088-331x280.jpg')"></div>
-      <div class="slide" data-name="Кутик" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164072163160-331x280.jpg')"></div>
-
-      <div class="slide-overlay"></div>
-      <div class="slide-content">
-        <div class="tag">ГАРЯЧИЙ ПРОКАТ</div>
-        <div>
-          <div class="slide-name" id="slideName">Арматура А500С</div>
-          <div class="stock-badge"><i></i>В наявності</div>
-        </div>
-      </div>
-      <div class="slide-dots" id="slideDots"></div>
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" src="https://res.cloudinary.com/jvpkjmwm/video/upload/v1789227834/VN20260912_172304.mp4"></video>
     </div>
   </div>
 
@@ -1257,49 +1214,6 @@
       btn.classList.remove('active');
       btn.setAttribute('aria-expanded', 'false');
     }));
-  })();
-
-  // ---- Hero product slideshow: auto-rotate real product photos ----
-  (function(){
-    const slider = document.getElementById('heroSlider');
-    if(!slider) return;
-    const slides = Array.from(slider.querySelectorAll('.slide'));
-    const nameEl = document.getElementById('slideName');
-    const dotsWrap = document.getElementById('slideDots');
-    let current = 0;
-    let timer = null;
-
-    slides.forEach((_, i) => {
-      const d = document.createElement('span');
-      d.className = 'dot' + (i === 0 ? ' active' : '');
-      d.addEventListener('click', () => goTo(i));
-      dotsWrap.appendChild(d);
-    });
-    const dots = Array.from(dotsWrap.children);
-
-    function goTo(i){
-      slides[current].classList.remove('active');
-      dots[current].classList.remove('active');
-      current = i;
-      slides[current].classList.add('active');
-      dots[current].classList.add('active');
-      nameEl.style.opacity = 0;
-      setTimeout(() => {
-        nameEl.textContent = slides[current].dataset.name;
-        nameEl.style.opacity = 1;
-      }, 200);
-    }
-    function next(){ goTo((current + 1) % slides.length); }
-
-    function start(){ timer = setInterval(next, 3500); }
-    function stop(){ clearInterval(timer); }
-    if(document.body.classList.contains('play-intro')){
-      setTimeout(start, 2000);
-    } else {
-      start();
-    }
-    slider.addEventListener('mouseenter', stop);
-    slider.addEventListener('mouseleave', start);
   })();
 
   // ---- Lead form: fake-submit UX (a real backend/CRM would replace this) ----
