@@ -179,6 +179,7 @@
   .hero-main h1 .accent{color:#FF671A;}
   .hero-main .lead{font-size:17.8px;color:var(--muted);max-width:500px;line-height:1.58;}
   .herofacts{display:flex;align-items:center;gap:14px;font-size:13.5px;color:var(--muted);margin-top:-6px;}
+  .hero-infobar{display:none;}
   .herofacts .divider{width:1px;height:14px;background:var(--line);}
   .btn-arrow{display:inline-flex;font-size:1.1em;transition:transform .2s ease;}
   .btn-dark:hover .btn-arrow{transform:translate(2px,-2px);}
@@ -658,6 +659,12 @@
     header{padding:clamp(18px, 14px + 0.4vw, 20px) 0 0;}
     .bento{gap:clamp(22px, 18px + 0.4vw, 26px);margin-top:clamp(22px, 12px + 1vw, 26px);}
     .hero-main{padding:clamp(44px, 32px + 1vw, 46px) clamp(44px, 32px + 1vw, 46px) clamp(32px, 24px + 0.6vw, 34px);gap:clamp(24px, 18px + 0.5vw, 25px);}
+    .hero-main .herofacts{display:none;}
+    .hero-main .hero-infobar{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      margin-top:2px;padding-top:16px;border-top:1px solid var(--line);
+      font-size:13.5px;color:var(--muted);
+    }
     .btn-request{padding:clamp(12px, 8px + 0.4vw, 13.6px) clamp(20px, 14px + 0.6vw, 22.4px);font-size:clamp(14.5px, 11.9px + 0.238vw, 15.2px);}
 
     .advstrip{gap:20px;margin-top:clamp(18px, 8px + 1vw, 22px);}
@@ -835,6 +842,11 @@
       <div class="herofacts">
         <span>Металопрокат та виробництво</span>
         <span class="divider"></span>
+        <span>Київ · Кременчук</span>
+      </div>
+      <div class="hero-infobar">
+        <span>Від підбору до доставки</span>
+        <span>Все в одному замовленні</span>
         <span>Київ · Кременчук</span>
       </div>
     </div>
