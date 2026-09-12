@@ -151,6 +151,27 @@
     .subcard h4{font-size:clamp(17.5px, 14px + 0.32vw, 18.5px);}
     .subcard .count{font-size:clamp(12.5px, 10.5px + 0.2vw, 13.3px);}
   }
+
+  /* ---------- Button hover lift (applies to every button-style element) ---------- */
+  .btn, .btn-request, .rform .submit, .chipcard.final {
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:hover, .btn-request:hover, .rform .submit:hover, .chipcard.final:hover {
+    transform: translateY(-3px);
+  }
+  .btn-dark:hover, .btn-request:hover, .rform .submit:hover {
+    box-shadow: 0 16px 32px -10px rgba(250,116,25,.42);
+  }
+  .btn-outline:hover {
+    background:#fff;
+    box-shadow: 0 12px 26px -12px rgba(20,50,100,.28);
+  }
+  .chipcard.final:hover {
+    box-shadow: 0 16px 32px -10px rgba(250,116,25,.42);
+  }
+  .btn:active, .btn-request:active, .rform .submit:active, .chipcard.final:active {
+    transform: translateY(-1px);
+  }
 </style>
 </head>
 <body>
