@@ -619,7 +619,6 @@
     @keyframes introFadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
     @keyframes introFade{from{opacity:0;}to{opacity:1;}}
     @keyframes introSliderReveal{from{clip-path:inset(0 0 100% 0);}to{clip-path:inset(0 0 0% 0);}}
-    @keyframes introCardUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
     body.play-intro header{opacity:0;animation:introFade .5s ease forwards;}
     body.play-intro .hero-main .badges{opacity:0;animation:introFadeUp .5s cubic-bezier(.22,.68,0,1.01) .25s forwards;}
@@ -629,11 +628,15 @@
 
     body.play-intro .hero-slider{clip-path:inset(0 0 100% 0);animation:introSliderReveal .55s cubic-bezier(.22,.68,0,1.01) .32s forwards;}
 
-    body.play-intro .advstrip .advcard{opacity:0;animation:introCardUp .5s cubic-bezier(.22,.68,0,1.01) forwards;}
-    body.play-intro .advstrip .advcard:nth-child(1){animation-delay:1.15s;}
-    body.play-intro .advstrip .advcard:nth-child(2){animation-delay:1.27s;}
-    body.play-intro .advstrip .advcard:nth-child(3){animation-delay:1.39s;}
-    body.play-intro .advstrip .advcard:nth-child(4){animation-delay:1.51s;}
+    body.play-intro .advstrip .advcard{
+      opacity:0;transform:translateY(20px);
+      transition:opacity .5s cubic-bezier(.22,.68,0,1.01), transform .5s cubic-bezier(.22,.68,0,1.01);
+    }
+    body.play-intro .advstrip.in-view .advcard{opacity:1;transform:translateY(0);}
+    body.play-intro .advstrip.in-view .advcard:nth-child(1){transition-delay:0s;}
+    body.play-intro .advstrip.in-view .advcard:nth-child(2){transition-delay:.12s;}
+    body.play-intro .advstrip.in-view .advcard:nth-child(3){transition-delay:.24s;}
+    body.play-intro .advstrip.in-view .advcard:nth-child(4){transition-delay:.36s;}
   }
 
   @media(prefers-reduced-motion:reduce){
@@ -642,7 +645,7 @@
     body.play-intro .hero-main .lead,
     body.play-intro .hero-main .btnrow,
     body.play-intro .hero-main .herofacts,
-    body.play-intro .advstrip .advcard{opacity:1;animation:none;}
+    body.play-intro .advstrip .advcard{opacity:1;transform:none;transition:none;}
     body.play-intro .hero-slider{clip-path:none;animation:none;}
   }
 
@@ -1199,6 +1202,22 @@
 </footer>
 
 <script>
+  // ---- Advantage cards: reveal on scroll into view (desktop intro only) ----
+  (function(){
+    if(!document.body.classList.contains('play-intro')) return;
+    var strip = document.querySelector('.advstrip');
+    if(!strip) return;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          strip.classList.add('in-view');
+          io.unobserve(strip);
+        }
+      });
+    }, { threshold: 0.2 });
+    io.observe(strip);
+  })();
+
   // ---- Sticky nav: frosted-glass background once actually scrolled ----
   (function(){
     const bar = document.querySelector('.headbottom');
