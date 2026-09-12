@@ -321,13 +321,21 @@
   .prod-left .prod-accent{color:#FF9D5C;}
   .prod-right{padding-top:12px;}
   .prod-right .desc{color:#aebde0;font-size:15px;line-height:1.65;max-width:400px;}
+  .prod-right .desc + .desc{margin-top:14px;}
   .prod-right .desc b{color:#fff;font-weight:700;}
   .prod-steps{
     display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;
-    margin-top:32px;padding:20px 0;
+    margin-top:32px;padding:24px 0;
     border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);
   }
-  .prod-steps .step{font-family:'Golos Text';font-weight:800;font-size:16px;color:#8fb2f5;}
+  .prod-steps .step{display:flex;align-items:center;gap:12px;}
+  .prod-steps .step-ico{
+    width:38px;height:38px;border-radius:11px;flex-shrink:0;
+    background:rgba(255,135,45,.14);color:#FF9D5C;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .prod-steps .step-ico svg{width:20px;height:20px;}
+  .prod-steps .step-label{font-family:'Golos Text';font-weight:800;font-size:15.5px;color:#dfe6f5;line-height:1.3;}
   .prod-video-wrap{margin-top:32px;border-radius:22px;overflow:hidden;}
   .prod-video{display:block;width:100%;height:auto;}
   .prod-cta{text-align:center;margin-top:24px;}
@@ -556,9 +564,10 @@
     .prod-top{grid-template-columns:1fr;gap:16px;}
     .prod-right{padding-top:0;}
     .prod-left h2{font-size:22px;}
+    .prod-left h2 br{content:"";display:block;margin-top:10px;}
     .prod-right .desc{font-size:14px;max-width:none;}
-    .prod-steps{grid-template-columns:1fr;gap:10px;margin-top:18px;padding:14px 0;text-align:left;}
-    .prod-steps .step{font-size:14px;}
+    .prod-steps{grid-template-columns:1fr;gap:16px;margin-top:18px;padding:18px 0;text-align:left;}
+    .prod-steps .step-label{font-size:14.5px;}
     .prod-video-wrap{margin-top:20px;border-radius:16px;}
     .prod-cta{margin-top:20px;}
 
@@ -934,13 +943,29 @@
           <h2>Надаємо металу потрібну форму.<br><span class="prod-accent">Вашим ідеям — міцну основу.</span></h2>
         </div>
         <div class="prod-right">
-          <p class="desc"><b>Виробляємо кладочну зварену сітку «Армопояс», дріт ВР-1 та стикозварну арматуру.</b> Виконуємо плазмове різання на обладнанні з ЧПУ Hypertherm.</p>
+          <p class="desc"><b>Виробляємо кладочну зварену сітку «Армопояс», дріт ВР-1 та стикозварну арматуру.</b></p>
+          <p class="desc">Виконуємо плазмове різання на обладнанні з ЧПУ Hypertherm.</p>
         </div>
       </div>
       <div class="prod-steps">
-        <div class="step">Ваше завдання</div>
-        <div class="step">Точна обробка</div>
-        <div class="step">Готовий матеріал</div>
+        <div class="step">
+          <span class="step-ico">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 4h8a2 2 0 0 1 2 2v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.6"/><path d="M9 3h6v2a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1V3z" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 11h7M8.5 14.5h7M8.5 18h4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </span>
+          <span class="step-label">Ваше завдання</span>
+        </div>
+        <div class="step">
+          <span class="step-ico">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v3M12 18v3M4.2 6.2l2.1 2.1M17.7 15.7l2.1 2.1M3 12h3M18 12h3M4.2 17.8l2.1-2.1M17.7 8.3l2.1-2.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/></svg>
+          </span>
+          <span class="step-label">Точна обробка</span>
+        </div>
+        <div class="step">
+          <span class="step-ico">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="7" width="16" height="13" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M4 11h16" stroke="currentColor" stroke-width="1.6"/><path d="M9 4.5h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9.5 15.2l1.8 1.8 3.2-3.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="step-label">Готовий матеріал</span>
+        </div>
       </div>
       <div class="prod-video-wrap">
         <video class="prod-video" autoplay muted loop playsinline preload="metadata" src="https://res.cloudinary.com/jvpkjmwm/video/upload/v1789198516/vr2_1.mp4"></video>
