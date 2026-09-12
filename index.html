@@ -193,11 +193,11 @@
     box-shadow: var(--shadow);
   }
   .hero-glare{
-    position:absolute;top:-30%;left:-30%;width:160%;height:160%;
+    position:absolute;top:-60%;left:-100%;width:200%;height:220%;
     pointer-events:none;opacity:0;z-index:2;
+    filter:blur(40px);
   }
-  .hero-glare-warm{background:linear-gradient(75deg, transparent 42%, rgba(255,150,70,.5) 50%, transparent 58%);}
-  .hero-glare-cool{background:linear-gradient(75deg, transparent 42%, rgba(40,85,217,.28) 50%, transparent 58%);}
+  .hero-glare-warm{background:linear-gradient(65deg, transparent 43%, rgba(255,135,45,.1) 50%, transparent 57%);}
   .hero-slider .slide{
     position:absolute;inset:0;background-size:cover;background-position:center;
     opacity:0;transform:scale(1.045);
@@ -603,18 +603,6 @@
     @keyframes introFadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
     @keyframes introFade{from{opacity:0;}to{opacity:1;}}
     @keyframes introSliderReveal{from{clip-path:inset(0 0 100% 0);}to{clip-path:inset(0 0 0% 0);}}
-    @keyframes introGlareWarm{
-      0%{transform:translateX(-130%) skewX(-18deg);opacity:0;}
-      12%{opacity:1;}
-      78%{opacity:1;}
-      100%{transform:translateX(130%) skewX(-18deg);opacity:0;}
-    }
-    @keyframes introGlareCool{
-      0%{transform:translateX(130%) skewX(-18deg);opacity:0;}
-      12%{opacity:1;}
-      78%{opacity:1;}
-      100%{transform:translateX(-130%) skewX(-18deg);opacity:0;}
-    }
     @keyframes introCardUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
     body.play-intro header{opacity:0;animation:introFade .5s ease forwards;}
@@ -624,15 +612,28 @@
     body.play-intro .hero-main .herofacts{opacity:0;animation:introFadeUp .5s cubic-bezier(.22,.68,0,1.01) .72s forwards;}
 
     body.play-intro .hero-slider{clip-path:inset(0 0 100% 0);animation:introSliderReveal .55s cubic-bezier(.22,.68,0,1.01) .32s forwards;}
-    body.play-intro .hero-glare-warm{animation:introGlareWarm .65s linear .88s forwards;}
-    body.play-intro .hero-glare-cool{animation:introGlareCool .65s linear 1.03s forwards;}
 
     body.play-intro .advstrip .advcard{opacity:0;animation:introCardUp .5s cubic-bezier(.22,.68,0,1.01) forwards;}
-    body.play-intro .advstrip .advcard:nth-child(1){animation-delay:1.3s;}
-    body.play-intro .advstrip .advcard:nth-child(2){animation-delay:1.42s;}
-    body.play-intro .advstrip .advcard:nth-child(3){animation-delay:1.54s;}
-    body.play-intro .advstrip .advcard:nth-child(4){animation-delay:1.66s;}
+    body.play-intro .advstrip .advcard:nth-child(1){animation-delay:1.15s;}
+    body.play-intro .advstrip .advcard:nth-child(2){animation-delay:1.27s;}
+    body.play-intro .advstrip .advcard:nth-child(3){animation-delay:1.39s;}
+    body.play-intro .advstrip .advcard:nth-child(4){animation-delay:1.51s;}
   }
+
+  /* ---- Single soft warm glare on the slider card: plays on load on both
+     desktop and mobile (gated by body.play-glare), independent of the
+     desktop-only intro sequence above. ---- */
+  @keyframes introGlareWarm{
+    0%{transform:translateX(-60%);opacity:0;}
+    22%{opacity:var(--glare-peak,1);}
+    72%{opacity:var(--glare-peak,1);}
+    100%{transform:translateX(60%);opacity:0;}
+  }
+  body.play-glare .hero-glare-warm{animation:introGlareWarm .95s ease-in-out .85s forwards;}
+  @media(max-width:1080px){
+    :root{--glare-peak:.5;}
+  }
+
   @media(prefers-reduced-motion:reduce){
     body.play-intro header,
     body.play-intro .hero-main .badges,
@@ -641,8 +642,7 @@
     body.play-intro .hero-main .herofacts,
     body.play-intro .advstrip .advcard{opacity:1;animation:none;}
     body.play-intro .hero-slider{clip-path:none;animation:none;}
-    body.play-intro .hero-glare-warm,
-    body.play-intro .hero-glare-cool{animation:none;opacity:0;}
+    body.play-glare .hero-glare-warm{animation:none;opacity:0;}
   }
 
   /* ==================================================================
@@ -747,8 +747,11 @@
       var isDesktop = window.matchMedia('(min-width:1081px)').matches;
       var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var hasHash = !!window.location.hash;
-      if(isDesktop && !reduced && !hasHash){
-        document.body.classList.add('play-intro');
+      if(!reduced && !hasHash){
+        document.body.classList.add('play-glare');
+        if(isDesktop){
+          document.body.classList.add('play-intro');
+        }
       }
     }catch(e){}
   })();
@@ -843,7 +846,6 @@
 
     <div class="card hero-slider" id="heroSlider">
       <div class="hero-glare hero-glare-warm" aria-hidden="true"></div>
-      <div class="hero-glare hero-glare-cool" aria-hidden="true"></div>
       <div class="slide active" data-name="Арматура А500С" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164065468190-331x280.jpg')"></div>
       <div class="slide" data-name="Кругла сталь" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164074595700-331x280.jpg')"></div>
       <div class="slide" data-name="Труби профільні" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164070478978-331x280.jpg')"></div>
