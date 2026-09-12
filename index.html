@@ -192,6 +192,12 @@
     min-height:100%;border-radius:var(--radius-lg);
     box-shadow: var(--shadow);
   }
+  .hero-glare{
+    position:absolute;top:-30%;left:-30%;width:160%;height:160%;
+    pointer-events:none;opacity:0;z-index:2;
+  }
+  .hero-glare-warm{background:linear-gradient(75deg, transparent 42%, rgba(255,150,70,.5) 50%, transparent 58%);}
+  .hero-glare-cool{background:linear-gradient(75deg, transparent 42%, rgba(40,85,217,.28) 50%, transparent 58%);}
   .hero-slider .slide{
     position:absolute;inset:0;background-size:cover;background-position:center;
     opacity:0;transform:scale(1.045);
@@ -586,6 +592,60 @@
   }
 
   /* ==================================================================
+     ENTRANCE INTRO — desktop only, plays once on a fresh homepage load.
+     Gated by body.play-intro, added via JS only when: viewport is
+     desktop-width, prefers-reduced-motion is NOT set, and the page was
+     not opened via a #hash link to a section. Nothing here changes the
+     default (already-visible) state of any element, so with JS/CSS
+     animations unavailable everything just stays visible as normal.
+     ================================================================== */
+  @media(min-width:1081px){
+    @keyframes introFadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes introFade{from{opacity:0;}to{opacity:1;}}
+    @keyframes introSliderReveal{from{clip-path:inset(0 0 100% 0);}to{clip-path:inset(0 0 0% 0);}}
+    @keyframes introGlareWarm{
+      0%{transform:translateX(-130%) skewX(-18deg);opacity:0;}
+      12%{opacity:1;}
+      78%{opacity:1;}
+      100%{transform:translateX(130%) skewX(-18deg);opacity:0;}
+    }
+    @keyframes introGlareCool{
+      0%{transform:translateX(130%) skewX(-18deg);opacity:0;}
+      12%{opacity:1;}
+      78%{opacity:1;}
+      100%{transform:translateX(-130%) skewX(-18deg);opacity:0;}
+    }
+    @keyframes introCardUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+    body.play-intro header{opacity:0;animation:introFade .5s ease forwards;}
+    body.play-intro .hero-main .badges{opacity:0;animation:introFadeUp .5s cubic-bezier(.22,.68,0,1.01) .25s forwards;}
+    body.play-intro .hero-main .lead{opacity:0;animation:introFadeUp .5s cubic-bezier(.22,.68,0,1.01) .45s forwards;}
+    body.play-intro .hero-main .btnrow{opacity:0;animation:introFadeUp .5s cubic-bezier(.22,.68,0,1.01) .6s forwards;}
+    body.play-intro .hero-main .herofacts{opacity:0;animation:introFadeUp .5s cubic-bezier(.22,.68,0,1.01) .72s forwards;}
+
+    body.play-intro .hero-slider{clip-path:inset(0 0 100% 0);animation:introSliderReveal .55s cubic-bezier(.22,.68,0,1.01) .32s forwards;}
+    body.play-intro .hero-glare-warm{animation:introGlareWarm .65s linear .88s forwards;}
+    body.play-intro .hero-glare-cool{animation:introGlareCool .65s linear 1.03s forwards;}
+
+    body.play-intro .advstrip .advcard{opacity:0;animation:introCardUp .5s cubic-bezier(.22,.68,0,1.01) forwards;}
+    body.play-intro .advstrip .advcard:nth-child(1){animation-delay:1.3s;}
+    body.play-intro .advstrip .advcard:nth-child(2){animation-delay:1.42s;}
+    body.play-intro .advstrip .advcard:nth-child(3){animation-delay:1.54s;}
+    body.play-intro .advstrip .advcard:nth-child(4){animation-delay:1.66s;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    body.play-intro header,
+    body.play-intro .hero-main .badges,
+    body.play-intro .hero-main .lead,
+    body.play-intro .hero-main .btnrow,
+    body.play-intro .hero-main .herofacts,
+    body.play-intro .advstrip .advcard{opacity:1;animation:none;}
+    body.play-intro .hero-slider{clip-path:none;animation:none;}
+    body.play-intro .hero-glare-warm,
+    body.play-intro .hero-glare-cool{animation:none;opacity:0;}
+  }
+
+  /* ==================================================================
      DESKTOP SCALE-UP — genuine desktop only (>1080px, above tablet
      breakpoints). Mobile (≤620) and tablet (≤900/1080) rules above are
      completely untouched. Container width already fluid via .wrap
@@ -678,6 +738,21 @@
 </style>
 </head>
 <body>
+<script>
+  // Decide, before anything paints, whether the homepage entrance
+  // animation should play: desktop width, no reduced-motion, and the
+  // page wasn't opened via a #hash link to a specific section.
+  (function(){
+    try{
+      var isDesktop = window.matchMedia('(min-width:1081px)').matches;
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var hasHash = !!window.location.hash;
+      if(isDesktop && !reduced && !hasHash){
+        document.body.classList.add('play-intro');
+      }
+    }catch(e){}
+  })();
+</script>
 
 <header>
   <div class="wrap headtop">
@@ -767,6 +842,8 @@
     </div>
 
     <div class="card hero-slider" id="heroSlider">
+      <div class="hero-glare hero-glare-warm" aria-hidden="true"></div>
+      <div class="hero-glare hero-glare-cool" aria-hidden="true"></div>
       <div class="slide active" data-name="Арматура А500С" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164065468190-331x280.jpg')"></div>
       <div class="slide" data-name="Кругла сталь" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164074595700-331x280.jpg')"></div>
       <div class="slide" data-name="Труби профільні" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164070478978-331x280.jpg')"></div>
@@ -1168,7 +1245,11 @@
 
     function start(){ timer = setInterval(next, 3500); }
     function stop(){ clearInterval(timer); }
-    start();
+    if(document.body.classList.contains('play-intro')){
+      setTimeout(start, 2000);
+    } else {
+      start();
+    }
     slider.addEventListener('mouseenter', stop);
     slider.addEventListener('mouseleave', start);
   })();
