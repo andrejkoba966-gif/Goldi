@@ -595,21 +595,6 @@
     .reveal{opacity:1;transform:none;transition:none;}
   }
 
-  /* ---------- Curtain reveal (left-to-right wipe) ---------- */
-  .curtain-reveal{
-    clip-path:inset(0 100% 0 0);
-    -webkit-clip-path:inset(0 100% 0 0);
-    transition:clip-path 1.1s cubic-bezier(.65,0,.15,1), -webkit-clip-path 1.1s cubic-bezier(.65,0,.15,1);
-    will-change:clip-path;
-  }
-  .curtain-reveal.in{
-    clip-path:inset(0 0 0 0);
-    -webkit-clip-path:inset(0 0 0 0);
-  }
-  @media (prefers-reduced-motion: reduce){
-    .curtain-reveal{clip-path:none;-webkit-clip-path:none;transition:none;}
-  }
-
   @media(max-width:1080px){
     .bento{grid-template-columns:1fr;}
     .advstrip{grid-template-columns:repeat(2,1fr);}
@@ -1087,7 +1072,7 @@
       <div class="prod-top">
         <div class="prod-left">
           <span class="prod-badge">ВЛАСНЕ ВИРОБНИЦТВО</span>
-          <h2 class="curtain-reveal">Надаємо металу потрібну форму.<br><span class="prod-accent">Вашим ідеям — міцну основу.</span></h2>
+          <h2>Надаємо металу потрібну форму.<br><span class="prod-accent">Вашим ідеям — міцну основу.</span></h2>
         </div>
         <div class="prod-right">
           <p class="desc"><b>Виробляємо кладочну зварену сітку «Армопояс», дріт ВР-1 та стикозварну арматуру.</b></p>
@@ -1214,7 +1199,7 @@
       <div class="av-top">
         <div class="av-left">
           <span class="eyebrow">ПРО КОМПАНІЮ</span>
-          <h2 class="curtain-reveal">GOLDI GROUP —<br><span class="accent">основа ваших <br class="d-break">проєктів.</span></h2>
+          <h2>GOLDI GROUP —<br><span class="accent">основа ваших <br class="d-break">проєктів.</span></h2>
         </div>
         <div class="av-right">
           <p class="av-lead">Від складу металопрокату — до будівельної бази з <br class="d-break">власним виробництвом.</p>
@@ -1517,17 +1502,6 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 
     els.forEach(el => io.observe(el));
-
-    const curtainEls = Array.from(document.querySelectorAll('.curtain-reveal'));
-    const curtainIo = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('in');
-          curtainIo.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3, rootMargin: '0px 0px -60px 0px' });
-    curtainEls.forEach(el => curtainIo.observe(el));
   });
 
   // ---- About video: autoplay muted while in view, pause off-screen, manual fallback ----
