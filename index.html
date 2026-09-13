@@ -112,8 +112,30 @@
     display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
     padding-top:14px;padding-bottom:14px;
   }
-  nav{display:flex;gap:22px;font-size:clamp(13px, 10.9px + 0.198vw, 13.6px);font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;}
+  nav{display:flex;align-items:center;gap:22px;font-size:clamp(13px, 10.9px + 0.198vw, 13.6px);font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;}
   nav a:hover{color:var(--blue);}
+
+  /* Catalog nav dropdown */
+  .nav-drop{position:relative;}
+  .nav-drop-toggle{
+    display:inline-flex;align-items:center;gap:6px;
+    font:inherit;color:inherit;background:none;border:none;padding:0;margin:0;cursor:pointer;
+  }
+  .nav-drop-toggle:hover{color:var(--blue);}
+  .nav-drop-arrow{flex-shrink:0;transition:transform .2s ease;}
+  .nav-drop.open .nav-drop-arrow{transform:rotate(180deg);}
+  .nav-drop-menu{
+    display:none;position:absolute;top:calc(100% + 14px);left:0;
+    min-width:280px;background:#fff;border-radius:16px;
+    box-shadow:0 20px 40px -18px rgba(20,50,100,.35);
+    padding:10px;z-index:60;
+    text-transform:none;letter-spacing:normal;
+  }
+  .nav-drop.open .nav-drop-menu{display:block;}
+  .nav-drop-item{display:block;padding:12px 14px;border-radius:10px;}
+  .nav-drop-item:hover{background:rgba(36,87,214,.08);}
+  .nav-drop-item .t{display:block;font-weight:700;font-size:14.5px;color:var(--ink);}
+  .nav-drop-item .d{display:block;font-weight:500;font-size:12.5px;color:var(--muted);margin-top:2px;}
 
   /* Mobile menu toggle + dropdown panel (hidden on desktop) */
   .menu-toggle{
@@ -136,6 +158,17 @@
   .mobile-nav-panel a{padding:13px 14px;border-radius:10px;font-weight:600;color:var(--ink-soft);}
   .mobile-nav-panel a:hover{background:rgba(36,87,214,.06);color:var(--blue-deep);}
   .mobile-nav-panel.open{display:flex;}
+  .mobile-nav-panel .nav-drop{position:static;}
+  .mobile-nav-panel .nav-drop-toggle{
+    width:100%;justify-content:space-between;padding:13px 14px;border-radius:10px;
+    font-size:inherit;font-weight:600;color:var(--ink-soft);
+  }
+  .mobile-nav-panel .nav-drop-toggle:hover{background:rgba(36,87,214,.06);color:var(--blue-deep);}
+  .mobile-nav-panel .nav-drop-menu{
+    display:none;position:static;box-shadow:none;padding:4px 0 6px 10px;
+    margin-top:2px;min-width:0;background:none;
+  }
+  .mobile-nav-panel .nav-drop.open .nav-drop-menu{display:block;}
 
   /* ---------- Bento grid ---------- */
   .bento{
@@ -851,7 +884,26 @@
     <nav>
       <a href="index.html">Головна</a>
       <a href="#production">Власне виробництво</a>
-      <a href="catalog/index.html">Каталог</a>
+      <div class="nav-drop">
+        <button type="button" class="nav-drop-toggle" aria-expanded="false" aria-haspopup="true">
+          Каталог
+          <svg class="nav-drop-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-drop-menu">
+          <a class="nav-drop-item" href="catalog/vlasne-vyrobnytstvo/index.html">
+            <span class="t">Власне виробництво</span>
+            <span class="d">Сітка, дріт та арматура</span>
+          </a>
+          <a class="nav-drop-item" href="catalog/metalloprokat/index.html">
+            <span class="t">Металопрокат</span>
+            <span class="d">Арматура, труби, лист та профілі</span>
+          </a>
+          <a class="nav-drop-item" href="catalog/budivelni-materialy/index.html">
+            <span class="t">Будівельні матеріали</span>
+            <span class="d">Понад 15000 номенклатурних позицій</span>
+          </a>
+        </div>
+      </div>
       <a href="#delivery">Послуги</a>
       <a href="dostavka-i-oplata/index.html">Доставка і оплата</a>
       <a href="#request">Контакти</a>
@@ -868,7 +920,26 @@
     <div class="mobile-nav-panel" id="mobileNavPanel">
       <a href="index.html">Головна</a>
       <a href="#production">Власне виробництво</a>
-      <a href="catalog/index.html">Каталог</a>
+      <div class="nav-drop">
+        <button type="button" class="nav-drop-toggle" aria-expanded="false" aria-haspopup="true">
+          Каталог
+          <svg class="nav-drop-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-drop-menu">
+          <a class="nav-drop-item" href="catalog/vlasne-vyrobnytstvo/index.html">
+            <span class="t">Власне виробництво</span>
+            <span class="d">Сітка, дріт та арматура</span>
+          </a>
+          <a class="nav-drop-item" href="catalog/metalloprokat/index.html">
+            <span class="t">Металопрокат</span>
+            <span class="d">Арматура, труби, лист та профілі</span>
+          </a>
+          <a class="nav-drop-item" href="catalog/budivelni-materialy/index.html">
+            <span class="t">Будівельні матеріали</span>
+            <span class="d">Понад 15000 номенклатурних позицій</span>
+          </a>
+        </div>
+      </div>
       <a href="#delivery">Послуги</a>
       <a href="dostavka-i-oplata/index.html">Доставка і оплата</a>
       <a href="#request">Контакти</a>
@@ -1272,6 +1343,38 @@
       btn.classList.remove('active');
       btn.setAttribute('aria-expanded', 'false');
     }));
+  })();
+
+  // ---- Catalog nav dropdown ----
+  (function(){
+    const drops = Array.from(document.querySelectorAll('.nav-drop'));
+    if(!drops.length) return;
+    function closeDrop(drop){
+      drop.classList.remove('open');
+      const t = drop.querySelector('.nav-drop-toggle');
+      if(t) t.setAttribute('aria-expanded', 'false');
+    }
+    drops.forEach(function(drop){
+      const toggle = drop.querySelector('.nav-drop-toggle');
+      if(!toggle) return;
+      toggle.addEventListener('click', function(e){
+        e.stopPropagation();
+        const isOpen = drop.classList.contains('open');
+        drops.forEach(closeDrop);
+        if(!isOpen){
+          drop.classList.add('open');
+          toggle.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+    document.addEventListener('click', function(e){
+      drops.forEach(function(drop){
+        if(!drop.contains(e.target)) closeDrop(drop);
+      });
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') drops.forEach(closeDrop);
+    });
   })();
 
   // ---- Lead form: fake-submit UX (a real backend/CRM would replace this) ----
