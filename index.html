@@ -1522,12 +1522,13 @@
     const curtainIo = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if(entry.isIntersecting){
-          entry.target.classList.add('in');
+          const target = entry.target.querySelector('.curtain-reveal') || entry.target;
+          target.classList.add('in');
           curtainIo.unobserve(entry.target);
         }
       });
     }, { threshold: 0.3, rootMargin: '0px 0px -60px 0px' });
-    curtainEls.forEach(el => curtainIo.observe(el));
+    curtainEls.forEach(el => curtainIo.observe(el.parentElement));
   });
 
   // ---- About video: autoplay muted while in view, pause off-screen, manual fallback ----
