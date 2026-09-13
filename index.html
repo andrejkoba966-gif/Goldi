@@ -924,7 +924,7 @@
       <span></span><span></span><span></span>
     </button>
     <nav>
-      <a href="index.html">Головна</a>
+      <a href="index.html" class="nav-home">Головна</a>
       <a href="#production">Власне виробництво</a>
       <div class="nav-drop">
         <button type="button" class="nav-drop-toggle" aria-expanded="false" aria-haspopup="true">
@@ -960,7 +960,7 @@
     </div>
     <a class="btn-request" href="#request">Залишити заявку</a>
     <div class="mobile-nav-panel" id="mobileNavPanel">
-      <a href="index.html">Головна</a>
+      <a href="index.html" class="nav-home">Головна</a>
       <a href="#production">Власне виробництво</a>
       <div class="nav-drop">
         <button type="button" class="nav-drop-toggle" aria-expanded="false" aria-haspopup="true">
@@ -1421,6 +1421,14 @@
     window.addEventListener('scroll', update, { passive:true });
     window.addEventListener('resize', update);
   })();
+
+  // ---- "Головна" nav link: scroll to top instead of reloading the page ----
+  document.querySelectorAll('.nav-home').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
 
   // ---- Catalog nav dropdown ----
   (function(){
