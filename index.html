@@ -382,6 +382,15 @@
   .av-right{padding-top:2px;}
   .av-right .av-lead{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;}
   .av-right .desc{color:var(--ink-soft);font-size:15px;line-height:1.65;max-width:440px;}
+  .d-break{display:none;}
+  @media(min-width:1081px){
+    .av-left .eyebrow{color:var(--orange-deep);letter-spacing:.1em;}
+    .av-top{grid-template-columns:1fr 1fr;gap:56px;margin-bottom:16px;}
+    .av-left h2{font-size:46px;line-height:1.08;}
+    .av-right .av-lead{font-size:20px;line-height:1.3;}
+    .av-right .desc{max-width:520px;}
+    .d-break{display:block;}
+  }
   .av-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
   .av-fact .v{font-family:'Golos Text';font-weight:800;font-size:19px;color:var(--blue-deep);}
   .av-fact .l{font-size:13px;color:var(--muted);margin-top:4px;}
@@ -1092,10 +1101,10 @@
       <div class="av-top">
         <div class="av-left">
           <span class="eyebrow">ПРО КОМПАНІЮ</span>
-          <h2>GOLDI GROUP —<br><span class="accent">основа ваших проєктів.</span></h2>
+          <h2>GOLDI GROUP —<br><span class="accent">основа ваших <br class="d-break">проєктів.</span></h2>
         </div>
         <div class="av-right">
-          <p class="av-lead">Від складу металопрокату — до будівельної бази з власним виробництвом.</p>
+          <p class="av-lead">Від складу металопрокату — до будівельної бази з <br class="d-break">власним виробництвом.</p>
           <p class="desc">З 2017 року допомагаємо забезпечувати будівництво та виробництво металом і будівельними матеріалами. Працюємо в Києві та Кременчуці, виготовляємо власну продукцію й організовуємо доставку по Україні.</p>
         </div>
       </div>
