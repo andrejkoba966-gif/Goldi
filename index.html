@@ -374,6 +374,37 @@
   .stats-strip .s .v{font-family:'Golos Text';font-weight:800;font-size:30px;color:var(--orange-deep);}
   .stats-strip .s .l{font-size:13px;color:var(--muted);margin-top:2px;}
 
+  /* About video block */
+  .av-card{padding:44px 44px 40px;display:flex;flex-direction:column;gap:28px;}
+  .av-top{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:start;}
+  .av-left h2{margin-top:14px;font-size:32px;font-weight:800;letter-spacing:-.01em;line-height:1.25;}
+  .av-left h2 .accent{color:#FF671A;}
+  .av-right{padding-top:2px;}
+  .av-right .av-lead{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;}
+  .av-right .desc{color:var(--ink-soft);font-size:15px;line-height:1.65;max-width:440px;}
+  .av-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .av-fact .v{font-family:'Golos Text';font-weight:800;font-size:19px;color:var(--blue-deep);}
+  .av-fact .l{font-size:13px;color:var(--muted);margin-top:4px;}
+  .av-video-wrap{position:relative;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);}
+  .av-video{display:block;width:100%;height:auto;max-height:560px;object-fit:cover;}
+  .av-overlay{
+    position:absolute;top:24px;left:24px;max-width:290px;
+    background:linear-gradient(180deg,#0e1e35,#0a1730);
+    border-radius:18px;padding:22px 22px 24px;color:#fff;
+    box-shadow:0 20px 40px -18px rgba(10,25,60,.55);
+  }
+  .av-overlay .av-logo{height:26px;width:auto;display:block;margin-bottom:16px;}
+  .av-overlay .av-tit{font-weight:800;font-size:13.5px;letter-spacing:.03em;margin-bottom:16px;}
+  .av-overlay .av-tit span{color:#FF9D5C;}
+  .av-overlay .av-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;}
+  .av-overlay .av-ico{width:28px;height:28px;border-radius:50%;background:rgba(255,135,45,.18);color:#FF9D5C;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .av-overlay .av-ico svg{width:14px;height:14px;}
+  .av-overlay .av-label{font-size:10.5px;color:#aebde0;letter-spacing:.03em;font-weight:700;margin-bottom:3px;text-transform:uppercase;}
+  .av-overlay .av-val{font-size:13.5px;font-weight:700;color:#fff;display:block;}
+  .av-overlay a.av-val:hover{color:#FF9D5C;}
+  .av-overlay .av-note{font-size:12.5px;color:#dfe6f5;line-height:1.5;margin-top:16px;font-weight:600;}
+  .av-cta{text-align:center;}
+
   /* Chips grid - metalloprokat range */
   .chipgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
   .chipcard{border-radius:var(--radius-sm);padding:20px 20px 26px;position:relative;overflow:hidden;min-height:96px;display:flex;align-items:flex-end;}
@@ -531,6 +562,8 @@
     .row3{grid-template-columns:1fr;}
     .about{grid-template-columns:1fr;}
     .offer{grid-template-columns:1fr;}
+    .av-top{grid-template-columns:1fr;gap:20px;}
+    .av-facts{grid-template-columns:1fr 1fr;}
     .catalog3,.chipgrid,.prodgrid,.revrow{grid-template-columns:repeat(2,1fr);}
     .footgrid{grid-template-columns:1fr 1fr;}
     .hero-main h1{font-size:44px;}
@@ -540,6 +573,10 @@
     .advstrip,.chipgrid,.catalog3,.prodgrid,.revrow{grid-template-columns:1fr;}
     .footgrid{grid-template-columns:1fr;}
     .contacts .cities{gap:24px;}
+
+    .av-card{padding:24px 18px 28px;gap:20px;}
+    .av-facts{grid-template-columns:1fr;gap:16px;padding:18px 0;}
+    .av-overlay{position:static;max-width:none;margin-bottom:14px;}
 
     .prod-card{padding:24px 18px 24px;}
     .prod-top{grid-template-columns:1fr;gap:16px;}
@@ -1052,6 +1089,58 @@
       </div>
       <div class="imgwrap">
         <img src="https://images.unsplash.com/photo-1721622045835-51a5447f281c?w=800&q=70&auto=format&fit=crop" alt="Металопрокат на складі">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT VIDEO -->
+<section>
+  <div class="wrap">
+    <div class="card glass av-card">
+      <div class="av-top">
+        <div class="av-left">
+          <span class="eyebrow">ПРО КОМПАНІЮ</span>
+          <h2>GOLDI GROUP —<br><span class="accent">основа ваших проєктів.</span></h2>
+        </div>
+        <div class="av-right">
+          <p class="av-lead">Від складу металопрокату — до будівельної бази з власним виробництвом.</p>
+          <p class="desc">З 2017 року допомагаємо забезпечувати будівництво та виробництво металом і будівельними матеріалами. Працюємо в Києві та Кременчуці, виготовляємо власну продукцію й організовуємо доставку по Україні.</p>
+        </div>
+      </div>
+      <div class="av-facts">
+        <div class="av-fact"><div class="v">З 2017</div><div class="l">працюємо з металом</div></div>
+        <div class="av-fact"><div class="v">Київ і Кременчук</div><div class="l">наші філії</div></div>
+        <div class="av-fact"><div class="v">Власне виробництво</div><div class="l">сітка, дріт та арматура</div></div>
+      </div>
+      <div class="av-video-wrap">
+        <video class="av-video" autoplay muted loop playsinline preload="metadata" src="https://res.cloudinary.com/z57ut68z/video/upload/v1789271750/GOLDI-%D0%B0%D1%88.mp4"></video>
+        <div class="av-overlay">
+          <img class="av-logo" src="https://goldigroup.com.ua/storage/images/16159800818388.png" alt="GOLDI GROUP">
+          <div class="av-tit">КОНТАКТНА <span>ІНФОРМАЦІЯ</span></div>
+          <div class="av-row">
+            <span class="av-ico">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+            </span>
+            <div>
+              <div class="av-label">Адреса</div>
+              <div class="av-val">м. Кременчук, вул. Бетонна, 23</div>
+            </div>
+          </div>
+          <div class="av-row">
+            <span class="av-ico">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </span>
+            <div>
+              <div class="av-label">Телефон</div>
+              <a class="av-val" href="tel:+380663330341">+38 (066) 333-03-41</a>
+            </div>
+          </div>
+          <p class="av-note">Приєднуйтесь до компанії Goldi Group і станьте лідером в області будівництва і металопрокату!</p>
+        </div>
+      </div>
+      <div class="av-cta">
+        <a class="btn btn-dark" href="#request">Обговорити замовлення <span class="btn-arrow">↗</span></a>
       </div>
     </div>
   </div>
