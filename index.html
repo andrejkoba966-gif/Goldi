@@ -428,6 +428,10 @@
 
   /* FAQ */
   .faq{display:flex;flex-direction:column;gap:14px;max-width:820px;}
+  @media(min-width:1081px){
+    .faq-head{justify-content:center;text-align:center;}
+    .faq{margin:0 auto;}
+  }
   .faqitem{border-radius:var(--radius-sm);padding:22px 26px;cursor:pointer;}
   .faqitem .q{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:16px;gap:20px;}
   .faqitem .q .plus{font-size:20px;color:var(--blue-deep);flex-shrink:0;transition:transform .2s;}
@@ -1107,8 +1111,8 @@
 
 <!-- FAQ -->
 <section>
-  <div class="wrap">
-    <div class="section-head">
+  <div class="wrap faq-wrap">
+    <div class="section-head faq-head">
       <h2>Поширені запитання</h2>
     </div>
     <div class="faq">
