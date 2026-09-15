@@ -67,6 +67,8 @@ jobs:
             # круги: the two type tiles
             "storage/cache/16164087916374-597x296.jpg": "krug-goryachekatanyj.jpg",
             "storage/cache/16164088734687-597x296.jpg": "krug-konstruktsionnyj.jpg",
+            # будівельні матеріали: the section's own photo
+            "storage/images/16129582671025.jpg": "budmaterialy-cover.jpg",
           }
           BASE = "https://goldigroup.com.ua/"
           os.makedirs("images", exist_ok=True)
