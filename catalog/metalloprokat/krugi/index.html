@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Круги | GOLDI GROUP</title>
-<meta name="description" content="Сталевий круг для механічної обробки, валів та деталей. Залиште заявку — менеджер підтвердить діаметр, марку сталі та наявність.">
+<meta name="description" content="Металопрокат круглого перерізу з гладкою поверхнею. Два види: гарячекатаний круг (він же арматура А240) і конструкційний круг холодного волочіння.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -139,7 +139,7 @@
         <a href="../../../index.html">Головна</a><span>/</span><a href="../../../catalog/index.html">Каталог</a><span>/</span><a href="../../../catalog/metalloprokat/index.html">Металопрокат</a><span>/</span>Круги
       </div>
       <h1>Круги</h1>
-      <p class="sub">Сталевий круг для механічної обробки, валів та деталей. Залиште заявку — менеджер підтвердить діаметр, марку сталі та наявність.</p>
+      <p class="sub">Металопрокат круглого перерізу з гладкою поверхнею. Два види: гарячекатаний круг (він же арматура А240) і конструкційний круг холодного волочіння.</p>
     </div>
   </div>
 
@@ -147,6 +147,18 @@
     <!-- SIDEBAR -->
     <aside class="sidebar-card">
       <h3>Підбір: Круги</h3>
+      <label class="field-label">Вид</label>
+      <div class="select-wrap">
+        <select id="typeFilter" onchange="applyFilter()">
+          <option value="all">Усі види</option>
+          <option value="goryachekatanyj">Круг гарячекатаний</option>
+          <option value="konstruktsionnyj">Круг конструкційний</option>
+        </select>
+      </div>
+      <span class="reset-link" onclick="resetFilter()">Скинути фільтри</span>
+
+      <div class="sb-divider"></div>
+
       <div class="help-title">Потрібна допомога?</div>
       <p class="help-text">Підберемо матеріал за вашою специфікацією.</p>
       <div class="help-phone">066 744 00 55</div>
@@ -155,24 +167,33 @@
     <!-- CONTENT -->
     <div>
       <div class="content-top">
-        <div class="found-count" id="foundCount">Знайдено варіантів: 1</div>
+        <div class="found-count" id="foundCount">Знайдено варіантів: 2</div>
         <div class="price-note">Ціна та наявність — за запитом</div>
       </div>
 
       <div class="type-grid" id="typeGrid">
 
-        <div class="typecard" data-type="krug">
-          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1721622045835-51a5447f281c?w=700&q=70&auto=format&fit=crop')"></div>
+        <a class="typecard" data-type="goryachekatanyj" href="goryachekatanyj/index.html">
+          <div class="img" style="background-image:url('../../../images/krug-goryachekatanyj.jpg')"></div>
           <div class="body">
-            <div class="eyebrow">КРУГИ / СТАЛЕВИЙ</div>
-            <h4>Круг сталевий</h4>
-            <div class="specs"><span><b>Розміри:</b> уточнюйте у менеджера</span><span><b>Наявність:</b> уточнюйте у менеджера</span></div>
+            <div class="eyebrow">КРУГИ / ГАРЯЧЕКАТАНИЙ</div>
+            <h4>Круг гарячекатаний</h4>
+            <div class="specs"><span><b>Діаметр:</b> 6,5–32 мм</span><span><b>Довжина:</b> 6 і 12 м</span></div>
             <div class="divider"></div>
-            <div class="card-actions">
-              <button type="button" class="btn btn-dark btn-sm ol-add" data-order-item="Круг сталевий" data-order-category="Круги">Додати до списку замовлення</button>
-            </div>
+            <span class="pick">Детальніше<span class="arrow">→</span></span>
           </div>
-        </div>
+        </a>
+
+        <a class="typecard" data-type="konstruktsionnyj" href="konstruktsionnyj/index.html">
+          <div class="img" style="background-image:url('../../../images/krug-konstruktsionnyj.jpg')"></div>
+          <div class="body">
+            <div class="eyebrow">КРУГИ / КОНСТРУКЦІЙНИЙ</div>
+            <h4>Круг конструкційний</h4>
+            <div class="specs"><span><b>Діаметр:</b> 10–250 мм</span><span><b>Сталь:</b> 20 · 35 · 45</span></div>
+            <div class="divider"></div>
+            <span class="pick">Детальніше<span class="arrow">→</span></span>
+          </div>
+        </a>
 
       </div>
 
@@ -180,18 +201,18 @@
 
       <div class="spec-card">
         <h3>Характеристики та наявність</h3>
-        <p class="note">Точні параметри підтверджує менеджер після заявки — залежно від поточної партії на складі.</p>
+        <p class="note">Ціну та залишок на складі підтверджує менеджер після заявки.</p>
         <div class="p-specs">
-          <div class="row"><div class="l">ВИДИ</div><div class="v">Круг сталевий</div></div>
-          <div class="row"><div class="l">РОЗМІРИ ТА ДОВЖИНА</div><div class="v tbd">Уточнюйте у менеджера</div></div>
-          <div class="row"><div class="l">МАРКА СТАЛІ / СТАНДАРТ</div><div class="v tbd">Уточнюйте у менеджера</div></div>
-          <div class="row"><div class="l">НАЯВНІСТЬ</div><div class="v tbd">Уточнюйте у менеджера</div></div>
-          <div class="row"><div class="l">ЦІНА</div><div class="v tbd">За запитом</div></div>
+          <div class="row"><div class="l">ГАРЯЧЕКАТАНИЙ</div><div class="v">6,5–32 мм · довжини 6 і 12 м</div></div>
+          <div class="row"><div class="l">КОНСТРУКЦІЙНИЙ</div><div class="v">10–250 мм · довжини 4 і 6 м</div></div>
+          <div class="row"><div class="l">МАРКИ СТАЛІ</div><div class="v">Сталь 20, 35, 45 (конструкційний)</div></div>
+          <div class="row"><div class="l">ПОСЛУГИ</div><div class="v">Різка · свердління · антикорозійне покриття</div></div>
+          <div class="row"><div class="l">ЦІНА</div><div class="v">За запитом · опт і роздріб</div></div>
           <div class="row"><div class="l">ВІДВАНТАЖЕННЯ</div><div class="v">Кременчук · Київ</div></div>
         </div>
         <div class="p-body">
-          <p>Додайте потрібні позиції до списку замовлення — менеджер прорахує весь перелік разом і підтвердить наявність на складах у Кременчуці та Києві.</p>
-          <p>Працюємо напряму з металобази, без посередників, із безкоштовною доставкою.</p>
+          <p>Круг відрізняється високою міцністю, гнучкістю і відновленням форми при незначних згинаннях. Виготовляють його з вуглецевої сталі звичайної якості, а також з низьколегованої, легованої і високолегованої.</p>
+          <p>Застосовують в автомобіле-, верстато- та машинобудуванні, у виробництві кріплень різного призначення, електродів, а також для інтер&#x27;єрних і екстер&#x27;єрних елементів.</p>
         </div>
         <div class="p-cta">
           <a class="btn btn-dark" href="#request">Отримати розрахунок</a>
