@@ -81,6 +81,8 @@
   .btn{padding:15px 24px;border-radius:999px;font-weight:700;font-size:14.5px;display:inline-flex;align-items:center;gap:8px;}
   .btn-dark{background:linear-gradient(110deg, #FF872D 0%, #FF671A 100%);color:#14243B;box-shadow:0 9px 20px rgba(250,116,25,.18);}
   .btn-outline{background:rgba(255,255,255,.7);border:1px solid var(--line);color:var(--ink);}
+  button.btn{font-family:'Inter';border:none;}
+  button.btn-outline{border:1px solid var(--line);}
 
   /* ---------- Request / lead-form section (dark, matches homepage) ---------- */
   .request-card{
@@ -236,6 +238,7 @@
 </style>
 <link rel="icon" type="image/png" href="https://res.cloudinary.com/jvpkjmwm/image/upload/v1789329877/goldi-favicon-1024.png">
 <link rel="apple-touch-icon" href="https://res.cloudinary.com/jvpkjmwm/image/upload/v1789329877/goldi-favicon-1024.png">
+<link rel="stylesheet" href="../../../../assets/orderlist.css">
 <link rel="stylesheet" href="../../../../assets/header.css">
 </head>
 <body>
@@ -366,7 +369,7 @@
 
   <div class="product">
     <div class="p-imgwrap">
-      <img src="https://images.unsplash.com/photo-1763771420303-0f11ccf613d1?w=900&q=70&auto=format&fit=crop" alt="Арматура А400 (ГОСТ)">
+      <img src="../../../../images/arm-a400-gost.jpg" alt="Арматура А400 (ГОСТ)">
     </div>
     <div>
       <div class="p-eyebrow">АРМАТУРА / РИФЛЕНА</div>
@@ -387,6 +390,7 @@
 
       <div class="p-cta">
         <a class="btn btn-dark" href="#request">Отримати розрахунок</a>
+        <button type="button" class="btn btn-outline ol-add" data-order-item="Арматура А400 (ГОСТ)" data-order-category="Арматура">Додати до списку замовлення</button>
         <a class="btn btn-outline" href="../../../../catalog/metalloprokat/armatura/index.html">← Усі типи арматури</a>
       </div>
     </div>
@@ -494,6 +498,7 @@
     });
   }
 </script>
+<script src="../../../../assets/orderlist.js"></script>
 <script src="../../../../assets/header.js"></script>
 </body>
 </html>
