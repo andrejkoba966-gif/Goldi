@@ -48,6 +48,12 @@ jobs:
             "storage/cache/16164080659031-597x296.jpg": "arm-a400-a500-dstu.jpg",
             "storage/cache/16164082034700-597x296.jpg": "arm-at800-at1000.jpg",
             "storage/cache/16164081497642-597x296.jpg": "arm-ndv.jpg",
+            # листовий прокат: section cover + the four tiles, in render order
+            "storage/cache/16164070178433-597x296.jpg": "list-cover.jpg",
+            "storage/cache/16164082535831-597x296.jpg": "list-goryachekatanyj.jpg",
+            "storage/cache/16164083304901-597x296.jpg": "list-holodnokatanyj.jpg",
+            "storage/cache/16164085113703-597x296.jpg": "list-prosichno-vityazhnyj.jpg",
+            "storage/cache/16164084561642-597x296.jpg": "list-riflenyj.jpg",
           }
           BASE = "https://goldigroup.com.ua/"
           os.makedirs("images", exist_ok=True)
