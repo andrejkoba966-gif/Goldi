@@ -54,6 +54,16 @@ jobs:
             "storage/cache/16164083304901-597x296.jpg": "list-holodnokatanyj.jpg",
             "storage/cache/16164085113703-597x296.jpg": "list-prosichno-vityazhnyj.jpg",
             "storage/cache/16164084561642-597x296.jpg": "list-riflenyj.jpg",
+            # section covers for the remaining categories, from the
+            # Металопрокат page tiles in render order
+            "storage/cache/16164066156187-597x296.jpg": "balka-cover.jpg",
+            "storage/cache/16164068449802-597x296.jpg": "kvadrat-cover.jpg",
+            "storage/cache/16164071398312-597x296.jpg": "smuga-cover.jpg",
+            "storage/cache/16164072163160-597x296.jpg": "ugolok-cover.jpg",
+            "storage/cache/16164072843088-597x296.jpg": "katanka-cover.jpg",
+            "storage/cache/16164073419473-597x296.jpg": "shveller-cover.jpg",
+            "storage/cache/16164074595700-597x296.jpg": "krugi-cover.jpg",
+            "storage/cache/16164075113355-597x296.jpg": "shestigrannik-cover.jpg",
           }
           BASE = "https://goldigroup.com.ua/"
           os.makedirs("images", exist_ok=True)
