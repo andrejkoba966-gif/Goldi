@@ -38,6 +38,10 @@ jobs:
             "storage/cache/16164232718274-373x280.jpg": "vlasne-vyrobnytstvo.jpg",
             "storage/cache/16164056554856-373x280.jpg": "metaloprokat.jpg",
             "storage/cache/16164234031017-373x280.jpg": "budmaterialy.jpg",
+            "storage/cache/16164085635247-597x296.jpg": "truba-bezshovna.jpg",
+            "storage/cache/16164085949254-597x296.jpg": "truba-vgp.jpg",
+            "storage/cache/16164086542397-597x296.jpg": "truba-profilna.jpg",
+            "storage/cache/16164087255621-597x296.jpg": "truba-elektrozvaryuvalna.jpg",
           }
           BASE = "https://goldigroup.com.ua/"
           os.makedirs("images", exist_ok=True)
