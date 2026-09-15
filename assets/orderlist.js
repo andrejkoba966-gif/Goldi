@@ -106,7 +106,10 @@
     document.querySelectorAll('[data-order-item]').forEach(function(btn){
       var added = names.indexOf(btn.dataset.orderItem) !== -1;
       btn.classList.toggle('added', added);
-      btn.textContent = added ? '✓ У списку замовлення' : 'Додати до списку замовлення';
+      // chips carry their own label and show state through CSS instead
+      if(btn.dataset.keepLabel === undefined){
+        btn.textContent = added ? '✓ У списку замовлення' : 'Додати до списку замовлення';
+      }
     });
   }
 
