@@ -110,9 +110,11 @@ jobs:
             echo "nothing to commit"
             exit 0
           fi
-          git commit -m "Host the old site's images in this repo
+          git commit -F - <<'MSG'
+          Host the old site's images in this repo
 
           The logo and seven catalog photos were still loaded from
           goldigroup.com.ua, so the whole site would lose them if that domain
-          goes away. They now live in images/ and every reference points there."
+          goes away. They now live in images/ and every reference points there.
+          MSG
           git push
