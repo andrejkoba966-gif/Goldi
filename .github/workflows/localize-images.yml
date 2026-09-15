@@ -64,6 +64,9 @@ jobs:
             "storage/cache/16164073419473-597x296.jpg": "shveller-cover.jpg",
             "storage/cache/16164074595700-597x296.jpg": "krugi-cover.jpg",
             "storage/cache/16164075113355-597x296.jpg": "shestigrannik-cover.jpg",
+            # круги: the two type tiles
+            "storage/cache/16164087916374-597x296.jpg": "krug-goryachekatanyj.jpg",
+            "storage/cache/16164088734687-597x296.jpg": "krug-konstruktsionnyj.jpg",
           }
           BASE = "https://goldigroup.com.ua/"
           os.makedirs("images", exist_ok=True)
