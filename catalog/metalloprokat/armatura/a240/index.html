@@ -55,24 +55,7 @@
     .wrap{width:calc(100% - 32px);}
   }
 
-  /* ---------- Header (matches main site) ---------- */
-  header{padding:20px 0 6px;}
-  .headerbar{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
-  .brand{display:flex;align-items:center;gap:12px;}
-  .brand .mark{
-    height:46px;width:auto;object-fit:contain;flex-shrink:0;display:block;
-  }
-  .brand .name{font-family:'Golos Text';font-weight:700;font-size:17px;}
-  .brand .sub{font-size:12px;color:var(--muted);margin-top:1px;}
-  nav{display:flex;gap:26px;font-size:14.5px;font-weight:500;color:var(--ink-soft);}
-  nav a:hover{color:var(--blue);}
-  nav a.current{color:var(--blue-deep);}
-  .btn-request{
-    background:linear-gradient(110deg, #FF872D 0%, #FF671A 100%);color:#14243B;font-weight:700;font-size:14px;
-    padding:11px 19px;border-radius:999px;white-space:nowrap;box-shadow:0 9px 20px rgba(250,116,25,.18);
-    border:none;cursor:pointer;
-  }
-
+  /* ---------- Header: shared implementation in assets/header.css ---------- */
   /* ---------- Page head / breadcrumbs ---------- */
   .pagehead{margin-top:26px;}
   .crumbs{font-size:13px;color:var(--muted);margin-bottom:10px;}
@@ -179,7 +162,6 @@
     .p-imgwrap img{height:280px;}
   }
   @media(max-width:900px){
-    nav{display:none;}
     .request-card{grid-template-columns:1fr;grid-template-areas:"intro" "cities" "form";padding:34px 26px;gap:32px;}
   }
   @media(max-width:640px){
@@ -252,26 +234,130 @@
     transform: translateY(-1px);
   }
 </style>
+<link rel="icon" type="image/png" href="https://res.cloudinary.com/jvpkjmwm/image/upload/v1789329877/goldi-favicon-1024.png">
+<link rel="apple-touch-icon" href="https://res.cloudinary.com/jvpkjmwm/image/upload/v1789329877/goldi-favicon-1024.png">
+<link rel="stylesheet" href="../../../../assets/header.css">
 </head>
 <body>
 
-<div class="wrap">
-  <header>
-    <div class="headerbar">
-      <a class="brand" href="../../../../index.html" style="text-decoration:none;">
-        <img class="mark" src="https://goldigroup.com.ua/storage/images/16159800818388.png" alt="GOLDI GROUP">
-        
-      </a>
-      <nav>
-        <a href="../../../../catalog/index.html" class="current">Каталог</a>
-        <a href="../../../../index.html#delivery">Виробництво</a>
-        <a href="../../../../index.html">Про нас</a>
-        <a href="../../../../index.html#request">Контакти</a>
-      </nav>
-      <a class="btn-request" href="../../../../index.html#request">Залишити заявку</a>
+<header>
+  <div class="wrap headtop">
+    <div class="brand">
+      <img class="mark" src="https://goldigroup.com.ua/storage/images/16159800818388.png" alt="GOLDI GROUP">
     </div>
-  </header>
+    <div class="head-top-social">
+      <a class="soc" href="https://t.me/+380667440055" aria-label="Telegram" title="Telegram">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#26A5E4"/><path d="M17.8 7.2 6.6 11.6c-.7.3-.7.7-.1.9l2.9.9 1.1 3.4c.1.4.3.5.6.5.2 0 .3-.1.5-.2l1.6-1.5 3 2.2c.5.3 1 .1 1.1-.5l2-9.5c.2-.7-.2-1-.5-.6z" fill="#fff"/></svg>
+      </a>
+      <a class="soc" href="viber://chat?number=%2B380667440055" aria-label="Viber" title="Viber">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7360F2"/><path d="M12 6.2c-3.3 0-6 2.4-6 5.6 0 1.8 1 3.4 2.5 4.5l-.6 2.3 2.5-1.1c.5.1 1.1.2 1.6.2 3.3 0 6-2.4 6-5.6s-2.7-6-6-6.0z" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/><path d="M9.7 10.3s.3 1.7 1.9 3.1c1.6 1.4 3.1 1.4 3.1 1.4l.6-1c.2-.3.6-.4.9-.2l1 .6c.3.2.4.6.2.9-.3.5-.9 1-1.6 1.1-1 .1-2.6-.1-4.3-1.7-1.7-1.5-2.2-3-2.4-3.9-.1-.7.3-1.4.8-1.7l1-.6c.3-.2.7-.1.9.2l.6 1c.2.3.1.7-.2.9l-.5.3z" fill="#fff"/></svg>
+      </a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="head-cities">
+      <a class="head-city" href="tel:+380667440055">
+        <span class="c-label">м. Кременчук</span>
+        <span class="c-num">066 744 00 55</span>
+      </a>
+      <a class="head-city" href="tel:+380965590505">
+        <span class="c-label">м. Київ</span>
+        <span class="c-num">096 559 05 05</span>
+      </a>
+    </div>
+    <div class="head-social">
+      <a class="soc" href="viber://chat?number=%2B380667440055" aria-label="Viber" title="Viber">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7360F2"/><path d="M12 6.2c-3.3 0-6 2.4-6 5.6 0 1.8 1 3.4 2.5 4.5l-.6 2.3 2.5-1.1c.5.1 1.1.2 1.6.2 3.3 0 6-2.4 6-5.6s-2.7-6-6-6.0z" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/><path d="M9.7 10.3s.3 1.7 1.9 3.1c1.6 1.4 3.1 1.4 3.1 1.4l.6-1c.2-.3.6-.4.9-.2l1 .6c.3.2.4.6.2.9-.3.5-.9 1-1.6 1.1-1 .1-2.6-.1-4.3-1.7-1.7-1.5-2.2-3-2.4-3.9-.1-.7.3-1.4.8-1.7l1-.6c.3-.2.7-.1.9.2l.6 1c.2.3.1.7-.2.9l-.5.3z" fill="#fff"/></svg>
+      </a>
+      <a class="soc" href="https://t.me/+380667440055" aria-label="Telegram" title="Telegram">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#26A5E4"/><path d="M17.8 7.2 6.6 11.6c-.7.3-.7.7-.1.9l2.9.9 1.1 3.4c.1.4.3.5.6.5.2 0 .3-.1.5-.2l1.6-1.5 3 2.2c.5.3 1 .1 1.1-.5l2-9.5c.2-.7-.2-1-.5-.6z" fill="#fff"/></svg>
+      </a>
+      <a class="soc" href="https://www.instagram.com/goldi_group/" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#E1306C"/><rect x="7" y="7" width="10" height="10" rx="3" stroke="#fff" stroke-width="1.4"/><circle cx="12" cy="12" r="2.6" stroke="#fff" stroke-width="1.4"/><circle cx="15.3" cy="8.7" r="0.9" fill="#fff"/></svg>
+      </a>
+      <a class="soc" href="https://www.facebook.com/Goldigroup2017" aria-label="Facebook" title="Facebook" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path d="M13.4 20v-6.8h2.3l.3-2.6h-2.6V8.9c0-.8.2-1.3 1.3-1.3h1.4V5.3c-.2 0-1-.1-1.9-.1-1.9 0-3.2 1.2-3.2 3.3v1.9H8.7v2.6H11V20h2.4z" fill="#fff"/></svg>
+      </a>
+      <a class="soc" href="https://wa.me/380667440055" aria-label="WhatsApp" title="WhatsApp" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#25D366"/><path d="M12 6.5c-3.3 0-6 2.6-6 5.9 0 1.1.3 2.1.8 3l-.9 3.1 3.2-.9c.9.5 1.9.7 2.9.7 3.3 0 6-2.6 6-5.9s-2.7-5.9-6-5.9z" stroke="#fff" stroke-width="1.2"/><path d="M9.8 10c.1-.3.4-.3.6-.3h.4c.1 0 .3 0 .4.3.2.4.6 1.3.6 1.4.1.1.1.3 0 .4l-.3.4c-.1.1-.2.3-.1.5.2.4.6 1 1.2 1.5.7.6 1.2.8 1.4.9.2.1.3 0 .4-.1l.4-.5c.1-.2.3-.2.5-.1l1.2.6c.2.1.3.2.3.3 0 .5-.2 1.1-.5 1.3-.4.3-.9.5-1.5.4-1-.1-2.3-.6-3.5-1.7-1.1-1-1.8-2.2-2-3.2-.1-.6.1-1.1.4-1.5.1-.2.3-.4.5-.5z" fill="#fff"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
 
+<div class="headbottom">
+  <div class="wrap">
+    <button class="menu-toggle pin-toggle" id="menuTogglePinned" aria-label="Меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav>
+      <a href="../../../../index.html" class="nav-home">Головна</a>
+      <a href="../../../../index.html#production">Власне виробництво</a>
+      <div class="nav-drop">
+        <button type="button" class="nav-drop-toggle" aria-expanded="false" aria-haspopup="true">
+          Каталог
+          <svg class="nav-drop-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-drop-menu">
+          <a class="nav-drop-item" href="../../../../catalog/vlasne-vyrobnytstvo/index.html">
+            <span class="t">Власне виробництво</span>
+            <span class="d">Сітка, дріт та арматура</span>
+          </a>
+          <a class="nav-drop-item" href="../../../../catalog/metalloprokat/index.html">
+            <span class="t">Металопрокат</span>
+            <span class="d">Арматура, труби, лист та профілі</span>
+          </a>
+          <a class="nav-drop-item" href="../../../../catalog/budivelni-materialy/index.html">
+            <span class="t">Будівельні матеріали</span>
+            <span class="d">Понад 15000 номенклатурних позицій</span>
+          </a>
+        </div>
+      </div>
+      <a href="../../../../index.html#delivery">Послуги</a>
+      <a href="../../../../dostavka-i-oplata/index.html">Доставка і оплата</a>
+      <a href="../../../../index.html#request">Контакти</a>
+    </nav>
+    <div class="mobile-quick-social">
+      <a class="soc" href="https://t.me/+380667440055" aria-label="Telegram" title="Telegram">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#26A5E4"/><path d="M17.8 7.2 6.6 11.6c-.7.3-.7.7-.1.9l2.9.9 1.1 3.4c.1.4.3.5.6.5.2 0 .3-.1.5-.2l1.6-1.5 3 2.2c.5.3 1 .1 1.1-.5l2-9.5c.2-.7-.2-1-.5-.6z" fill="#fff"/></svg>
+      </a>
+      <a class="soc" href="viber://chat?number=%2B380667440055" aria-label="Viber" title="Viber">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7360F2"/><path d="M12 6.2c-3.3 0-6 2.4-6 5.6 0 1.8 1 3.4 2.5 4.5l-.6 2.3 2.5-1.1c.5.1 1.1.2 1.6.2 3.3 0 6-2.4 6-5.6s-2.7-6-6-6.0z" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/><path d="M9.7 10.3s.3 1.7 1.9 3.1c1.6 1.4 3.1 1.4 3.1 1.4l.6-1c.2-.3.6-.4.9-.2l1 .6c.3.2.4.6.2.9-.3.5-.9 1-1.6 1.1-1 .1-2.6-.1-4.3-1.7-1.7-1.5-2.2-3-2.4-3.9-.1-.7.3-1.4.8-1.7l1-.6c.3-.2.7-.1.9.2l.6 1c.2.3.1.7-.2.9l-.5.3z" fill="#fff"/></svg>
+      </a>
+    </div>
+    <a class="btn-request" href="../../../../index.html#request">Залишити заявку</a>
+    <div class="mobile-nav-panel" id="mobileNavPanel">
+      <a href="../../../../index.html" class="nav-home">Головна</a>
+      <a href="../../../../index.html#production">Власне виробництво</a>
+      <div class="nav-drop">
+        <button type="button" class="nav-drop-toggle" aria-expanded="false" aria-haspopup="true">
+          Каталог
+          <svg class="nav-drop-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-drop-menu">
+          <a class="nav-drop-item" href="../../../../catalog/vlasne-vyrobnytstvo/index.html">
+            <span class="t">Власне виробництво</span>
+            <span class="d">Сітка, дріт та арматура</span>
+          </a>
+          <a class="nav-drop-item" href="../../../../catalog/metalloprokat/index.html">
+            <span class="t">Металопрокат</span>
+            <span class="d">Арматура, труби, лист та профілі</span>
+          </a>
+          <a class="nav-drop-item" href="../../../../catalog/budivelni-materialy/index.html">
+            <span class="t">Будівельні матеріали</span>
+            <span class="d">Понад 15000 номенклатурних позицій</span>
+          </a>
+        </div>
+      </div>
+      <a href="../../../../index.html#delivery">Послуги</a>
+      <a href="../../../../dostavka-i-oplata/index.html">Доставка і оплата</a>
+      <a href="../../../../index.html#request">Контакти</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
   <div class="pagehead">
     <div class="crumbs">
       <a href="../../../../index.html">Головна</a><span>/</span><a href="../../../../catalog/index.html">Каталог</a><span>/</span><a href="../../../../catalog/metalloprokat/index.html">Металопрокат</a><span>/</span><a href="../../../../catalog/metalloprokat/armatura/index.html">Арматура</a><span>/</span>Арматура А240
@@ -408,5 +494,6 @@
     });
   }
 </script>
+<script src="../../../../assets/header.js"></script>
 </body>
 </html>
