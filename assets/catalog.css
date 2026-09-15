@@ -166,7 +166,7 @@ a, button, .btn, .soc, .menu-toggle, input, textarea, select, label, [role="butt
 .btn-sm{padding:11px 18px;font-size:13.5px;}
 
 /* ---------- Order list (список замовлення) ---------- */
-.ol-add{width:100%;justify-content:center;}
+.card-actions .ol-add{width:100%;justify-content:center;}
 .ol-add.added{background:rgba(255,255,255,.7);border:1px solid var(--line);color:var(--ink-soft);box-shadow:none;}
 .ol-dock{
   position:fixed;right:18px;bottom:18px;z-index:120;
@@ -358,4 +358,28 @@ footer{background:linear-gradient(180deg,#0e1e35,#0a1730);color:#dfe6f5;border-r
 }
 .btn:active, .btn-request:active, .rform .submit:active {
   transform: translateY(-1px);
+}
+
+/* ---------- Product detail layout (level 4) ---------- */
+.product{display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:start;margin-top:20px;padding-bottom:56px;}
+.p-imgwrap{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);position:sticky;top:24px;}
+.p-imgwrap img{height:420px;width:100%;object-fit:cover;}
+.p-eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.06em;color:var(--orange-deep);}
+.product h1{font-size:clamp(32px, 14px + 1.669vw, 37.4px);font-weight:800;margin-top:10px;line-height:1.15;}
+.p-lead{color:var(--ink-soft);font-size:clamp(15.5px, 11px + 0.417vw, 16.8px);margin-top:16px;line-height:1.6;}
+.product .p-specs{
+  margin-top:26px;background:var(--glass);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.8);
+  border-radius:var(--radius-md);box-shadow:var(--shadow);padding:22px 24px;
+}
+.product .p-body{margin-top:26px;}
+.product .p-cta{margin-top:30px;}
+@media(max-width:1000px){
+  .product{grid-template-columns:1fr;}
+  .p-imgwrap{position:static;}
+  .p-imgwrap img{height:280px;}
+}
+@media(min-width:1081px){
+  .product{gap:clamp(40px, 22px + 1.8vw, 47.2px);margin-top:clamp(20px, 10px + 0.9vw, 22.6px);}
+  .p-imgwrap img{height:clamp(420px, 290px + 12vw, 458px);}
+  .product .p-specs{padding:clamp(22px, 12px + 0.9vw, 24.6px) clamp(24px, 14px + 0.9vw, 26.6px);}
 }
