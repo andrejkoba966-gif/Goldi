@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Труби | GOLDI GROUP</title>
-<meta name="description" content="Труби для конструкцій, огорож та інженерних мереж. Оберіть вид труби і залиште заявку — менеджер підтвердить розмір, товщину стінки, наявність та ціну.">
+<meta name="description" content="Порожнистий металопрокат циліндричної або профільної форми перетину. Чотири види: безшовні, профільні, електрозварювальні та водогазопровідні.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -138,7 +138,7 @@
         <a href="../../../index.html">Головна</a><span>/</span><a href="../../../catalog/index.html">Каталог</a><span>/</span><a href="../../../catalog/metalloprokat/index.html">Металопрокат</a><span>/</span>Труби
       </div>
       <h1>Труби</h1>
-      <p class="sub">Труби для конструкцій, огорож та інженерних мереж. Оберіть вид труби і залиште заявку — менеджер підтвердить розмір, товщину стінки, наявність та ціну.</p>
+      <p class="sub">Порожнистий металопрокат циліндричної або профільної форми перетину. Чотири види: безшовні, профільні, електрозварювальні та водогазопровідні.</p>
     </div>
   </div>
 
@@ -150,8 +150,9 @@
       <div class="select-wrap">
         <select id="typeFilter" onchange="applyFilter()">
           <option value="all">Усі види</option>
+          <option value="bezshovna">Труба безшовна</option>
           <option value="profilna">Труба профільна</option>
-          <option value="kругла">Труба кругла</option>
+          <option value="elektrozvarna">Труба електрозварювальна</option>
           <option value="vgp">Труба водогазопровідна (ВГП)</option>
         </select>
       </div>
@@ -167,18 +168,31 @@
     <!-- CONTENT -->
     <div>
       <div class="content-top">
-        <div class="found-count" id="foundCount">Знайдено варіантів: 3</div>
+        <div class="found-count" id="foundCount">Знайдено варіантів: 4</div>
         <div class="price-note">Ціна та наявність — за запитом</div>
       </div>
 
       <div class="type-grid" id="typeGrid">
 
-        <div class="typecard" data-type="profilna">
+        <div class="typecard" data-type="bezshovna">
           <div class="img" style="background-image:url('https://goldigroup.com.ua/storage/cache/16164070478978-331x280.jpg')"></div>
+          <div class="body">
+            <div class="eyebrow">ТРУБИ / БЕЗШОВНА</div>
+            <h4>Труба безшовна</h4>
+            <div class="specs"><span><b>Розмір:</b> 75×5 – 325×10 мм</span><span><b>Наявність:</b> за запитом</span></div>
+            <div class="divider"></div>
+            <div class="card-actions">
+              <button type="button" class="btn btn-dark btn-sm ol-add" data-order-item="Труба безшовна" data-order-category="Труби">Додати до списку замовлення</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="typecard" data-type="profilna">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1538474705339-e87de81450e8?w=700&q=70&auto=format&fit=crop')"></div>
           <div class="body">
             <div class="eyebrow">ТРУБИ / ПРОФІЛЬНА</div>
             <h4>Труба профільна</h4>
-            <div class="specs"><span><b>Розміри:</b> уточнюйте у менеджера</span><span><b>Наявність:</b> уточнюйте у менеджера</span></div>
+            <div class="specs"><span><b>Розмір:</b> 15×15×1,8 – 500×300×16 мм</span><span><b>Форма:</b> прямокутна і квадратна</span></div>
             <div class="divider"></div>
             <div class="card-actions">
               <button type="button" class="btn btn-dark btn-sm ol-add" data-order-item="Труба профільна" data-order-category="Труби">Додати до списку замовлення</button>
@@ -186,25 +200,25 @@
           </div>
         </div>
 
-        <div class="typecard" data-type="kругла">
-          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1721622045835-51a5447f281c?w=700&q=70&auto=format&fit=crop')"></div>
+        <div class="typecard" data-type="elektrozvarna">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1764835746713-34a671e73569?w=700&q=70&auto=format&fit=crop')"></div>
           <div class="body">
-            <div class="eyebrow">ТРУБИ / КРУГЛА</div>
-            <h4>Труба кругла</h4>
-            <div class="specs"><span><b>Розміри:</b> уточнюйте у менеджера</span><span><b>Наявність:</b> уточнюйте у менеджера</span></div>
+            <div class="eyebrow">ТРУБИ / ЕЛЕКТРОЗВАРЮВАЛЬНА</div>
+            <h4>Труба електрозварювальна</h4>
+            <div class="specs"><span><b>Розмір:</b> 57×3 – 219×6 мм</span><span><b>Наявність:</b> за запитом</span></div>
             <div class="divider"></div>
             <div class="card-actions">
-              <button type="button" class="btn btn-dark btn-sm ol-add" data-order-item="Труба кругла" data-order-category="Труби">Додати до списку замовлення</button>
+              <button type="button" class="btn btn-dark btn-sm ol-add" data-order-item="Труба електрозварювальна" data-order-category="Труби">Додати до списку замовлення</button>
             </div>
           </div>
         </div>
 
         <div class="typecard" data-type="vgp">
-          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1538474705339-e87de81450e8?w=700&q=70&auto=format&fit=crop')"></div>
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1721622045835-51a5447f281c?w=700&q=70&auto=format&fit=crop')"></div>
           <div class="body">
-            <div class="eyebrow">ТРУБИ / ВГП</div>
+            <div class="eyebrow">ТРУБИ / ВОДОГАЗОПРОВІДНА</div>
             <h4>Труба водогазопровідна (ВГП)</h4>
-            <div class="specs"><span><b>Розміри:</b> уточнюйте у менеджера</span><span><b>Наявність:</b> уточнюйте у менеджера</span></div>
+            <div class="specs"><span><b>Розмір:</b> 15×2,5 – 50×3,5 мм</span><span><b>Наявність:</b> за запитом</span></div>
             <div class="divider"></div>
             <div class="card-actions">
               <button type="button" class="btn btn-dark btn-sm ol-add" data-order-item="Труба водогазопровідна (ВГП)" data-order-category="Труби">Додати до списку замовлення</button>
@@ -218,18 +232,18 @@
 
       <div class="spec-card">
         <h3>Характеристики та наявність</h3>
-        <p class="note">Точні параметри підтверджує менеджер після заявки — залежно від поточної партії на складі.</p>
+        <p class="note">Точний розмір, товщину стінки та покриття підтверджує менеджер після заявки.</p>
         <div class="p-specs">
-          <div class="row"><div class="l">ВИДИ</div><div class="v">Труба профільна, Труба кругла, Труба водогазопровідна (ВГП)</div></div>
-          <div class="row"><div class="l">РОЗМІРИ ТА ДОВЖИНА</div><div class="v tbd">Уточнюйте у менеджера</div></div>
-          <div class="row"><div class="l">МАРКА СТАЛІ / СТАНДАРТ</div><div class="v tbd">Уточнюйте у менеджера</div></div>
-          <div class="row"><div class="l">НАЯВНІСТЬ</div><div class="v tbd">Уточнюйте у менеджера</div></div>
+          <div class="row"><div class="l">БЕЗШОВНА</div><div class="v">75×5 – 325×10 мм</div></div>
+          <div class="row"><div class="l">ЕЛЕКТРОЗВАРЮВАЛЬНА</div><div class="v">57×3 – 219×6 мм</div></div>
+          <div class="row"><div class="l">ВОДОГАЗОПРОВІДНА (ВГП)</div><div class="v">15×2,5 – 50×3,5 мм</div></div>
+          <div class="row"><div class="l">ПРОФІЛЬНА</div><div class="v">15×15×1,8 – 200×200×8 мм · 300×300×6 – 400×400×16 мм · 300×100×5 – 500×300×16 мм</div></div>
           <div class="row"><div class="l">ЦІНА</div><div class="v tbd">За запитом</div></div>
           <div class="row"><div class="l">ВІДВАНТАЖЕННЯ</div><div class="v">Кременчук · Київ</div></div>
         </div>
         <div class="p-body">
-          <p>Додайте потрібні позиції до списку замовлення — менеджер прорахує весь перелік разом і підтвердить наявність на складах у Кременчуці та Києві.</p>
-          <p>Працюємо напряму з металобази, без посередників, із безкоштовною доставкою.</p>
+          <p>Виробляють труби з вуглецевих, легованих і нержавіючих сталей, чавуну, алюмінію та інших сплавів. Технології виробництва — гаряча і холодна прокатка, безшовний або електрозварний спосіб.</p>
+          <p>Труби можуть мати різні покриття — полімерні, антикорозійні, оцинковані. Додайте потрібні позиції до списку замовлення — менеджер прорахує весь перелік разом і підтвердить наявність.</p>
         </div>
         <div class="p-cta">
           <a class="btn btn-dark" href="#request">Отримати розрахунок</a>
