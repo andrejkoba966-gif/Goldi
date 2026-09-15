@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/header.css">
 <style>
   :root{
     --ink:#0e1e35;
@@ -73,106 +74,7 @@
     box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.7);
   }
 
-  /* ---------- Header (two-row, adapted from old site) ---------- */
-  header{padding:18px 0 0;}
-  .headtop{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--line);}
-  .brand{display:flex;align-items:center;gap:14px;}
-  .brand .mark{
-    height:clamp(52px, 36.5px + 1.43vw, 56.5px);width:auto;object-fit:contain;flex-shrink:0;display:block;
-  }
-  .brand .name{font-family:'Golos Text';font-weight:700;font-size:clamp(19px, 13.8px + 0.477vw, 20.5px);letter-spacing:.02em;line-height:1.15;}
-  .brand .sub{font-size:clamp(12.5px, 10.6px + 0.179vw, 13.1px);color:var(--muted);margin-top:2px;}
-
-  .head-cities{display:flex;gap:32px;}
-  .head-city{display:flex;flex-direction:column;gap:3px;}
-  .head-city .c-label{font-size:12.5px;color:var(--muted);font-weight:600;}
-  .head-city .c-num{font-family:'Golos Text';font-weight:800;font-size:15.5px;color:var(--blue-deep);transition:color .15s;}
-  .head-city:hover .c-num{color:var(--blue);}
-
-  .head-social{display:flex;align-items:center;gap:10px;}
-  .soc{
-    width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-    background:#fff;border:1px solid var(--line);box-shadow:0 1px 1px rgba(20,50,100,.04);
-    transition:transform .15s ease, box-shadow .15s ease;flex-shrink:0;
-  }
-  .soc:hover{transform:translateY(-2px);box-shadow:0 10px 18px -8px rgba(20,50,100,.35);}
-  .soc svg{width:18px;height:18px;display:block;}
-
-  .headbottom{
-    position:sticky;top:0;z-index:40;
-    border-bottom:1px solid transparent;
-    transition:background-color .25s ease, backdrop-filter .25s ease, box-shadow .25s ease, border-color .25s ease;
-  }
-  .headbottom.is-stuck{
-    background:rgba(255,255,255,.62);
-    backdrop-filter:blur(18px) saturate(160%);
-    -webkit-backdrop-filter:blur(18px) saturate(160%);
-    border-bottom-color:var(--line);
-    box-shadow:0 10px 30px -18px rgba(20,50,100,.35);
-  }
-  .headbottom .wrap{
-    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
-    padding-top:14px;padding-bottom:14px;
-  }
-  nav{display:flex;align-items:center;gap:22px;font-size:clamp(13px, 10.9px + 0.198vw, 13.6px);font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;}
-  nav a:hover{color:var(--blue);}
-
-  /* Catalog nav dropdown */
-  .nav-drop{position:relative;}
-  .nav-drop-toggle{
-    display:inline-flex;align-items:center;gap:6px;
-    font:inherit;text-transform:inherit;letter-spacing:inherit;
-    color:inherit;background:none;border:none;padding:0;margin:0;cursor:pointer;
-  }
-  .nav-drop-toggle:hover{color:var(--blue);}
-  .nav-drop-arrow{flex-shrink:0;transition:transform .2s ease;}
-  .nav-drop.open .nav-drop-arrow{transform:rotate(180deg);}
-  .nav-drop-menu{
-    display:none;position:absolute;top:calc(100% + 14px);left:0;
-    min-width:280px;background:#fff;border-radius:16px;
-    box-shadow:0 20px 40px -18px rgba(20,50,100,.35);
-    padding:10px;z-index:60;
-    text-transform:none;letter-spacing:normal;
-  }
-  .nav-drop.open .nav-drop-menu{display:block;}
-  .nav-drop-item{display:block;padding:12px 14px;border-radius:10px;}
-  .nav-drop-item:hover{background:rgba(36,87,214,.08);}
-  .nav-drop-item .t{display:block;font-weight:700;font-size:14.5px;color:var(--ink);}
-  .nav-drop-item .d{display:block;font-weight:500;font-size:12.5px;color:var(--muted);margin-top:2px;}
-
-  /* Mobile menu toggle + dropdown panel (hidden on desktop) */
-  .menu-toggle{
-    display:none;width:38px;height:38px;border-radius:12px;border:1px solid var(--line);
-    background:#fff;flex-direction:column;align-items:center;justify-content:center;gap:4px;
-    cursor:pointer;flex-shrink:0;
-  }
-  .menu-toggle span{width:18px;height:2px;background:var(--ink);border-radius:2px;transition:transform .2s, opacity .2s;}
-  .menu-toggle.active span:nth-child(1){transform:translateY(6px) rotate(45deg);}
-  .menu-toggle.active span:nth-child(2){opacity:0;}
-  .menu-toggle.active span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
-  .mobile-quick-social{display:none;align-items:center;gap:8px;}
-  .head-top-social{display:none;align-items:center;gap:8px;}
-  .mobile-nav-panel{
-    display:none;flex-direction:column;
-    width:100%;flex-basis:100%;order:99;
-    background:#fff;border:1px solid var(--line);border-radius:16px;
-    box-shadow:0 20px 40px -20px rgba(20,50,100,.25);
-    padding:10px;margin:14px 0 0;
-  }
-  .mobile-nav-panel a{padding:13px 14px;border-radius:10px;font-weight:600;color:var(--ink-soft);}
-  .mobile-nav-panel a:hover{background:rgba(36,87,214,.06);color:var(--blue-deep);}
-  .mobile-nav-panel.open{display:flex;}
-  .mobile-nav-panel .nav-drop{position:static;}
-  .mobile-nav-panel .nav-drop-toggle{
-    width:100%;justify-content:space-between;padding:13px 14px;border-radius:10px;
-    font-size:inherit;font-weight:600;color:var(--ink-soft);
-  }
-  .mobile-nav-panel .nav-drop-toggle:hover{background:rgba(36,87,214,.06);color:var(--blue-deep);}
-  .mobile-nav-panel .nav-drop-menu{
-    display:none;position:static;box-shadow:none;padding:4px 0 6px 10px;
-    margin-top:2px;min-width:0;background:none;
-  }
-  .mobile-nav-panel .nav-drop.open .nav-drop-menu{display:block;}
+  /* ---------- Header: shared implementation in assets/header.css ---------- */
 
   /* ---------- Bento grid ---------- */
   .bento{
@@ -541,13 +443,6 @@
   .social a{width:36px;height:36px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.2);}
   .social svg{width:18px;height:18px;display:block;}
 
-  /* ---------- Nav "Залишити заявку" button ---------- */
-  .btn-request{
-    background:linear-gradient(110deg, #FF872D 0%, #FF671A 100%);color:#14243B;font-weight:700;font-size:14.5px;
-    padding:12px 20px;border-radius:999px;white-space:nowrap;box-shadow:0 9px 20px rgba(250,116,25,.18);
-    border:none;cursor:pointer;
-  }
-
   /* ---------- Request / lead-form section (dark) ---------- */
   .request-card{
     background:
@@ -667,7 +562,6 @@
     .catalog3,.chipgrid,.prodgrid,.revrow{grid-template-columns:repeat(2,1fr);}
     .footgrid{grid-template-columns:1fr 1fr;}
     .hero-main h1{font-size:44px;}
-    nav{display:none;}
   }
   @media(max-width:620px){
     .advstrip,.chipgrid,.catalog3,.prodgrid,.revrow{grid-template-columns:1fr;}
@@ -688,48 +582,7 @@
     .prod-video-wrap{margin-top:20px;border-radius:16px;}
     .prod-cta{margin-top:20px;}
 
-    /* Compact mobile header — two states: initial (logo + menu, one row,
-       ~60px) and pinned (menu + Telegram + Viber + Заявка, appears once
-       the initial header has fully scrolled out of view). Desktop/tablet
-       (>620px) header markup and behavior are untouched — every rule
-       below only takes effect at this breakpoint. */
-    header{padding:0;}
-    .headtop{gap:10px;padding-top:0;padding-bottom:0;min-height:60px;border-bottom:none;}
-    .brand{gap:10px;}
-    .brand .mark{width:130px;height:auto;}
-    .head-cities{display:none;}
-    .head-social{display:none;}
-    .head-top-social{display:flex;margin-left:auto;}
-    .head-top-social .soc{width:40px;height:40px;}
-    .head-top-social .soc svg{width:18px;height:18px;}
-
-    .headbottom{padding:0;}
-    .headbottom .wrap{
-      padding-top:0;padding-bottom:0;min-height:0;gap:10px;
-      transition:padding .18s ease;
-    }
-    .headbottom.pinned .wrap{padding-top:11px;padding-bottom:11px;}
-    .headbottom{transition:background-color .18s ease, backdrop-filter .18s ease, box-shadow .18s ease, border-color .18s ease;}
-    .headbottom.pinned{
-      background:rgba(255,255,255,.62);
-      backdrop-filter:blur(18px) saturate(160%);
-      -webkit-backdrop-filter:blur(18px) saturate(160%);
-      border-bottom-color:var(--line);
-      box-shadow:0 10px 30px -18px rgba(20,50,100,.35);
-    }
-
-    nav{display:none;}
-    .menu-toggle{display:flex;width:44px;height:44px;}
-    .pin-toggle{display:none;}
-    .headbottom.pinned .pin-toggle{display:flex;}
-
-    .mobile-quick-social{display:none;}
-    .headbottom.pinned .mobile-quick-social{display:flex;margin-left:auto;}
-    .mobile-quick-social .soc{width:44px;height:44px;}
-    .mobile-quick-social .soc svg{width:18px;height:18px;}
-
-    .btn-request{display:none;align-items:center;min-height:44px;padding:10px 16px;font-size:12.5px;}
-    .headbottom.pinned .btn-request{display:inline-flex;}
+    /* Compact/pinned mobile header behavior lives in assets/header.css */
 
     /* Anchor jumps (incl. the pinned bar's "Заявка" button) land below the pinned bar, not under it */
     #delivery,#production,#catalog,#request{scroll-margin-top:76px;}
@@ -829,7 +682,6 @@
      instead of just the container getting wider.
      ================================================================== */
   @media(min-width:1081px){
-    header{padding:clamp(18px, 14px + 0.4vw, 20px) 0 0;}
     .bento{gap:clamp(22px, 18px + 0.4vw, 26px);margin-top:clamp(22px, 12px + 1vw, 26px);}
     .hero-main{padding:clamp(44px, 32px + 1vw, 46px) clamp(44px, 32px + 1vw, 46px) clamp(32px, 24px + 0.6vw, 34px);gap:clamp(24px, 18px + 0.5vw, 25px);}
     .hero-main .herofacts{display:none;}
@@ -838,8 +690,6 @@
       margin-top:2px;padding-top:16px;border-top:1px solid var(--line);
       font-size:13.5px;color:var(--muted);
     }
-    .btn-request{padding:clamp(12px, 8px + 0.4vw, 13.6px) clamp(20px, 14px + 0.6vw, 22.4px);font-size:clamp(14.5px, 11.9px + 0.238vw, 15.2px);}
-
     .advstrip{gap:20px;margin-top:clamp(18px, 8px + 1vw, 22px);}
 
     section{padding-top:clamp(64px, 40px + 2.2vw, 70.8px);padding-bottom:0;}
@@ -1439,109 +1289,6 @@
     io.observe(strip);
   })();
 
-  // ---- Sticky nav: frosted-glass background once actually scrolled ----
-  (function(){
-    const bar = document.querySelector('.headbottom');
-    if(!bar) return;
-    function updateStuck(){
-      bar.classList.toggle('is-stuck', window.scrollY > 4);
-    }
-    updateStuck();
-    window.addEventListener('scroll', updateStuck, { passive: true });
-  })();
-
-  // ---- Mobile menu toggle (two buttons: initial-header + pinned-bar, same panel) ----
-  (function(){
-    const btns = Array.from(document.querySelectorAll('.menu-toggle'));
-    const panel = document.getElementById('mobileNavPanel');
-    if(!btns.length || !panel) return;
-    function setOpen(isOpen){
-      panel.classList.toggle('open', isOpen);
-      btns.forEach(function(b){
-        b.classList.toggle('active', isOpen);
-        b.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-    }
-    btns.forEach(function(btn){
-      btn.addEventListener('click', function(){
-        setOpen(!panel.classList.contains('open'));
-      });
-    });
-    panel.querySelectorAll('a').forEach(a => a.addEventListener('click', function(){
-      setOpen(false);
-    }));
-  })();
-
-  // ---- Mobile header: swap initial (logo+menu) for the pinned bar
-  //      (menu+Telegram+Viber+Заявка) once the initial header has fully
-  //      scrolled out of view. Desktop/tablet (>620px) is unaffected —
-  //      this only toggles a class the mobile media query reacts to. ----
-  (function(){
-    const bar = document.querySelector('.headbottom');
-    const headtop = document.querySelector('.headtop');
-    if(!bar || !headtop) return;
-    const HYSTERESIS = 10;
-    let pinned = false;
-    function update(){
-      if(window.innerWidth > 620){
-        if(pinned){ bar.classList.remove('pinned'); pinned = false; }
-        return;
-      }
-      const threshold = headtop.offsetHeight;
-      const y = window.scrollY;
-      if(!pinned && y > threshold + HYSTERESIS){
-        pinned = true;
-        bar.classList.add('pinned');
-      } else if(pinned && y < threshold - HYSTERESIS){
-        pinned = false;
-        bar.classList.remove('pinned');
-      }
-    }
-    update();
-    window.addEventListener('scroll', update, { passive:true });
-    window.addEventListener('resize', update);
-  })();
-
-  // ---- "Головна" nav link: scroll to top instead of reloading the page ----
-  document.querySelectorAll('.nav-home').forEach(function(a){
-    a.addEventListener('click', function(e){
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  });
-
-  // ---- Catalog nav dropdown ----
-  (function(){
-    const drops = Array.from(document.querySelectorAll('.nav-drop'));
-    if(!drops.length) return;
-    function closeDrop(drop){
-      drop.classList.remove('open');
-      const t = drop.querySelector('.nav-drop-toggle');
-      if(t) t.setAttribute('aria-expanded', 'false');
-    }
-    drops.forEach(function(drop){
-      const toggle = drop.querySelector('.nav-drop-toggle');
-      if(!toggle) return;
-      toggle.addEventListener('click', function(e){
-        e.stopPropagation();
-        const isOpen = drop.classList.contains('open');
-        drops.forEach(closeDrop);
-        if(!isOpen){
-          drop.classList.add('open');
-          toggle.setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
-    document.addEventListener('click', function(e){
-      drops.forEach(function(drop){
-        if(!drop.contains(e.target)) closeDrop(drop);
-      });
-    });
-    document.addEventListener('keydown', function(e){
-      if(e.key === 'Escape') drops.forEach(closeDrop);
-    });
-  })();
-
   // ---- Lead form: fake-submit UX (a real backend/CRM would replace this) ----
   const leadForm = document.getElementById('leadForm');
   if(leadForm){
@@ -1640,5 +1387,6 @@
     io.observe(video);
   })();
 </script>
+<script src="assets/header.js"></script>
 </body>
 </html>
