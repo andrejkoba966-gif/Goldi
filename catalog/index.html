@@ -95,6 +95,79 @@
     .p-cta .btn{width:100%;justify-content:center;}
   }
 
+  /* ---------- Request / lead-form section (dark, matches site) ---------- */
+  .request-card{
+    background:
+      linear-gradient(150deg, rgba(80,130,230,.25), transparent 45%),
+      linear-gradient(165deg,#0d1c42,#122a63 55%,#0a1735);
+    border-radius:var(--radius-lg);
+    padding:54px;
+    display:grid;grid-template-columns:1fr 1fr;
+    grid-template-areas:"intro form" "cities form";
+    gap:56px;
+    color:#fff;
+    box-shadow:0 30px 60px -24px rgba(10,25,60,.5);
+    margin-top:20px;margin-bottom:56px;
+  }
+  .r-intro{grid-area:intro;}
+  .r-formcard{grid-area:form;}
+  .request-card h2{color:#fff;font-size:28px;font-weight:800;line-height:1.15;}
+  .request-card .r-sub{color:#aebde0;font-size:14.5px;margin-top:14px;max-width:420px;}
+  .r-cities{grid-area:cities;display:flex;flex-direction:column;gap:14px;margin-top:24px;}
+  .r-city{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-sm);padding:18px 20px;}
+  .r-city h5{font-family:'Golos Text';font-size:15px;font-weight:700;color:#fff;margin-bottom:7px;}
+  .r-city .addr{font-size:13px;color:#aebde0;margin-bottom:7px;}
+  .r-city .tel{font-weight:700;font-size:14px;color:#fff;}
+  .r-city .mail{font-weight:600;font-size:13px;color:#8fb2f5;margin-top:5px;}
+  .r-formcard{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-md);padding:28px 28px 30px;}
+  .r-formcard h3{color:#fff;font-size:19px;font-weight:800;}
+  .rform{margin-top:22px;display:flex;flex-direction:column;gap:14px;}
+  .rform label{font-size:12.5px;font-weight:700;color:#c3cfe8;margin-bottom:7px;display:block;}
+  .rform input,.rform textarea{
+    width:100%;padding:13px 15px;border-radius:14px;border:1px solid rgba(255,255,255,.16);
+    background:rgba(255,255,255,.07);font-family:'Inter';font-size:14px;color:#fff;outline:none;
+    transition:border-color .15s, box-shadow .15s;
+  }
+  .rform input::placeholder,.rform textarea::placeholder{color:#7c88a8;}
+  .rform input:focus,.rform textarea:focus{border-color:#7fa3e8;box-shadow:0 0 0 4px rgba(95,140,232,.2);}
+  .rform textarea{resize:none;min-height:70px;}
+  .rform .submit{
+    margin-top:4px;border:none;cursor:pointer;
+    background:linear-gradient(110deg, #FF872D 0%, #FF671A 100%);color:#14243B;font-weight:700;font-size:14.5px;
+    padding:15px 22px;border-radius:999px;box-shadow:0 9px 20px rgba(250,116,25,.18);
+    display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Inter';
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .rform .submit:hover{transform:translateY(-3px);box-shadow:0 16px 32px -10px rgba(250,116,25,.42);}
+  .rform .submit:active{transform:translateY(-1px);}
+  .rform .r-success{display:none;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:10px 0 4px;}
+  .rform .r-success.show{display:flex;}
+  .rform.hide-fields > *:not(.r-success){display:none;}
+  .r-success .check{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#2457d6,#5f8ce8);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;}
+  .r-success h4{color:#fff;font-size:16px;font-weight:700;}
+  .r-success p{color:#aebde0;font-size:13px;}
+  @media(max-width:900px){
+    .request-card{grid-template-columns:1fr;grid-template-areas:"intro" "cities" "form";padding:34px 26px;gap:32px;}
+  }
+  @media(max-width:620px){
+    .request-card{
+      grid-template-areas:"intro" "form" "cities";
+      margin-left:-16px;margin-right:-16px;
+      border-radius:16px;
+      padding:32px 20px 30px;
+      gap:26px;
+      box-shadow:none;
+    }
+    .request-card h2{font-size:25px;}
+    .r-city{padding:14px 16px;border-radius:12px;}
+    .r-formcard{padding:22px 18px 24px;border-radius:14px;}
+    .rform .submit{width:100%;}
+  }
+  @media(min-width:1081px){
+    .request-card{padding:clamp(54px, 30px + 2.4vw, 63.6px);gap:clamp(56px, 32px + 2.4vw, 65.6px);}
+    .request-card h2{font-size:clamp(32px, 16.5px + 1.43vw, 36.5px);}
+  }
+
   /* ---------- Footer (matches main site) ---------- */
   footer{background:linear-gradient(180deg,#0e1e35,#0a1730);color:#dfe6f5;border-radius:36px 36px 0 0;margin-top:20px;padding:56px 0 26px;}
   .footgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:34px;}
@@ -334,8 +407,54 @@
   </div>
 
   <div class="p-cta">
-    <a class="btn btn-dark" href="../index.html#request">Залишити заявку</a>
+    <a class="btn btn-dark" href="#request">Залишити заявку</a>
     <a class="btn btn-outline" href="../index.html">← На головну</a>
+  </div>
+
+  <!-- REQUEST FORM -->
+  <div class="request-card" id="request">
+    <div class="r-intro">
+      <h2>Готові прорахувати ваше замовлення</h2>
+      <p class="r-sub">Залиште номер, і менеджер зателефонує протягом робочого дня, або зверніться напряму до філії у вашому місті.</p>
+    </div>
+      <div class="r-cities">
+        <div class="r-city">
+          <h5>м. Кременчук</h5>
+          <div class="addr">39631, вул. Бетонна, 23</div>
+          <div class="tel">066 744 00 55 · 066 333-03-41</div>
+          <div class="mail">info@goldigroup.com.ua</div>
+        </div>
+        <div class="r-city">
+          <h5>м. Київ</h5>
+          <div class="addr">01033, вул. Володимирська, 97</div>
+          <div class="tel">096 559 05 05</div>
+          <div class="mail">sbut-kv@goldigroup.com.ua</div>
+        </div>
+      </div>
+
+    <div class="r-formcard">
+      <h3>Заявка на прорахунок</h3>
+      <form class="rform" id="leadForm">
+        <div>
+          <label>Ім'я</label>
+          <input type="text" name="name" placeholder="Як до вас звертатись" required>
+        </div>
+        <div>
+          <label>Телефон</label>
+          <input type="tel" name="phone" placeholder="+38 0__ ___ __ __" required>
+        </div>
+        <div>
+          <label>Що потрібно</label>
+          <textarea name="message" placeholder="Наприклад: арматура А500, 5 тонн, Кременчук"></textarea>
+        </div>
+        <button type="submit" class="submit">Надіслати заявку →</button>
+        <div class="r-success" id="leadSuccess">
+          <div class="check">✓</div>
+          <h4>Заявку надіслано</h4>
+          <p>Менеджер зв'яжеться з вами найближчим часом.</p>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 
@@ -384,6 +503,16 @@
   </div>
 </footer>
 
+<script>
+  var leadForm = document.getElementById('leadForm');
+  if(leadForm){
+    leadForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      leadForm.classList.add('hide-fields');
+      document.getElementById('leadSuccess').classList.add('show');
+    });
+  }
+</script>
 <script src="../assets/header.js"></script>
 </body>
 </html>
