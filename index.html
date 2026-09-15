@@ -320,6 +320,47 @@
 
   /* Popular / base row */
   /* Own-production video block — single unified card (dark, matches footer) */
+  /* ---------- Supply (complex procurement) section ---------- */
+  .supply-card{
+    padding:56px;
+    display:grid;
+    grid-template-columns:55fr 45fr;
+    gap:48px;
+    align-items:center;
+  }
+  .supply-left{display:flex;flex-direction:column;align-items:flex-start;gap:16px;}
+  .supply-left .eyebrow{color:var(--orange-deep);letter-spacing:.1em;}
+  .supply-left h2{font-size:34px;font-weight:800;letter-spacing:-.01em;line-height:1.22;}
+  .supply-left h2 .accent{color:var(--orange);}
+  .supply-left .desc{color:var(--muted);font-size:16px;line-height:1.6;max-width:480px;}
+  .supply-tags{font-size:13.5px;font-weight:600;color:var(--ink-soft);letter-spacing:.01em;}
+  .supply-btn{margin-top:8px;}
+  .supply-right{display:flex;flex-direction:column;gap:14px;}
+  .supply-photo-frame{position:relative;width:100%;aspect-ratio:4/5;border-radius:26px;overflow:hidden;}
+  .supply-photo-frame img{width:100%;height:100%;object-fit:cover;display:block;}
+  .supply-photo-frame::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg, rgba(14,30,53,0) 55%, rgba(14,30,53,.24) 100%);
+  }
+  .supply-caption{font-size:13px;color:var(--muted);line-height:1.5;}
+  .supply-caption b{display:block;color:var(--ink);font-weight:700;font-size:13.5px;margin-bottom:2px;}
+
+  .supply-reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease-out, transform .6s ease-out;}
+  .supply-reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .supply-reveal{opacity:1;transform:none;transition:none;}
+  }
+
+  @media(max-width:1080px){
+    .supply-card{grid-template-columns:1fr;gap:28px;}
+  }
+  @media(max-width:620px){
+    .supply-card{padding:23px;}
+    .supply-left h2{font-size:26px;}
+    .supply-left .desc{font-size:15px;}
+    .supply-btn{min-height:44px;}
+  }
+
   .prod-card{
     padding:44px 44px 32px;display:flex;flex-direction:column;
     background:linear-gradient(180deg,#0e1e35,#0a1730);
@@ -1083,6 +1124,26 @@
 
 </div>
 
+<section id="supply">
+  <div class="wrap">
+    <div class="card glass supply-card supply-reveal">
+      <div class="supply-left">
+        <span class="eyebrow">КОМПЛЕКСНЕ ПОСТАЧАННЯ</span>
+        <h2>Один постачальник<br><span class="accent">для всього проєкту.</span></h2>
+        <p class="desc">Не витрачайте час на пошук різних постачальників. Зберемо все необхідне для будівництва в одному замовленні — від металопрокату та арматури до сітки, дроту й будівельних матеріалів.</p>
+        <div class="supply-tags">Металопрокат · Власне виробництво · Будівельні матеріали</div>
+        <a class="btn btn-dark supply-btn" href="#request">Зібрати замовлення <span class="btn-arrow">↗</span></a>
+      </div>
+      <div class="supply-right">
+        <div class="supply-photo-frame">
+          <img src="https://res.cloudinary.com/jvpkjmwm/image/upload/v1789490045/IMG_20260915_192945_829_2.jpg" alt="Співробітниця GOLDI GROUP у спецодязі" loading="lazy">
+        </div>
+        <p class="supply-caption"><b>Команда GOLDI GROUP</b>Підкажемо, розрахуємо та організуємо доставку.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="production">
   <div class="wrap">
     <div class="card glass prod-card">
@@ -1531,6 +1592,20 @@
       });
     }, { threshold: 0.3, rootMargin: '0px 0px -60px 0px' });
     curtainEls.forEach(el => curtainIo.observe(el.parentElement));
+
+    // Supply (complex procurement) section: fade + lift reveal, once
+    const supplyEl = document.querySelector('.supply-reveal');
+    if(supplyEl){
+      const supplyIo = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('in');
+            supplyIo.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
+      supplyIo.observe(supplyEl);
+    }
   });
 
   // ---- About video: autoplay muted while in view, pause off-screen, manual fallback ----
