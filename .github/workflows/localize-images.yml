@@ -42,6 +42,12 @@ jobs:
             "storage/cache/16164085949254-597x296.jpg": "truba-vgp.jpg",
             "storage/cache/16164086542397-597x296.jpg": "truba-profilna.jpg",
             "storage/cache/16164087255621-597x296.jpg": "truba-elektrozvaryuvalna.jpg",
+            # armatura tiles, in the order the old section page renders them
+            "storage/cache/16164079081311-597x296.jpg": "arm-a240.jpg",
+            "storage/cache/16164079923296-597x296.jpg": "arm-a400-gost.jpg",
+            "storage/cache/16164080659031-597x296.jpg": "arm-a400-a500-dstu.jpg",
+            "storage/cache/16164082034700-597x296.jpg": "arm-at800-at1000.jpg",
+            "storage/cache/16164081497642-597x296.jpg": "arm-ndv.jpg",
           }
           BASE = "https://goldigroup.com.ua/"
           os.makedirs("images", exist_ok=True)
