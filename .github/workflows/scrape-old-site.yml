@@ -1,0 +1,103 @@
+name: Read old site pages
+
+# Prints the text and image URLs of pages on the old site into the job log.
+# The dev sandbox cannot reach that domain, but GitHub's runners can, so this
+# is how catalog copy and photo URLs get pulled across. Read-only: it never
+# writes to the repo.
+
+on:
+  workflow_dispatch:
+    inputs:
+      paths:
+        description: "Comma-separated paths on goldigroup.com.ua"
+        type: string
+        required: true
+        default: "catalog/metalloprokat/truby"
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch and dump
+        env:
+          PATHS: ${{ inputs.paths }}
+        run: |
+          python3 - <<'PY'
+          import html, os, re, urllib.parse, urllib.request
+
+          BASE = "https://goldigroup.com.ua/"
+
+          def get(url):
+              req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+              return urllib.request.urlopen(req, timeout=60).read().decode("utf-8", "replace")
+
+          def text_of(doc):
+              # drop everything that is not page copy
+              doc = re.sub(r"(?is)<(script|style|noscript|svg)\b.*?</\1>", " ", doc)
+              doc = re.sub(r"(?is)<(header|nav|footer)\b.*?</\1>", " ", doc)
+              doc = re.sub(r"(?i)<br\s*/?>|</(p|div|li|h[1-6]|tr)>", "\n", doc)
+              doc = re.sub(r"(?i)<li\b[^>]*>", "\n* ", doc)
+              doc = re.sub(r"(?s)<[^>]+>", " ", doc)
+              doc = html.unescape(doc)
+              lines = [re.sub(r"[ \t\xa0]+", " ", l).strip() for l in doc.split("\n")]
+              out, seen_blank = [], False
+              for l in lines:
+                  if not l:
+                      seen_blank = True
+                      continue
+                  if seen_blank and out:
+                      out.append("")
+                  seen_blank = False
+                  out.append(l)
+              return "\n".join(out)
+
+          def images_of(doc, page_url):
+              urls = []
+              urls += re.findall(r'<img[^>]+src="([^"]+)"', doc, re.I)
+              urls += re.findall(r'''url\(\s*['"]?([^'")]+\.(?:jpe?g|png|webp))''', doc, re.I)
+              urls += re.findall(r'data-(?:src|bg|background)="([^"]+)"', doc, re.I)
+              seen, out = set(), []
+              for u in urls:
+                  full = urllib.parse.urljoin(page_url, u.strip())
+                  if full not in seen and not full.startswith("data:"):
+                      seen.add(full)
+                      out.append(full)
+              return out
+
+          for raw in os.environ["PATHS"].split(","):
+              path = raw.strip().strip("/")
+              if not path:
+                  continue
+              url = BASE + path
+              print("=" * 78)
+              print("PAGE  " + url)
+              print("=" * 78)
+              try:
+                  doc = get(url)
+              except Exception as e:
+                  print("  FAILED: %r\n" % (e,))
+                  continue
+
+              m = re.search(r"(?is)<title>(.*?)</title>", doc)
+              print("TITLE: " + (html.unescape(m.group(1)).strip() if m else "-"))
+              print()
+              print("---- TEXT ----")
+              print(text_of(doc))
+              print()
+              print("---- IMAGES ----")
+              for u in images_of(doc, url):
+                  print("  " + u)
+              print()
+
+              # sub-page links, so nested categories can be discovered
+              links = set()
+              for href in re.findall(r'<a[^>]+href="([^"]+)"', doc, re.I):
+                  full = urllib.parse.urljoin(url, href)
+                  if full.startswith(url.rstrip("/") + "/"):
+                      links.add(full)
+              if links:
+                  print("---- SUB-PAGES ----")
+                  for l in sorted(links):
+                      print("  " + l)
+                  print()
+          PY
