@@ -217,6 +217,19 @@
   .social{display:flex;gap:10px;}
   .social a{width:36px;height:36px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.2);}
   .social svg{width:18px;height:18px;display:block;}
+  .social a{
+    transition:transform .22s cubic-bezier(.2,.8,.3,1), box-shadow .22s ease;
+    will-change:transform;
+  }
+  .social a:hover{transform:translateY(-4px) scale(1.08);box-shadow:0 12px 24px rgba(0,0,0,.34);}
+  .social a:active{transform:translateY(-1px) scale(1.02);}
+  .social a svg{transition:transform .22s cubic-bezier(.2,.8,.3,1);}
+  .social a:hover svg{transform:scale(1.12);}
+  .social a:focus-visible{outline:2px solid var(--orange);outline-offset:3px;}
+  @media(prefers-reduced-motion:reduce){
+    .social a,.social a svg{transition:none;}
+    .social a:hover,.social a:hover svg,.social a:active{transform:none;}
+  }
 
   @media(max-width:900px){
     .request-card{grid-template-columns:1fr;grid-template-areas:"intro" "cities" "form";padding:34px 26px;gap:32px;}
