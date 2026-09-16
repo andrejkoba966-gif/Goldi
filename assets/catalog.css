@@ -414,3 +414,6 @@ footer{background:linear-gradient(180deg,#0e1e35,#0a1730);color:#dfe6f5;border-r
 }
 .help-msg a:hover{transform:translateY(-2px);border-color:rgba(242,116,15,.45);}
 .help-msg svg{width:18px;height:18px;display:block;flex-shrink:0;}
+
+.r-city .tel a{color:inherit;border-bottom:1px solid rgba(255,255,255,.35);}
+.r-city .tel a:hover{border-bottom-color:#fff;}
