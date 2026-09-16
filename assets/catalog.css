@@ -417,3 +417,13 @@ footer{background:linear-gradient(180deg,#0e1e35,#0a1730);color:#dfe6f5;border-r
 
 .r-city .tel a{color:inherit;border-bottom:1px solid rgba(255,255,255,.35);}
 .r-city .tel a:hover{border-bottom-color:#fff;}
+
+/* the product layout's left column can carry the help card under the photo */
+.p-col{position:sticky;top:24px;}
+.p-col .p-imgwrap{position:static;}
+.p-col .sidebar-card{position:static;margin-top:20px;}
+@media(max-width:1000px){
+  /* stacked: photo, then the page itself, and the help card after it */
+  .p-col{display:contents;}
+  .p-col .sidebar-card{order:3;margin-top:0;}
+}
