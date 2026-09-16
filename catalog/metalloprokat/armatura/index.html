@@ -86,6 +86,17 @@
   .help-title{font-weight:700;font-size:15px;}
   .help-text{font-size:13.5px;color:var(--muted);margin-top:8px;line-height:1.5;}
   .help-phone{font-family:'Golos Text';font-weight:800;font-size:17px;margin-top:12px;color:var(--ink);}
+  .help-write{margin-top:16px;}
+  .help-write .l{font-weight:700;font-size:14px;color:var(--ink);}
+  .help-msg{margin-top:10px;display:flex;gap:9px;flex-wrap:wrap;}
+  .help-msg a{
+    display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;
+    background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);
+    font-family:'Inter';font-size:13.5px;font-weight:600;color:var(--ink);
+    transition:transform .15s ease, border-color .15s ease;
+  }
+  .help-msg a:hover{transform:translateY(-2px);border-color:rgba(242,116,15,.45);}
+  .help-msg svg{width:18px;height:18px;display:block;flex-shrink:0;}
 
   .content-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px;}
   .found-count{font-size:15px;font-weight:700;color:var(--ink-soft);}
@@ -446,7 +457,13 @@
 
       <div class="help-title">Потрібна допомога?</div>
       <p class="help-text">Підберемо матеріал за вашою специфікацією.</p>
-      <div class="help-phone">066 744 00 55</div>
+      <div class="help-write">
+        <div class="l">Написати нам</div>
+        <div class="help-msg">
+          <a href="https://t.me/+380667440055" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#26A5E4"/><path d="M17.8 7.2 6.6 11.6c-.7.3-.7.7-.1.9l2.9.9 1.1 3.4c.1.4.3.5.6.5.2 0 .3-.1.5-.2l1.6-1.5 3 2.2c.5.3 1 .1 1.1-.5l2-9.5c.2-.7-.2-1-.5-.6z" fill="#fff"/></svg>Telegram</a>
+          <a href="viber://chat?number=%2B380667440055"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#7360F2"/><path d="M12 6.2c-3.3 0-6 2.4-6 5.6 0 1.8 1 3.4 2.5 4.5l-.6 2.3 2.5-1.1c.5.1 1.1.2 1.6.2 3.3 0 6-2.4 6-5.6s-2.7-6-6-6.0z" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/><path d="M9.7 10.3s.3 1.7 1.9 3.1c1.6 1.4 3.1 1.4 3.1 1.4l.6-1c.2-.3.6-.4.9-.2l1 .6c.3.2.4.6.2.9-.3.5-.9 1-1.6 1.1-1 .1-2.6-.1-4.3-1.7-1.7-1.5-2.2-3-2.4-3.9-.1-.7.3-1.4.8-1.7l1-.6c.3-.2.7-.1.9.2l.6 1c.2.3.1.7-.2.9l-.5.3z" fill="#fff"/></svg>Viber</a>
+        </div>
+      </div>
     </aside>
 
     <!-- CONTENT -->
