@@ -442,3 +442,20 @@ footer{background:linear-gradient(180deg,#0e1e35,#0a1730);color:#dfe6f5;border-r
   .social a,.social a svg{transition:none;}
   .social a:hover,.social a:hover svg,.social a:active{transform:none;}
 }
+
+/* ---------- Video block ---------- */
+/* The frame is capped in height and hugs whatever shape the file turns out to
+   be, so a portrait clip is never cropped and never leaves a wide empty band. */
+.v-stage{
+  --v-cap:min(72vh,620px);
+  margin:24px auto 0;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);
+  background:#0b1730;display:flex;align-items:center;justify-content:center;
+  max-height:var(--v-cap);
+}
+.v-stage video{
+  display:block;width:auto;height:auto;
+  max-width:100%;max-height:var(--v-cap);
+}
+@media(max-width:620px){
+  .v-stage{--v-cap:78vh;}
+}
