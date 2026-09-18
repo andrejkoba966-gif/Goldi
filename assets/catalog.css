@@ -459,3 +459,7 @@ footer{background:linear-gradient(180deg,#0e1e35,#0a1730);color:#dfe6f5;border-r
 @media(max-width:620px){
   .v-stage{--v-cap:78vh;}
 }
+
+/* the Послуги page puts the video straight after the listing, with no gap to spare */
+.layout.layout-tight{padding-bottom:0;}
+.v-stage.v-tight{margin-top:14px;}
