@@ -15,6 +15,11 @@ from urllib.parse import urljoin
 BASE = 'https://andrejkoba966-gif.github.io/Goldi/'
 # --------------------------------------------------------------------------------
 
+# The github.io address is temporary, so it stays out of search results. This
+# follows BASE on its own: once BASE is the real domain, pages become indexable
+# again with nothing else to remember.
+TEMPORARY_HOST = '.github.io/' in BASE
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = 'GOLDI GROUP'
 DEFAULT_IMAGE = 'images/og-default.jpg'
@@ -104,9 +109,13 @@ def build_block(rel, src):
     size = image_size(os.path.join(ROOT, img_rel))
 
     e = lambda s: html.escape(s, quote=True)
-    lines = [
-        START,
-        f'<link rel="canonical" href="{e(url)}">',
+    lines = [START]
+    if TEMPORARY_HOST:
+        # crawlers still need to reach the page to see this, so robots.txt keeps allowing them
+        lines.append('<meta name="robots" content="noindex, follow">')
+    else:
+        lines.append(f'<link rel="canonical" href="{e(url)}">')
+    lines += [
         '<meta property="og:type" content="website">',
         f'<meta property="og:site_name" content="{SITE}">',
         '<meta property="og:locale" content="uk_UA">',
@@ -164,7 +173,8 @@ def main():
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + '\n</urlset>\n')
     open(os.path.join(ROOT, 'robots.txt'), 'w', encoding='utf-8').write(
         'User-agent: *\nAllow: /\n\nSitemap: ' + BASE + 'sitemap.xml\n')
-    print(f'{len(pages)} pages stamped, sitemap.xml and robots.txt written for {BASE}')
+    mode = 'closed to search (temporary address)' if TEMPORARY_HOST else 'open to search'
+    print(f'{len(pages)} pages stamped, sitemap.xml and robots.txt written for {BASE} — {mode}')
 
 
 if __name__ == '__main__':
