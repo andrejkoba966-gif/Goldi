@@ -1399,15 +1399,6 @@
     io.observe(strip);
   })();
 
-  // ---- Lead form: fake-submit UX (a real backend/CRM would replace this) ----
-  const leadForm = document.getElementById('leadForm');
-  if(leadForm){
-    leadForm.addEventListener('submit', function(e){
-      e.preventDefault();
-      leadForm.classList.add('hide-fields');
-      document.getElementById('leadSuccess').classList.add('show');
-    });
-  }
 
   // ---- Scroll-reveal animation for every block on the page ----
   document.addEventListener('DOMContentLoaded', function(){
@@ -1515,6 +1506,7 @@
     io.observe(video);
   })();
 </script>
+<script src="assets/leadform.js"></script>
 <script src="assets/header.js"></script>
 </body>
 </html>

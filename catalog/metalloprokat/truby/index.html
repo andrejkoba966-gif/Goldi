@@ -430,17 +430,9 @@
     if(sel){ sel.value = 'all'; applyFilter(); }
   }
 
-  // ---------- Lead form: fake-submit UX ----------
-  var leadForm = document.getElementById('leadForm');
-  if(leadForm){
-    leadForm.addEventListener('submit', function(e){
-      e.preventDefault();
-      leadForm.classList.add('hide-fields');
-      document.getElementById('leadSuccess').classList.add('show');
-    });
-  }
 </script>
 <script src="../../../assets/orderlist.js"></script>
+<script src="../../../assets/leadform.js"></script>
 <script src="../../../assets/header.js"></script>
 </body>
 </html>

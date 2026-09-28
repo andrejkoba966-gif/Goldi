@@ -124,6 +124,9 @@
     if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
   }
 
+  // the request form empties the list once a request has really been sent
+  window.GoldiOrderList = { clear: function(){ write([]); if(dock) render(); } };
+
   document.addEventListener('DOMContentLoaded', function(){
     buildUI();
 
