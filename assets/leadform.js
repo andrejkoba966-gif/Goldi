@@ -34,29 +34,29 @@
     }catch(e){ return []; }
   }
 
-  function stamp(){
-    var d = new Date(), p = function(n){ return (n < 10 ? '0' : '') + n; };
-    return p(d.getDate()) + '.' + p(d.getMonth() + 1) + '.' + d.getFullYear() + ', ' + p(d.getHours()) + ':' + p(d.getMinutes());
+  // один вигляд для українських номерів: +380XXXXXXXXX; інші лишаються як є
+  function normalizePhone(raw){
+    var d = String(raw).replace(/\D/g, '');
+    if(/^380\d{9}$/.test(d)) return '+' + d;
+    if(/^80\d{9}$/.test(d))  return '+3' + d;
+    if(/^0\d{9}$/.test(d))   return '+38' + d;
+    if(/^\d{9}$/.test(d))    return '+380' + d;
+    return (String(raw).trim().charAt(0) === '+' ? '+' : '') + d;
   }
 
   function buildText(name, phone, message){
-    var lines = ['<b>Нова заявка з сайту</b>', '',
-                 '<b>Ім’я:</b> ' + esc(name),
-                 '<b>Телефон:</b> ' + esc(phone)];
-    if(message){
-      lines.push('', '<b>Що потрібно:</b>', esc(message.slice(0, 2500)));
-    }
-    // позиції зі «Списку замовлення», яких ще немає в тексті заявки
-    var extra = orderList().filter(function(e){ return e && e.name && message.indexOf(e.name) === -1; });
-    if(extra.length){
-      lines.push('', '<b>Список замовлення:</b>');
-      extra.slice(0, 40).forEach(function(e){
-        lines.push('• ' + esc(e.name) + (e.category ? ' <i>(' + esc(e.category) + ')</i>' : ''));
-      });
-    }
-    lines.push('', '<b>Сторінка:</b> <a href="' + esc(location.href) + '">' + esc(document.title) + '</a>',
-               '<b>Час:</b> ' + stamp());
-    return lines.join('\n');
+    // позиції зі «Списку замовлення», яких клієнт не вписав сам, ідуть у той самий блок
+    var extra = orderList().filter(function(e){ return e && e.name && message.indexOf(e.name) === -1; })
+                           .slice(0, 40).map(function(e){ return '• ' + e.name; });
+    var need = [message.slice(0, 2500)].concat(extra).filter(Boolean).join('\n');
+
+    return ['🟠🔵 <b>Нова заявка з сайту</b> 🟠🔵',
+            '',
+            '<b>Ім’я:</b> ' + esc(name),
+            '<b>Телефон:</b> ' + esc(normalizePhone(phone)),
+            '',
+            '<b>Що потрібно:</b>',
+            need ? esc(need) : '—'].join('\n');
   }
 
   function send(text){
