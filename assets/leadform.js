@@ -1,7 +1,9 @@
-/* GOLDI — форма «Заявка на прорахунок» надсилає заявку прямо в Telegram.
+/* GOLDI — форма «Заявка на прорахунок» надсилає заявку прямо в Telegram
+   і паралельно на пошту (через FormSubmit.co).
 
-   Налаштування — два рядки нижче: токен бота (від @BotFather) і id чату,
-   куди мають падати заявки.
+   Налаштування — рядки нижче: токен бота (від @BotFather), id чату,
+   куди мають падати заявки, і адреса пошти. Заявка вважається надісланою,
+   якщо дійшла хоча б одним із двох шляхів.
 
    Токен при цьому видно в коді сторінки. Щоб сховати його, досить поставити
    в ENDPOINT адресу власної пересилки (PHP на хостингу чи Cloudflare Worker),
@@ -9,8 +11,10 @@
 (function(){
   var TG_TOKEN   = '8923030753:AAGyii2dggArfQreuf7TyEuveWOayqT3y28';
   var TG_CHAT_ID = '8625707793';
+  var MAIL_TO    = 'info@goldigroup.com.ua';
 
   var ENDPOINT = TG_TOKEN ? 'https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage' : '';
+  var MAIL_ENDPOINT = MAIL_TO ? 'https://formsubmit.co/ajax/' + MAIL_TO : '';
   var PHONE = '066 744 00 55';
   var PHONE_TEL = '+380667440055';
   var ORDER_KEY = 'goldi:order-list';
@@ -44,36 +48,75 @@
     return (String(raw).trim().charAt(0) === '+' ? '+' : '') + d;
   }
 
-  function buildText(name, phone, message){
+  function collect(name, phone, message){
     // позиції зі «Списку замовлення», яких клієнт не вписав сам, ідуть у той самий блок
     var extra = orderList().filter(function(e){ return e && e.name && message.indexOf(e.name) === -1; })
                            .slice(0, 40).map(function(e){ return '• ' + e.name; });
-    var need = [message.slice(0, 2500)].concat(extra).filter(Boolean).join('\n');
-
-    return ['🟠🔵 <b>Нова заявка з сайту</b> 🟠🔵',
-            '',
-            '<b>Ім’я:</b> ' + esc(name),
-            '<b>Телефон:</b> ' + esc(normalizePhone(phone)),
-            '',
-            '<b>Що потрібно:</b>',
-            need ? esc(need) : '—'].join('\n');
+    return { name: name, phone: normalizePhone(phone),
+             need: [message.slice(0, 2500)].concat(extra).filter(Boolean).join('\n') };
   }
 
-  function send(text){
+  function buildText(lead){
+    return ['🟠🔵 <b>Нова заявка з сайту</b> 🟠🔵',
+            '',
+            '<b>Ім’я:</b> ' + esc(lead.name),
+            '<b>Телефон:</b> ' + esc(lead.phone),
+            '',
+            '<b>Що потрібно:</b>',
+            lead.need ? esc(lead.need) : '—'].join('\n');
+  }
+
+  function withTimeout(url, opts){
+    var ctrl = ('AbortController' in window) ? new AbortController() : null;
+    var timer = ctrl ? setTimeout(function(){ ctrl.abort(); }, TIMEOUT_MS) : null;
+    if(ctrl) opts.signal = ctrl.signal;
+    return fetch(url, opts)
+      .then(function(r){ return r.json().catch(function(){ return {}; }); })
+      .then(function(data){ if(timer) clearTimeout(timer); return data; },
+            function(err){ if(timer) clearTimeout(timer); throw err; });
+  }
+
+  function sendTelegram(lead){
     if(!ENDPOINT || !TG_CHAT_ID) return Promise.reject(new Error('not configured'));
     // звичайний формат форми, а не JSON: так браузер не робить попереднього
     // запиту, на який Telegram відповідає помилкою
-    var body = new URLSearchParams({ chat_id: TG_CHAT_ID, text: text, parse_mode: 'HTML',
+    var body = new URLSearchParams({ chat_id: TG_CHAT_ID, text: buildText(lead), parse_mode: 'HTML',
                                      disable_web_page_preview: 'true' });
-    var ctrl = ('AbortController' in window) ? new AbortController() : null;
-    var timer = ctrl ? setTimeout(function(){ ctrl.abort(); }, TIMEOUT_MS) : null;
-    return fetch(ENDPOINT, { method: 'POST', body: body, signal: ctrl ? ctrl.signal : undefined })
-      .then(function(r){ return r.json().catch(function(){ return { ok: false }; }); })
-      .then(function(data){
-        if(timer) clearTimeout(timer);
-        if(!data || !data.ok) throw new Error((data && data.description) || 'rejected');
-        return data;
-      }, function(err){ if(timer) clearTimeout(timer); throw err; });
+    return withTimeout(ENDPOINT, { method: 'POST', body: body }).then(function(data){
+      if(!data || !data.ok) throw new Error((data && data.description) || 'rejected');
+      return data;
+    });
+  }
+
+  function sendMail(lead){
+    if(!MAIL_ENDPOINT) return Promise.reject(new Error('not configured'));
+    var body = {
+      '_subject': 'Нова заявка з сайту — ' + lead.name + ', ' + lead.phone,
+      '_template': 'table',
+      '_captcha': 'false',
+      'Ім’я': lead.name,
+      'Телефон': lead.phone,
+      'Що потрібно': lead.need || '—'
+    };
+    return withTimeout(MAIL_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(body)
+    }).then(function(data){
+      if(!data || String(data.success) !== 'true') throw new Error((data && data.message) || 'rejected');
+      return data;
+    });
+  }
+
+  // обидва канали паралельно; успіх, якщо дійшло хоча б одне
+  function send(lead){
+    return new Promise(function(resolve, reject){
+      var left = 2, won = false;
+      function fail(){ if(--left === 0 && !won) reject(new Error('all channels failed')); }
+      function ok(){ if(!won){ won = true; resolve(); } }
+      sendTelegram(lead).then(ok, fail);
+      sendMail(lead).then(ok, fail);
+    });
   }
 
   function setup(form){
@@ -132,7 +175,7 @@
       }
 
       busy(true);
-      send(buildText(name, phone, message)).then(function(){
+      send(collect(name, phone, message)).then(function(){
         storeSet(LAST_KEY, String(Date.now()));
         if(window.GoldiOrderList && window.GoldiOrderList.clear) window.GoldiOrderList.clear();
         form.reset();
