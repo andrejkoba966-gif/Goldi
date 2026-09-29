@@ -7,8 +7,8 @@
    в ENDPOINT адресу власної пересилки (PHP на хостингу чи Cloudflare Worker),
    яка приймає ті самі поля, що й Telegram: chat_id, text, parse_mode. */
 (function(){
-  var TG_TOKEN   = '';
-  var TG_CHAT_ID = '';
+  var TG_TOKEN   = '8923030753:AAGyii2dggArfQreuf7TyEuveWOayqT3y28';
+  var TG_CHAT_ID = '8625707793';
 
   var ENDPOINT = TG_TOKEN ? 'https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage' : '';
   var PHONE = '066 744 00 55';
