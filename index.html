@@ -866,7 +866,7 @@
     position:relative;isolation:isolate;overflow:hidden;
     margin-top:22px;padding:0;border-radius:var(--radius-lg);
     min-height:clamp(560px, calc(100svh - 190px), 760px);
-    display:grid;grid-template-rows:auto 1fr auto;
+    display:grid;grid-template-rows:auto 1fr;
     color:#fff;background:#0b1626;
     box-shadow:0 30px 60px -30px rgba(10,30,70,.55);
   }
@@ -894,7 +894,7 @@
   .vhero-dot{width:8px;height:8px;border-radius:50%;background:#FF671A;box-shadow:0 0 0 0 rgba(255,103,26,.7);animation:vheroPulse 1.8s ease-out infinite;}
   @keyframes vheroPulse{to{box-shadow:0 0 0 10px rgba(255,103,26,0);}}
 
-  .vhero-body{align-self:center;padding:8px clamp(28px, 4.5vw, 64px);max-width:860px;display:flex;flex-direction:column;gap:22px;}
+  .vhero-body{align-self:center;padding:8px clamp(28px, 4.5vw, 64px) clamp(56px, 6vw, 84px);max-width:1000px;display:flex;flex-direction:column;gap:22px;}
   .vhero-badges{display:flex;gap:10px;flex-wrap:wrap;}
   .vbadge{font-size:14.5px;font-weight:700;padding:7px 14px;border-radius:999px;
     background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff;
@@ -912,53 +912,31 @@
   .vbtn-glass:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.5);color:#fff;}
   .vhero .btn:focus-visible{outline:2px solid #fff;outline-offset:3px;}
 
-  .vhero-facts{
-    list-style:none;margin:0;padding:0 clamp(28px, 4.5vw, 64px) 26px;
-    display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:14px;
-  }
-  .vhero-facts li{
-    display:flex;flex-direction:column;gap:3px;padding:14px 18px;border-radius:16px;
-    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
-    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  }
-  .vhero-facts b{font-size:19px;font-weight:800;letter-spacing:-0.01em;}
-  .vhero-facts span{font-size:13.5px;color:rgba(255,255,255,.7);}
 
   /* entrance */
-  .vhero-badges,.vhero h1,.vhero-lead,.vhero-btns,.vhero-facts li{animation:vheroUp .7s cubic-bezier(.22,.68,0,1.01) both;}
+  .vhero-badges,.vhero h1,.vhero-lead,.vhero-btns{animation:vheroUp .7s cubic-bezier(.22,.68,0,1.01) both;}
   .vhero h1{animation-delay:.08s;}
   .vhero-lead{animation-delay:.18s;}
   .vhero-btns{animation-delay:.28s;}
-  .vhero-facts li:nth-child(1){animation-delay:.4s;}
-  .vhero-facts li:nth-child(2){animation-delay:.48s;}
-  .vhero-facts li:nth-child(3){animation-delay:.56s;}
   @keyframes vheroUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
 
-  @media(max-width:900px){
-    .vhero-facts{grid-template-columns:1fr 1fr;}
-    .vhero-facts li:nth-child(3){display:none;}
-  }
   @media(max-width:620px){
-    .vhero{margin-top:16px;border-radius:24px;min-height:min(calc(100svh - 120px), 720px);grid-template-rows:auto 1fr auto;}
+    .vhero{margin-top:16px;border-radius:24px;min-height:min(calc(100svh - 120px), 680px);grid-template-rows:auto 1fr;}
     .vhero-video{object-position:58% 50%;}
     .vhero-shade{background:
       linear-gradient(0deg, rgba(8,18,34,.96) 0%, rgba(8,18,34,.82) 45%, rgba(8,18,34,.35) 75%, rgba(8,18,34,.25) 100%);}
     .vhero-live{margin:16px 16px 0 0;font-size:11px;padding:6px 11px;}
-    .vhero-body{align-self:end;padding:0 20px;gap:16px;}
+    .vhero-body{align-self:end;padding:0 20px 26px;gap:16px;}
     .vbadge{font-size:12px;padding:6px 12px;}
     .vbadge-hot{display:none;}
     .vhero h1{font-size:34px;line-height:1.08;}
     .vh-br{display:none;}
     .vhero-lead{font-size:15px;}
     .vhero-btns .btn{padding:13px 22px;font-size:15px;}
-    .vhero-facts{padding:18px 20px 20px;gap:10px;}
-    .vhero-facts li{padding:11px 13px;}
-    .vhero-facts b{font-size:16px;}
-    .vhero-facts span{font-size:12px;}
   }
   @media(prefers-reduced-motion:reduce){
     .vhero-video,.vhero-dot{animation:none;transform:none;}
-    .vhero-badges,.vhero h1,.vhero-lead,.vhero-btns,.vhero-facts li{animation:none;}
+    .vhero-badges,.vhero h1,.vhero-lead,.vhero-btns{animation:none;}
   }
 </style>
 <script>
@@ -1137,11 +1115,6 @@
       </div>
     </div>
 
-    <ul class="vhero-facts">
-      <li><b>2000+</b><span>одиниць продукції</span></li>
-      <li><b>Власне виробництво</b><span>сітка, дріт ВР-1, арматура</span></li>
-      <li><b>Київ · Кременчук</b><span>склади в двох містах</span></li>
-    </ul>
   </section>
 
   <!-- SALES-FOCUSED ADVANTAGES — first screen -->
