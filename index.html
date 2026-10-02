@@ -894,14 +894,14 @@
   .vhero-dot{width:8px;height:8px;border-radius:50%;background:#FF671A;box-shadow:0 0 0 0 rgba(255,103,26,.7);animation:vheroPulse 1.8s ease-out infinite;}
   @keyframes vheroPulse{to{box-shadow:0 0 0 10px rgba(255,103,26,0);}}
 
-  .vhero-body{align-self:center;padding:8px clamp(28px, 4.5vw, 64px);max-width:720px;display:flex;flex-direction:column;gap:22px;}
+  .vhero-body{align-self:center;padding:8px clamp(28px, 4.5vw, 64px);max-width:860px;display:flex;flex-direction:column;gap:22px;}
   .vhero-badges{display:flex;gap:10px;flex-wrap:wrap;}
   .vbadge{font-size:14.5px;font-weight:700;padding:7px 14px;border-radius:999px;
     background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff;
     -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);}
   .vbadge-hot{background:rgba(255,103,26,.2);border-color:rgba(255,135,45,.55);color:#ffd2b6;}
   .vhero h1{
-    color:#fff;font-size:clamp(44px, 3.2vw + 18px, 78px);line-height:1.02;letter-spacing:-0.035em;font-weight:800;
+    color:#fff;font-size:clamp(40px, 2.6vw + 18px, 66px);line-height:1.04;letter-spacing:-0.03em;font-weight:800;
     text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.35);
   }
   .vhero h1 .accent{color:#FF671A;}
@@ -947,7 +947,8 @@
     .vhero-body{align-self:end;padding:0 20px;gap:16px;}
     .vbadge{font-size:12px;padding:6px 12px;}
     .vbadge-hot{display:none;}
-    .vhero h1{font-size:40px;line-height:1.04;}
+    .vhero h1{font-size:34px;line-height:1.08;}
+    .vh-br{display:none;}
     .vhero-lead{font-size:15px;}
     .vhero-btns .btn{padding:13px 22px;font-size:15px;}
     .vhero-facts{padding:18px 20px 20px;gap:10px;}
@@ -1128,7 +1129,7 @@
         <span class="vbadge vbadge-hot">№1 у металопрокаті 2020</span>
         <span class="vbadge">Прокат · Сервіс</span>
       </div>
-      <h1>Металопрокат<br>під вашу <span class="accent">задачу</span>.</h1>
+      <h1>Виробництво <span class="accent">армокаркасів</span><br class="vh-br"> та&nbsp;металопрокат<br class="vh-br"> під вашу задачу</h1>
       <p class="vhero-lead">Арматура, труби, лист і&nbsp;профілі для&nbsp;будівництва та&nbsp;виробництва. Підберемо матеріал, виконаємо обробку й&nbsp;організуємо доставку.</p>
       <div class="vhero-btns">
         <a class="btn btn-dark" href="#request">Отримати розрахунок <span class="btn-arrow">↗</span></a>
