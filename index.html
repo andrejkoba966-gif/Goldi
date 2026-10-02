@@ -860,6 +860,118 @@
 }
 </script>
 <!-- seo:end -->
+<style id="vhero-css">
+  /* ---------- Hero: full-bleed production video ---------- */
+  .vhero{
+    position:relative;isolation:isolate;overflow:hidden;
+    margin-top:22px;padding:0;border-radius:var(--radius-lg);
+    min-height:clamp(560px, calc(100svh - 190px), 760px);
+    display:grid;grid-template-rows:auto 1fr auto;
+    color:#fff;background:#0b1626;
+    box-shadow:0 30px 60px -30px rgba(10,30,70,.55);
+  }
+  .vhero-video{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;object-position:center 45%;z-index:-2;
+    transform:scale(1.08);animation:vheroDrift 18s ease-in-out infinite alternate;
+  }
+  @keyframes vheroDrift{from{transform:scale(1.08) translateX(0);}to{transform:scale(1.02) translateX(-1.5%);}}
+  .vhero-shade{
+    position:absolute;inset:0;z-index:-1;pointer-events:none;
+    background:
+      linear-gradient(90deg, rgba(8,18,34,.94) 0%, rgba(8,18,34,.82) 30%, rgba(8,18,34,.35) 62%, rgba(8,18,34,.15) 100%),
+      linear-gradient(0deg, rgba(8,18,34,.85) 0%, rgba(8,18,34,0) 32%),
+      radial-gradient(60% 80% at 85% 20%, rgba(255,103,26,.18), transparent 70%);
+  }
+  .vhero-live{
+    justify-self:end;margin:22px 24px 0 0;
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+    padding:8px 14px;border-radius:999px;
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  }
+  .vhero-dot{width:8px;height:8px;border-radius:50%;background:#FF671A;box-shadow:0 0 0 0 rgba(255,103,26,.7);animation:vheroPulse 1.8s ease-out infinite;}
+  @keyframes vheroPulse{to{box-shadow:0 0 0 10px rgba(255,103,26,0);}}
+
+  .vhero-body{align-self:center;padding:8px clamp(28px, 4.5vw, 64px);max-width:720px;display:flex;flex-direction:column;gap:22px;}
+  .vhero-badges{display:flex;gap:10px;flex-wrap:wrap;}
+  .vbadge{font-size:14.5px;font-weight:700;padding:7px 14px;border-radius:999px;
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff;
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);}
+  .vbadge-hot{background:rgba(255,103,26,.2);border-color:rgba(255,135,45,.55);color:#ffd2b6;}
+  .vhero h1{
+    color:#fff;font-size:clamp(44px, 3.2vw + 18px, 78px);line-height:1.02;letter-spacing:-0.035em;font-weight:800;
+    text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.35);
+  }
+  .vhero h1 .accent{color:#FF671A;}
+  .vhero-lead{font-size:18px;line-height:1.58;color:rgba(255,255,255,.8);max-width:520px;margin:0;}
+  .vhero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px;}
+  .vbtn-glass{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#fff;
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:background .2s, border-color .2s;}
+  .vbtn-glass:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.5);color:#fff;}
+  .vhero .btn:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+
+  .vhero-facts{
+    list-style:none;margin:0;padding:0 clamp(28px, 4.5vw, 64px) 26px;
+    display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:14px;
+  }
+  .vhero-facts li{
+    display:flex;flex-direction:column;gap:3px;padding:14px 18px;border-radius:16px;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  }
+  .vhero-facts b{font-size:19px;font-weight:800;letter-spacing:-0.01em;}
+  .vhero-facts span{font-size:13.5px;color:rgba(255,255,255,.7);}
+
+  /* entrance */
+  .vhero-badges,.vhero h1,.vhero-lead,.vhero-btns,.vhero-facts li{animation:vheroUp .7s cubic-bezier(.22,.68,0,1.01) both;}
+  .vhero h1{animation-delay:.08s;}
+  .vhero-lead{animation-delay:.18s;}
+  .vhero-btns{animation-delay:.28s;}
+  .vhero-facts li:nth-child(1){animation-delay:.4s;}
+  .vhero-facts li:nth-child(2){animation-delay:.48s;}
+  .vhero-facts li:nth-child(3){animation-delay:.56s;}
+  @keyframes vheroUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+
+  @media(max-width:900px){
+    .vhero-facts{grid-template-columns:1fr 1fr;}
+    .vhero-facts li:nth-child(3){display:none;}
+  }
+  @media(max-width:620px){
+    .vhero{margin-top:16px;border-radius:24px;min-height:min(calc(100svh - 120px), 720px);grid-template-rows:auto 1fr auto;}
+    .vhero-video{object-position:58% 50%;}
+    .vhero-shade{background:
+      linear-gradient(0deg, rgba(8,18,34,.96) 0%, rgba(8,18,34,.82) 45%, rgba(8,18,34,.35) 75%, rgba(8,18,34,.25) 100%);}
+    .vhero-live{margin:16px 16px 0 0;font-size:11px;padding:6px 11px;}
+    .vhero-body{align-self:end;padding:0 20px;gap:16px;}
+    .vbadge{font-size:12px;padding:6px 12px;}
+    .vbadge-hot{display:none;}
+    .vhero h1{font-size:40px;line-height:1.04;}
+    .vhero-lead{font-size:15px;}
+    .vhero-btns .btn{padding:13px 22px;font-size:15px;}
+    .vhero-facts{padding:18px 20px 20px;gap:10px;}
+    .vhero-facts li{padding:11px 13px;}
+    .vhero-facts b{font-size:16px;}
+    .vhero-facts span{font-size:12px;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .vhero-video,.vhero-dot{animation:none;transform:none;}
+    .vhero-badges,.vhero h1,.vhero-lead,.vhero-btns,.vhero-facts li{animation:none;}
+  }
+</style>
+<script>
+  // play the hero video only while it is on screen; honour reduced motion
+  document.addEventListener('DOMContentLoaded', function(){
+    var v = document.getElementById('vheroVideo');
+    if(!v) return;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ v.removeAttribute('autoplay'); v.pause(); return; }
+    if(!('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ var p = v.play(); if(p && p.catch) p.catch(function(){}); } else v.pause(); });
+    }, { threshold: 0.15 }).observe(v);
+  });
+</script>
 </head>
 <body>
 <script>
@@ -1004,35 +1116,32 @@
 </div>
 
 <div class="wrap">
-  <!-- HERO -->
-  <div class="bento">
-    <div class="card glass hero-main">
-      <div class="badges">
-        <span class="badge blue">№1 у металопрокаті 2020</span>
-        <span class="badge grey">Прокат · Сервіс</span>
+  <!-- HERO: full-bleed production video -->
+  <section class="vhero" aria-label="GOLDI GROUP — металопрокат і власне виробництво">
+    <video class="vhero-video" id="vheroVideo" poster="media/hero-vyrobnytstvo-poster.webp" autoplay muted loop playsinline preload="auto" src="media/hero-vyrobnytstvo.mp4" aria-hidden="true"></video>
+    <div class="vhero-shade" aria-hidden="true"></div>
+
+    <div class="vhero-live"><span class="vhero-dot"></span>Наше виробництво</div>
+
+    <div class="vhero-body">
+      <div class="vhero-badges">
+        <span class="vbadge vbadge-hot">№1 у металопрокаті 2020</span>
+        <span class="vbadge">Прокат · Сервіс</span>
       </div>
       <h1>Металопрокат<br>під вашу <span class="accent">задачу</span>.</h1>
-      <p class="lead">Арматура, труби, лист і&nbsp;профілі для&nbsp;будівництва та&nbsp;виробництва. Підберемо матеріал, виконаємо обробку й&nbsp;організуємо доставку.</p>
-      <div class="btnrow">
+      <p class="vhero-lead">Арматура, труби, лист і&nbsp;профілі для&nbsp;будівництва та&nbsp;виробництва. Підберемо матеріал, виконаємо обробку й&nbsp;організуємо доставку.</p>
+      <div class="vhero-btns">
         <a class="btn btn-dark" href="#request">Отримати розрахунок <span class="btn-arrow">↗</span></a>
-        <a class="btn btn-outline" href="catalog/index.html">Переглянути каталог</a>
-      </div>
-      <div class="herofacts">
-        <span>Металопрокат та виробництво</span>
-        <span class="divider"></span>
-        <span>Київ · Кременчук</span>
-      </div>
-      <div class="hero-infobar">
-        <span>Від підбору до доставки</span>
-        <span>Все в одному замовленні</span>
-        <span>Київ · Кременчук</span>
+        <a class="btn vbtn-glass" href="catalog/index.html">Переглянути каталог</a>
       </div>
     </div>
 
-    <div class="card hero-slider" id="heroSlider">
-      <video poster="media/hero-poster.webp" class="hero-video" autoplay muted loop playsinline preload="metadata" src="media/hero.mp4"></video>
-    </div>
-  </div>
+    <ul class="vhero-facts">
+      <li><b>2000+</b><span>одиниць продукції</span></li>
+      <li><b>Власне виробництво</b><span>сітка, дріт ВР-1, арматура</span></li>
+      <li><b>Київ · Кременчук</b><span>склади в двох містах</span></li>
+    </ul>
+  </section>
 
   <!-- SALES-FOCUSED ADVANTAGES — first screen -->
   <div class="advstrip" id="delivery">
