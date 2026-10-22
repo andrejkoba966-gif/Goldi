@@ -14,6 +14,9 @@ from urllib.parse import urljoin
 # ---- the only line to change when the domain moves ----------------------------
 BASE = 'https://andrejkoba966-gif.github.io/Goldi/'
 # --------------------------------------------------------------------------------
+# The server copy is built with SITE_BASE=https://goldigroup.com.ua/ so the domain
+# gets indexable pages while this github.io copy stays closed to search.
+BASE = os.environ.get('SITE_BASE', BASE)
 
 # The github.io address is temporary, so it stays out of search results. This
 # follows BASE on its own: once BASE is the real domain, pages become indexable

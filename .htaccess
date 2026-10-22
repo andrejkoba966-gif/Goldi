@@ -1,0 +1,69 @@
+# GOLDI GROUP — rules for the server (Apache). GitHub Pages ignores this file.
+AddDefaultCharset utf-8
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /index.html
+
+RewriteEngine On
+
+# one address for the site: https, no www
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# old site: Russian copy (/ru/...) and /ua lead to the same pages
+RewriteRule ^(ru|ua)/?$ / [R=301,L]
+RewriteRule ^(?:ru|ua)/(.+)$ /$1 [R=301,L]
+
+# old site: pages that were renamed (301 keeps their place in search)
+RewriteRule ^contact/?$ /kontakty/ [R=301,L]
+RewriteRule ^dostavka-oplata/?$ /dostavka-i-oplata/ [R=301,L]
+RewriteRule ^services/?$ /poslugy/ [R=301,L]
+RewriteRule ^services/porizka-metalu-na-plazmi/?$ /poslugy/porizka-na-plazmi/ [R=301,L]
+RewriteRule ^services/poslugi-z-rozkochuvannya-kruga/?$ /poslugy/rozkochuvannya-kruha/ [R=301,L]
+RewriteRule ^services/dostavka-po-vsij-ukraini/?$ /poslugy/dostavka-po-ukraini/ [R=301,L]
+RewriteRule ^services/porizka-listiv-gilyjotinnimi-nozhitsyami/?$ /poslugy/porizka-hilyotynnymy-nozhytsyamy/ [R=301,L]
+RewriteRule ^services/porizka-metalu-gazovim-rizakom/?$ /poslugy/porizka-hazovym-rizakom/ [R=301,L]
+RewriteRule ^services/porizka-metalu-vidriznim-verstatom/?$ /poslugy/porizka-vidriznym-verstatom/ [R=301,L]
+RewriteRule ^services/zvaryuvalyni-roboti/?$ /poslugy/zvaryuvalni-roboty/ [R=301,L]
+RewriteRule ^services/.+$ /poslugy/ [R=301,L]
+
+RewriteRule ^catalog/sobstvennoe-proizvodstvo/?$ /catalog/vlasne-vyrobnytstvo/ [R=301,L]
+RewriteRule ^catalog/sobstvennoe-proizvodstvo/(setka-svarnaya-kladochnaya|provoloka-vr-1|armatura-stykosvarochnaya)/?$ /catalog/vlasne-vyrobnytstvo/$1/ [R=301,L]
+RewriteRule ^catalog/sobstvennoe-proizvodstvo/.+$ /catalog/vlasne-vyrobnytstvo/ [R=301,L]
+RewriteRule ^catalog/stroitelynye-materialy(/.*)?$ /catalog/budivelni-materialy/ [R=301,L]
+
+RewriteRule ^catalog/metalloprokat/armatura/armatura-(a240|a400-gost|a400-a500-dstu|at800-at1000|ndv)/?$ /catalog/metalloprokat/armatura/$1/ [R=301,L]
+RewriteRule ^catalog/metalloprokat/listovoj-prokat/list-(goryachekatanyj|holodnokatanyj|riflenyj)/?$ /catalog/metalloprokat/listovoj-prokat/$1/ [R=301,L]
+RewriteRule ^catalog/metalloprokat/listovoj-prokat/list-prosichno-vityazhnij/?$ /catalog/metalloprokat/listovoj-prokat/prosichno-vityazhnyj/ [R=301,L]
+RewriteRule ^catalog/metalloprokat/truby/truby-bezshovni/?$ /catalog/metalloprokat/truby/bezshovni/ [R=301,L]
+RewriteRule ^catalog/metalloprokat/truby/truby-vodogazoprovodnye/?$ /catalog/metalloprokat/truby/vodogazoprovidni/ [R=301,L]
+RewriteRule ^catalog/metalloprokat/truby/truby-profilynye/?$ /catalog/metalloprokat/truby/profilni/ [R=301,L]
+RewriteRule ^catalog/metalloprokat/truby/truby-elektrozvaryuvalyni/?$ /catalog/metalloprokat/truby/elektrozvaryuvalni/ [R=301,L]
+RewriteRule ^catalog/metalloprokat/krugi/krug-(goryachekatanyj|konstruktsionnyj)/?$ /catalog/metalloprokat/krugi/$1/ [R=301,L]
+
+# old site: sections the new site does not have
+RewriteRule ^(news|faq)(/.*)?$ /#faq [R=301,L,NE]
+RewriteRule ^(reviews|cart|search|sitemap)/?$ / [R=301,L]
+RewriteRule ^admin(/.*)?$ https://old.goldigroup.com.ua/admin$1 [R=301,L]
+
+# any other old catalog address that no longer exists → nearest section
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^catalog/metalloprokat/([^/]+)/.+$ /catalog/metalloprokat/$1/ [R=301,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^catalog/.+$ /catalog/ [R=301,L]
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType video/mp4 "access plus 30 days"
+</IfModule>
